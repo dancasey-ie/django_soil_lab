@@ -18,11 +18,12 @@ from django.contrib import admin
 from accounts import urls as accounts_urls
 from home.views import index
 from products import urls as products_urls
-
+from cart import urls as cart_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='index'),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^products/', include(products_urls)),
+    url(r'^cart/', include(products_urls)),
 ]
