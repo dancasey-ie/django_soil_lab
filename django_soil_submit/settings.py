@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'checkout',
-    'mapwidgets',
+  #  'mapwidgets',
 ]
 
 MIDDLEWARE = [
@@ -138,6 +138,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATICFILES_LOCATION = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -158,9 +159,9 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-MAP_WIDGETS = {
-    "GooglePointFieldWidget": (
-        ("zoom", 15),
-    ),
-    "GOOGLE_MAP_API_KEY": os.getenv('GOOGLE_MAP_API_KEY')
-}
+#MAP_WIDGETS = {
+#    "GooglePointFieldWidget": (
+ #       ("zoom", 15),
+ #   ),
+  #  "GOOGLE_MAP_API_KEY": os.getenv('GOOGLE_MAP_API_KEY')
+#}
