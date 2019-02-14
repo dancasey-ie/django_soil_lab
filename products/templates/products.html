@@ -7,10 +7,8 @@
         <div class="panel-body">
             <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
 
-            <h3>{{ product.name }}</h3>
-            <p class="product-description">{{ product.description }}</p>
-            <p>{{ product.price }}</p>
-
+            <h3 class="product_name">{{ product.name }}</h3>
+            <p class="product_price">&euro;{{ product.price }}</p>
             <form method="post" action="{% url 'add_to_cart' product.id %}">
                 {% csrf_token %}
                 <div class="input-group">
@@ -20,6 +18,12 @@
                     </span>
                 </div>
             </form>
+            <h4>Description</h4>
+            <p class="product_description">{{ product.description }}</p>
+            <h4>Elements/Nutrient Determinations</h4>
+            <p>{{ product.elements_determined }}</p>
+
+
 
         </div>
     </div>

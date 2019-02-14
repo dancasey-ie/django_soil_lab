@@ -41,6 +41,14 @@ footer {
     margin: 0 auto;
 }
 
+.product_name {
+    color: #40ae49;
+}
+.product_price {
+    color: #0084cc;
+    font-size: 31.25px;
+}
+
 caption p {
     word-wrap: break-word;
 }
@@ -61,6 +69,6 @@ caption p {
     border: 1px solid #ddd;
 }
 
-.product-description {
+.product_description {
     min-height: 40px;
 }
