@@ -1,10 +1,15 @@
 
 from django.db import models
 from products.models import Product
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 class Order(models.Model):
+    STATUS_CHOICES = (('Ordered'),('Ordered')), (('Processed'),('Processed'))
+
+    username = models.CharField(max_length=50, blank=False)
+    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='Ordered')
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
@@ -14,6 +19,7 @@ class Order(models.Model):
     street_address2 = models.CharField(max_length=40, blank=False)
     county = models.CharField(max_length=40, blank=False)
     date = models.DateField()
+
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
