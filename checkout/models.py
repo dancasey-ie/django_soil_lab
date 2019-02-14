@@ -1,7 +1,7 @@
 
 from django.db import models
 from products.models import Product
-from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -22,7 +22,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+        return "{0}-{1}-{2}".format(self.id, self.date, self.username)
 
 
 class OrderLineItem(models.Model):
