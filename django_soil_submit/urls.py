@@ -25,5 +25,5 @@ urlpatterns = [
     url(r'^$', index, name='index'),
     url(r'^accounts/', include(accounts_urls)),
     url(r'^products/', include(products_urls)),
-    url(r'^cart/', include(products_urls)),
+    url(r'^cart/', include(cart_urls)),
 ]
