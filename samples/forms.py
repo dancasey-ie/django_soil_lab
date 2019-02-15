@@ -5,7 +5,7 @@ class SampleCustomerForm(forms.ModelForm):
     class Meta:
         model = Sample
         # varibles defined in Order model
-        fields = ('sample_ref', 'analyis_req', 'location',
+        fields = ('sample_ref', 'analysis_req', 'location',
                   'sample_date', 'customer_ref', 'soil_type',
                   'land_use', 'other_comments')
 

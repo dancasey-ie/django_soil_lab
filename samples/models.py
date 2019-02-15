@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -42,14 +43,15 @@ class Sample(models.Model):
                       (('Complete'),('Complete')))
 
     username = models.CharField(max_length=50, blank=False)
+    location = models.CharField(max_length=50, blank=False)
     sample_ref = models.CharField(max_length=50, blank=False)
-    analysis_req = models.CharField(max_length=1, choices=TEST_CHOICES, default='1')
+    analysis_req = models.CharField(max_length=1, choices=TEST_CHOICES, blank=True)
     customer_ref = models.CharField(max_length=50, blank=True)
     soil_type = models.CharField(max_length=1, choices=SOIL_TYPES, blank=True, default='')
     land_use = models.CharField(max_length=1, choices=LAND_USES, blank=True, default='')
     other_comments = models.CharField(max_length=50, blank=True)
     sample_condition = models.CharField(max_length=50, blank=True)
-    sampled_date = models.DateField(blank=True)
+    sample_date = models.DateField(default=timezone.now())
     submit_date = models.DateField(blank=True)
     recieved_date = models.DateField(blank=True)
     test_start_date = models.DateField(blank=True)

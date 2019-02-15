@@ -7,7 +7,7 @@ from .forms import SampleCustomerForm
 
 
 @login_required()
-def customersubmitsample(request):
+def newsample(request):
     """A view that manages the customer sample submission form"""
     if request.method == 'POST':
         sample_form = SampleCustomerForm(request.POST)
@@ -20,4 +20,8 @@ def customersubmitsample(request):
     else:
         sample_form = SampleCustomerForm()
 
-    return render(request, 'profile.html', args)
+    return render(request, "soilsamplesubmit.html", {'sample_form': sample_form})
+
+def submitsample(request):
+
+    return render(request, 'profile.html')
