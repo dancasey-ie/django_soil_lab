@@ -13,9 +13,10 @@ def newsample(request):
         sample_form = SampleCustomerForm(request.POST)
         if sample_form.is_valid():
             sample = sample_form.save(commit=False)
-            sample.submit_dat = timezone.now()
+            sample.submit_date = timezone.now()
             sample.username = request.user
-            sample.sav()
+            sample.save()
+            return render(request, 'profile.html')
 
     else:
         sample_form = SampleCustomerForm()
@@ -23,5 +24,6 @@ def newsample(request):
     return render(request, "soilsamplesubmit.html", {'sample_form': sample_form})
 
 def submitsample(request):
+
 
     return render(request, 'profile.html')
