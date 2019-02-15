@@ -8,17 +8,17 @@
 {% block content %}
 
 
+    <form role="form" method="post" id="" action="{% url 'newsample' %}">
 
-<form role="form" method="post" id="" action="{% url 'newsample' %}">
+        <div class="form-group col-md-6">
+            {{ sample_form|as_bootstrap }}
+        </div>
 
-    <div class="form-group col-md-6">
-        {{ sample_form|as_bootstrap }}
-    </div>
+        {% csrf_token %}
+        <div class="form-group col-md-12">
+            <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Submit Sample">
+        </div>
+    </form>
 
-    {% csrf_token %}
-    <div class="form-group col-md-12">
-        <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Submit Sample">
-    </div>
-</form>
 
 {% endblock %}
