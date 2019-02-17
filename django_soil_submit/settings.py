@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'samples',
+    'geoposition',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATICFILES_LOCATION = 'static'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = 'static'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
@@ -156,4 +157,9 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAP_API_KEY')
+
+GEOPOSITION_MARKER_OPTIONS = {
+     }
 

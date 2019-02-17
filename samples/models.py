@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from geoposition.fields import GeopositionField
 
 # Create your models here.
 
@@ -43,9 +44,9 @@ class Sample(models.Model):
                       (('Complete'),('Complete')))
 
     username = models.CharField(max_length=50, blank=False)
-    location = models.CharField(max_length=50, blank=False)
+    location = GeopositionField()
     sample_ref = models.CharField(max_length=50, blank=False)
-    analysis_req = models.CharField(max_length=1, choices=TEST_CHOICES, blank=True)
+    analysis_req = models.CharField(max_length=50, choices=TEST_CHOICES, blank=True)
     customer_ref = models.CharField(max_length=50, blank=True)
     soil_type = models.CharField(max_length=2, choices=SOIL_TYPES, blank=True, default='')
     land_use = models.CharField(max_length=1, choices=LAND_USES, blank=True, default='')
@@ -56,7 +57,7 @@ class Sample(models.Model):
     recieved_date = models.DateField(blank=True, null=True)
     test_start_date = models.DateField(blank=True, null=True)
     test_end_date = models.DateField(blank=True, null=True)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='Submitted')
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Submitted')
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.sample_ref, self.status)
