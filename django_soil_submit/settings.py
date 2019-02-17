@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'samples',
-#    'mapwidgets',
 ]
 
 MIDDLEWARE = [
@@ -158,11 +157,3 @@ STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-#MAP_WIDGETS = {
-  #  "GooglePointFieldWidget": (
-    #    ("zoom", 15),
-   # ),
-    #"GOOGLE_MAP_API_KEY": os.getenv('GOOGLE_MAP_API_KEY')
-#}
-
-#GDAL_LIBRARY_PATH = '/lib/libgdal.so'
