@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Sample
+from .models import Sample, ResultsLineItem
 
-# Register your models here.
+class ResultsLineAdminInLine(admin.TabularInline):
+    model = ResultsLineItem
 
-admin.site.register(Sample)
+class SampleAdmin(admin.ModelAdmin):
+    inlines = [ResultsLineAdminInLine]
+
+admin.site.register(Sample, SampleAdmin)

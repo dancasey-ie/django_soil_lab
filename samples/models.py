@@ -62,3 +62,19 @@ class Sample(models.Model):
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.sample_ref, self.status)
+
+class ResultsLineItem(models.Model):
+    sample = models.ForeignKey(Sample, null=False)
+    p_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    k_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    lr_ph_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    ph_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    mg_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    cu_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    zn_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    er_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    mn_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+    organic_result = models.DecimalField(max_digits=4, decimal_places=2, null=True)
+
+    def __str__(self):
+        return "{0} {1} @ {2}".format(self.p_morgan_result, self.k_morgan_result, self.lr_ph_result)
