@@ -2,7 +2,7 @@ certifi==2018.11.29
 chardet==3.0.4
 Django==1.11.18
 django-forms-bootstrap==3.1.0
-django-geoposition==0.3.1
+django-geoposition==0.3.0
 django-storages==1.7.1
 idna==2.8
 Pillow==5.4.1
