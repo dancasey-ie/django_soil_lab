@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from geoposition import Geoposition
 from geoposition.fields import GeopositionField
 
 # Create your models here.
