@@ -9,7 +9,7 @@ class Order(models.Model):
     STATUS_CHOICES = (('Ordered'),('Ordered')), (('Processed'),('Processed'))
 
     username = models.CharField(max_length=50, blank=False)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES, default='Ordered')
+    status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Ordered')
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
     country = models.CharField(max_length=40, blank=False)
