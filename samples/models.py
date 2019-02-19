@@ -49,7 +49,7 @@ class Sample(models.Model):
     submit_date = models.DateField(auto_now_add=True)
 
     # user inputs
-    sample_ref = models.CharField(max_length=50, blank=False, primary_key=True, help_text="Sample reference number assigned by lab, e.g. SS-123456")
+    sample_ref = models.CharField(max_length=50, blank=False, help_text="Sample reference number assigned by lab, e.g. SS-123456")
     customer_name = models.CharField(max_length=50, blank=True, null=True, help_text="Name of customer if user is ag.adviser e.g. Tom Cronin")
     customer_ref_1 = models.CharField(max_length=50, blank=True, null=True, help_text="Customer site primary reference e.g. Tom Cronins Main Farm")
     customer_ref_2 = models.CharField(max_length=50, blank=True, null=True, help_text="Customer site secondary reference e.g. South field")
