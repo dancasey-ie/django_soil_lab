@@ -3,6 +3,14 @@
 {% load bootstrap_tags %}
 
 {% block head_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            format: 'YYYY-MM-DD'
+        });
+    });
+</script>
 
 {% endblock %}
 

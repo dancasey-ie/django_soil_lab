@@ -15,6 +15,9 @@ class SampleCustomerForm(forms.ModelForm):
                   'soil_type',
                   'land_use',
                   'other_comments')
+        widgets = {
+            'sample_date': forms.DateInput(attrs={'class':'datepicker'}),
+        }
 
 class SampleStaffForm(forms.ModelForm):
     class Meta:

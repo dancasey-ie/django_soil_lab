@@ -14,7 +14,7 @@ def newsample(request):
         if sample_form.is_valid():
             sample = sample_form.save(commit=False)
             sample.submit_date = timezone.now()
-            sample.username = request.user
+            sample.username = request.user.username
             sample.save()
             return render(request, 'profile.html')
 
