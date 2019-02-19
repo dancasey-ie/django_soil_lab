@@ -1,1 +1,1 @@
-web: gunicorn django_soil_submit.wsgi.application
+web: gunicorn django_soil_submit.wsgi:application
