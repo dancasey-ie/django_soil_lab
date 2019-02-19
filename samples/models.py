@@ -44,20 +44,31 @@ class Sample(models.Model):
                       (('Testing'),('Testing')),
                       (('Complete'),('Complete')))
 
+    # set by user
     username = models.CharField(max_length=50, blank=False)
-    location = GeopositionField()
-    sample_ref = models.CharField(max_length=50, blank=False)
-    analysis_req = models.CharField(max_length=50, choices=TEST_CHOICES, blank=True)
-    customer_ref = models.CharField(max_length=50, blank=True)
+    submit_date = models.DateField(auto_now_add=True)
+
+    # user inputs
+    sample_ref = models.CharField(max_length=50, blank=False, primary_key=True, help_text="Sample reference number assigned by lab, e.g. SS-123456")
+    customer_name = models.CharField(max_length=50, blank=True, null=True, help_text="Name of customer e.g. Tom Cronin")
+    customer_ref_1 = models.CharField(max_length=50, blank=True, null=True, help_text="Customer site primary reference e.g. Tom Cronins Main Farm")
+    customer_ref_2 = models.CharField(max_length=50, blank=True, null=True, help_text="Customer site secondary reference e.g. South field")
+    sample_location = GeopositionField(null=True, help_text="Drag the marker to pin the location of the sample site.")
+    sample_address = models.CharField(max_length=50, blank=True, null=True, help_text="Address of the sample site.")
+    sample_date = models.DateField(blank=False, default=timezone.now())
+    analysis_req = models.CharField(max_length=50, choices=TEST_CHOICES)
     soil_type = models.CharField(max_length=2, choices=SOIL_TYPES, blank=True, default='')
     land_use = models.CharField(max_length=1, choices=LAND_USES, blank=True, default='')
-    other_comments = models.CharField(max_length=50, blank=True)
+    other_comments = models.CharField(max_length=250, blank=True)
+
+    # staff inputs
     sample_condition = models.CharField(max_length=50, blank=True)
-    sample_date = models.DateField(default=timezone.now())
-    submit_date = models.DateField(blank=True)
     recieved_date = models.DateField(blank=True, null=True)
+    recieved_by = models.CharField(max_length=50, blank=True, null=True)
+    batch_no = models.DateField(blank=True, null=True)
     test_start_date = models.DateField(blank=True, null=True)
     test_end_date = models.DateField(blank=True, null=True)
+    tested_by = models.CharField(max_length=50, blank=True, null=True)
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Submitted')
 
     def __str__(self):

@@ -22,3 +22,5 @@ def newsample(request):
         sample_form = SampleCustomerForm()
 
     return render(request, "soilsamplesubmit.html", {'sample_form': sample_form})
+
+
