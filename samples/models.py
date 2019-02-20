@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from geoposition import Geoposition
+from django.conf import settings
 from geoposition.fields import GeopositionField
 
 # Create your models here.
@@ -45,7 +46,10 @@ class Sample(models.Model):
                       (('Complete'),('Complete')))
 
     # set by user
-    username = models.CharField(max_length=50, blank=False)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
     submit_date = models.DateField(auto_now_add=True)
 
     # user inputs
@@ -59,17 +63,9 @@ class Sample(models.Model):
     analysis_req = models.CharField(max_length=50, choices=TEST_CHOICES)
     soil_type = models.CharField(max_length=50, choices=SOIL_TYPES, blank=True, default='')
     land_use = models.CharField(max_length=50, choices=LAND_USES, blank=True, default='')
-    other_comments = models.CharField(max_length=100, blank=True)
+    other_comments = models.TextField(max_length=254, blank=True)
 
-    # staff inputs
-    sample_condition = models.CharField(max_length=50, blank=True)
-    recieved_date = models.DateField(blank=True, null=True)
-    recieved_by = models.CharField(max_length=50, blank=True, null=True)
-    batch_no = models.DateField(blank=True, null=True)
-    test_start_date = models.DateField(blank=True, null=True)
-    test_end_date = models.DateField(blank=True, null=True)
-    tested_by = models.CharField(max_length=50, blank=True, null=True)
-    lab_comments = models.CharField(max_length=50, blank=True, null=True)
+    #automated
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Submitted')
 
     def __str__(self):
@@ -77,17 +73,37 @@ class Sample(models.Model):
 
 class Soil1Results(models.Model):
     sample = models.ForeignKey(Sample, null=False)
+    recieved_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        limit_choices_to={'is_staff': True},
+        on_delete=models.CASCADE,
+    )
+    recieved_date = models.DateField(blank=True, null=True)
+    sample_condition = models.CharField(max_length=50, blank=True)
+    batch_no = models.CharField(max_length=50, blank=True)
+    test_start_date = models.DateField(blank=True, null=True)
     p_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     k_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     lr_ph_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     ph_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-
+    lab_comments = models.TextField(max_length=254, blank=True)
+    tested_by = models.CharField(max_length=50, blank=True)
+    test_end_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return "{0}-{1}-Soil 1".format(self.id, self.sample.sample_ref)
 
 class Soil2Results(models.Model):
     sample = models.ForeignKey(Sample, null=False)
+    recieved_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        limit_choices_to={'is_staff': True},
+        on_delete=models.CASCADE,
+    )
+    recieved_date = models.DateField(blank=True, null=True)
+    sample_condition = models.CharField(max_length=50, blank=True)
+    batch_no = models.DateField(blank=True, null=True)
+    test_start_date = models.DateField(blank=True, null=True)
     p_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     k_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     lr_ph_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
@@ -98,6 +114,10 @@ class Soil2Results(models.Model):
     er_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     mn_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
     organic_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    lab_comments = models.TextField(max_length=254, blank=True)
+    tested_by = models.CharField(max_length=50, blank=True)
+    test_end_date = models.DateField(blank=True, null=True)
+
 
     def __str__(self):
         return "{0}-{1}-Soil 2".format(self.id, self.sample.sample_ref)

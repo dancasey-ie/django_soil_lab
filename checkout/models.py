@@ -7,7 +7,7 @@ from django.conf import settings
 class Order(models.Model):
     STATUS_CHOICES = (('Ordered'),('Ordered')), (('Processed'),('Processed'))
 
-    username = models.ForeignKey(
+    user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )

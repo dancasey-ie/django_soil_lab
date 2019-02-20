@@ -1,5 +1,5 @@
 from django import forms
-from .models import Sample
+from .models import Sample, Soil1Results
 
 class SampleCustomerForm(forms.ModelForm):
     class Meta:
@@ -19,14 +19,20 @@ class SampleCustomerForm(forms.ModelForm):
             'sample_date': forms.DateInput(attrs={'class':'datepicker'}),
         }
 
-class SampleStaffForm(forms.ModelForm):
+class Soil1ResultsForm(forms.ModelForm):
     class Meta:
-        model = Sample
-        fields = ('sample_condition',
-                  'recieved_date',
+        model = Soil1Results
+        fields = ('sample',
                   'recieved_by',
+                  'recieved_date',
+                  'sample_condition',
                   'batch_no',
                   'test_start_date',
+                  'p_morgan_result',
+                  'k_morgan_result',
+                  'lr_ph_result',
+                  'ph_result',
                   'test_end_date',
                   'tested_by',
-                  'status')
+                  'lab_comments')
+
