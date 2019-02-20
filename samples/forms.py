@@ -32,7 +32,12 @@ class Soil1ResultsForm(forms.ModelForm):
                   'k_morgan_result',
                   'lr_ph_result',
                   'ph_result',
+                  'lab_comments',
                   'test_end_date',
-                  'tested_by',
-                  'lab_comments')
+                  'tested_by')
+        widgets = {
+            'recieved_date': forms.DateInput(attrs={'class':'datepicker'}),
+            'test_start_date': forms.DateInput(attrs={'class':'datepicker'}),
+            'test_end_date': forms.DateInput(attrs={'class':'datepicker'}),
+        }
 
