@@ -1,10 +1,6 @@
 from django.contrib import admin
-from .models import Sample, ResultsLineItem
+from .models import Sample, Soil1Results, Soil2Results
 
-class ResultsLineAdminInLine(admin.TabularInline):
-    model = ResultsLineItem
-
-class SampleAdmin(admin.ModelAdmin):
-    inlines = [ResultsLineAdminInLine]
-
-admin.site.register(Sample, SampleAdmin)
+admin.site.register(Sample)
+admin.site.register(Soil1Results)
+admin.site.register(Soil2Results)
