@@ -49,7 +49,7 @@ def login(request):
 @login_required
 def profile(request):
     """A view that displays the profile page of a logged in user"""
-    samples = Sample.objects.filter(username=request.user)
+    samples = Sample.objects.filter(user=request.user)
     return render(request, 'profile.html', {"samples": samples})
 
 

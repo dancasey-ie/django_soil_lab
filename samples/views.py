@@ -15,7 +15,7 @@ def newsample(request):
         if sample_form.is_valid():
             sample = sample_form.save(commit=False)
             sample.submit_date = timezone.now()
-            sample.username = request.user.username
+            sample.user = request.user
             sample.save()
             return render(request, 'profile.html')
 
@@ -39,4 +39,8 @@ def labdetails(request):
 
     return render(request, "labdetails.html", {'results_form': results_form})
 
+@staff_member_required
+def labportal(request):
+    samples = Sample.objects.all()
+    return render(request, 'labportal.html', {"samples": samples})
 
