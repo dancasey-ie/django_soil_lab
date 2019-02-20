@@ -1,14 +1,16 @@
-
 from django.db import models
 from products.models import Product
-
+from django.conf import settings
 
 # Create your models here.
 
 class Order(models.Model):
     STATUS_CHOICES = (('Ordered'),('Ordered')), (('Processed'),('Processed'))
 
-    username = models.CharField(max_length=50, blank=False)
+    username = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
     status = models.CharField(max_length=50, choices=STATUS_CHOICES, default='Ordered')
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
