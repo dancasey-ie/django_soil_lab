@@ -24,6 +24,13 @@ def newsample(request):
 
     return render(request, "sampledetails.html", {'sample_form': sample_form})
 
+@login_required
+def yourportal(request):
+    """A view that displays the profile page of a logged in user"""
+    samples = Sample.objects.filter(user=request.user)
+    return render(request, 'yourportal.html', {"samples": samples})
+
+
 @staff_member_required
 def labdetails(request):
     """A view that manages the customer sample submission form"""

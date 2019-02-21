@@ -21,6 +21,7 @@ from products import urls as products_urls
 from cart import urls as cart_urls
 from checkout import urls as checkout_urls
 from samples import urls as samples_urls
+from samples.views import yourportal, labportal
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -32,5 +33,7 @@ urlpatterns = [
     url(r'^cart/', include(cart_urls)),
     url(r'^checkout/', include(checkout_urls)),
     url(r'^samples/', include(samples_urls)),
+    url(r'^labportal/', labportal, name='labportal'),
+    url(r'^yourportal/', yourportal, name='yourportal'),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

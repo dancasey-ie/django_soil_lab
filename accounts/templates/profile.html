@@ -1,22 +1,8 @@
 {% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}
 <h2>Welcome, {{ user.username }}</h2>
 <p>{{ user.email }}</p>
-<p><a href="{% url 'newsample' %}">New Sample</a></p>
 
 <div class="row">
-    <table class="col-xs-12">
-        <tr>
-            <th>Sample Ref.</th>
-            <th>Status</th>
-            <th>Customer Ref.</th>
-        </tr>
-        {% for sample in samples %}
-            <tr>
-                <td>{{ sample.sample_ref }}</td>
-                <td>{{ sample.status }}</td>
-                <td>{{ sample.customer_ref }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+
 </div>
 {% endblock %}
