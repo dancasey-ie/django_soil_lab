@@ -74,11 +74,16 @@
 <script>
 
     function initMap() {
-        var myLatLng = { lat: -25.363, lng: 131.044 };
+        //  var myLatLng = new google.maps.LatLng({{ sample.sample_location.latitude }}, {{ sample.sample_location.longitude }});
 
+        var myLatLng = {
+            lat: {{ sample.sample_location.latitude }},
+            lng: {{ sample.sample_location.longitude }}
+            };
         var map = new google.maps.Map(document.getElementById('mymap'), {
-            zoom: 4,
-            center: myLatLng
+            zoom: 15,
+            center: myLatLng,
+            mapTypeId: 'satellite'
         });
 
         var marker = new google.maps.Marker({
@@ -88,7 +93,7 @@
         });
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFEDAO2umhtup31g5olEt-Jrf7OG-rq7c&callback=initMap"
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE__MAPS_API_KEY }}&callback=initMap"
         type="text/javascript"></script>
 
 {% endblock %}

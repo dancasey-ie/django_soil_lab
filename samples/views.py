@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.utils import timezone
 from .models import Sample, Soil1Results
 from .forms import SampleCustomerForm, Soil1ResultsForm
+import os
 
 @login_required
 def yourportal(request):
@@ -31,11 +32,12 @@ def newsample(request):
 
 @login_required()
 def viewreport(request, sample_id):
-
+    os.getenv('GOOGLE_MAP_API_KEY')
     if request.method == 'POST':
         try:
             sample = Sample.objects.get(id=sample_id)
             results = ""
+            print(sample.sample_location.latitude)
             return render(request, "viewreport.html", {'sample': sample, 'results': results})
         except Sample.DoesNotExist:
             print("Sample ID does not exist")
@@ -44,7 +46,10 @@ def viewreport(request, sample_id):
     else:
         error_message = "You do not have access to this url"
         sample = ""
-    return render(request, "viewreport.html", {'sample': sample, 'error_message': error_message})
+    return render(request, "viewreport.html",
+                  {'GOOGLE_MAP_API_KEY': os.getenv('GOOGLE_MAP_API_KEY'),
+                                               'sample': sample,
+                                               'error_message': error_message})
 
 
 @staff_member_required
