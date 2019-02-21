@@ -19,6 +19,16 @@ footer {
     padding-top: 20px;
 }
 
+.mymap_wrapper {
+    height: 400px;
+    width: 400px;
+}
+
+#mymap {
+    height: 100%;
+}
+
+
 .badge {
     padding-left: 9px;
     padding-right: 9px;

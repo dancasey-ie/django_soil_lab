@@ -3,12 +3,31 @@ body {
     padding-top: 100px;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 footer {
     margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 1px solid #ededed;
     color: #A9A9A9;
+}
+
+.mymap_wrapper {
+    height: 600px;
+    width: 600px;
+}
+
+#mymap {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: visible;
 }
 
 .icon-bar {
