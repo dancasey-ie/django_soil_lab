@@ -1,9 +1,8 @@
 from django.conf.urls import url, include
-from .views import newsample, labdetails
+from .views import newsample, labdetails, viewreport
 
 urlpatterns = [
     url(r'^newsample', newsample, name='newsample'),
     url(r'^labdetails', labdetails, name='labdetails'),
-    #url(r'^labportal', labportal, name='labportal'),
-    #url(r'^yourportal', yourportal, name='yourportal')
+    url(r'^viewreport/(?P<sample_id>\d+)/$', viewreport, name="viewreport")
 ]

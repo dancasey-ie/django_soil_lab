@@ -6,6 +6,11 @@ from django.utils import timezone
 from .models import Sample, Soil1Results
 from .forms import SampleCustomerForm, Soil1ResultsForm
 
+@login_required
+def yourportal(request):
+    """A view that displays the profile page of a logged in user"""
+    samples = Sample.objects.filter(user=request.user)
+    return render(request, 'yourportal.html', {"samples": samples})
 
 @login_required()
 def newsample(request):
@@ -17,18 +22,29 @@ def newsample(request):
             sample.submit_date = timezone.now()
             sample.user = request.user
             sample.save()
-            return render(request, 'profile.html')
+            return redirect(yourportal)
 
     else:
         sample_form = SampleCustomerForm()
 
     return render(request, "sampledetails.html", {'sample_form': sample_form})
 
-@login_required
-def yourportal(request):
-    """A view that displays the profile page of a logged in user"""
-    samples = Sample.objects.filter(user=request.user)
-    return render(request, 'yourportal.html', {"samples": samples})
+@login_required()
+def viewreport(request, sample_id):
+
+    if request.method == 'POST':
+        try:
+            sample = Sample.objects.get(id=sample_id)
+            results = ""
+            return render(request, "viewreport.html", {'sample': sample, 'results': results})
+        except Sample.DoesNotExist:
+            print("Sample ID does not exist")
+        pass
+
+    else:
+        error_message = "You do not have access to this url"
+        sample = ""
+    return render(request, "viewreport.html", {'sample': sample, 'error_message': error_message})
 
 
 @staff_member_required
@@ -39,7 +55,7 @@ def labdetails(request):
         if results_form.is_valid():
             results = results_form.save(commit=False)
             results.save()
-            return render(request, 'profile.html')
+            return redirect(labportal)
 
     else:
         results_form = Soil1ResultsForm()

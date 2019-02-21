@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block head_js %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+    <h1>Soil Sample Report: {{ sample.sample_ref }} </h1>
+    <h3>Sample Details</h3>
+    <div class="row">
+        <div class="col-xs-6">
+            <p>Sample Reference:</p>
+            <p>Customer Name:</p>
+            <p>Customer Reference:</p>
+            <p>Sample Address:</p>
+            <p>Sample Date:</p>
+            <p>Soil Type:</p>
+            <p>Land Use:</p>
+            <p>Other Comments:</p>
+        </div>
+        <div class="col-xs-6">
+            <p>{{ sample.sample_ref }}</p>
+            <p>{{ sample.customer_name }}</p>
+            <p>{{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}</p>
+            <p>{{ sample.sample_address }}</p>
+            <p>{{ sample.sample_date }}</p>
+            <p>{{ sample.soil_type }}</p>
+            <p>{{ sample.land_use }}</p>
+            <p>{{ sample.other_comments }}</p>
+        </div>
+    </div>
+
+    <h3>Results</h3>
+    {% if results == "" %}
+    <p> Results pending</p>
+    {% else %}
+    <div class="row">
+        <div class="col-xs-12">
+            <table>
+                <tr>
+                    <th>Phospherous, P (ppm)</th>
+                    <th>Potassium, K (ppm)</th>
+                    <th>LR pH Buffer</th>
+                    <th>pH</th>
+                </tr>
+                <tr>
+                    <td>{{ results.p_morgan_result }}</td>
+                    <td>{{ results.k_morgan_result }}</td>
+                    <td>{{ results.lr_ph_result }}</td>
+                    <td>{{ results.ph_result }}</td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
