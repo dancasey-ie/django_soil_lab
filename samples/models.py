@@ -23,13 +23,13 @@ class SampleStatus(models.Model):
                                      related_name = 'submittedby',)
     submit_date = models.DateField(auto_now_add=True)
 
-    recieved_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+    received_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                     limit_choices_to={'is_staff': True},
                                     on_delete=models.CASCADE,
                                     related_name = 'recievedby',
                                     blank=True,
                                     null=True)
-    recieved_date = models.DateField(blank=True,
+    received_date = models.DateField(blank=True,
                                      null=True)
 
     tested_by = models.ForeignKey(settings.AUTH_USER_MODEL,
