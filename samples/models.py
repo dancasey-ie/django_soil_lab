@@ -85,12 +85,12 @@ class SampleDetails(models.Model):
         return "{0}-{1}-Details".format(self.id, self.sample.sample_ref)
 
 class SampleResults(models.Model):
-    sample = models.ForeignKey(SampleStatus, null=False)
-    p_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    k_morgan_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    lr_ph_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    ph_result = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    lab_comments = models.TextField(max_length=254, blank=True)
+    sample = models.ForeignKey(SampleStatus, null=False, limit_choices_to={'status': 'Received'},)
+    p = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    k = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    lr_ph = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    ph = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    other_comments = models.TextField(max_length=254, blank=True)
 
     def __str__(self):
         return "{0}-{1}-Results".format(self.id, self.sample.sample_ref)

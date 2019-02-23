@@ -4,15 +4,14 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.utils import timezone
 from .models import Sample, Soil1Results, SampleStatus
-from .forms import SampleCustomerForm, Soil1ResultsForm
+from .forms import SampleCustomerForm, Soil1ResultsForm, SampleResultsForm
 import os
 
 @login_required
 def yourportal(request):
     """A view that displays the profile page of a logged in user"""
     samples = Sample.objects.filter(user=request.user)
-    return render(request, 'yourportal.html', {"samples": samples,
-                                               'error_message': error_message})
+    return render(request, 'yourportal.html', {"samples": samples})
 
 @login_required()
 def newsample(request):
@@ -71,8 +70,8 @@ def labdetails(request):
 @staff_member_required
 def labportal(request):
     samples = Sample.objects.all()
-    recieve_form = Soil1ResultsForm(request.POST)
-    return render(request, 'labportal.html', {"samples": samples, 'recieve_form': recieve_form})
+    results_form = SampleResultsForm()
+    return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form})
 
 @staff_member_required
 def receive(request):
@@ -81,7 +80,6 @@ def receive(request):
         sample_ref =  request.POST['sample_ref']
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
-            print(sample.status)
             sample.status = 'Received'
             sample.received_by = request.user
             sample.received_date = timezone.now()
@@ -91,7 +89,25 @@ def receive(request):
             error_message = "Not a valid Sample Reference"
             print("Not a valid Sample Reference")
         pass
-    print('Error Message')
 
     return redirect(labportal)
 
+@staff_member_required
+def results(request):
+    if request.method == 'POST':
+        results_form = SampleResultsForm(request.POST)
+        if results_form.is_valid():
+            results = results_form.save(commit=False)
+            results.save()
+            sample = results.sample
+            sample.status = 'Complete'
+            sample.tested_by = request.user
+            sample.test_date = timezone.now()
+            sample.save()
+            return redirect(labportal)
+
+    else:
+        results_form = SampleResultsForm()
+        print("Error in results form")
+    results_form = SampleResultsForm(request.POST)
+    return redirect(labportal)
