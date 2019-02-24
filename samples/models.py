@@ -70,7 +70,7 @@ class SampleDetails(models.Model):
                  (('Sheep'), ('Sheep')),
                  (('Tillage'), ('Tillage')))
 
-    sample = models.ForeignKey(SampleStatus, null=False)
+    sample = models.ForeignKey(SampleStatus, null=True)
 
     customer_name = models.CharField(max_length=50, blank=True, null=True)
     customer_ref_1 = models.CharField(max_length=50, blank=True, null=True)

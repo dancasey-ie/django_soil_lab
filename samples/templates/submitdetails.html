@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block head_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+<script>
+    $(function () {
+        $(".datepicker").datepicker({
+            format: 'YYYY-MM-DD'
+        });
+    });
+</script>
+<script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+    }
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<div id="demo"></div>
+<form role="form" method="post" id="" action="{% url 'submit' %}">
+    {% csrf_token %}
+    <div class="form-group col-md-6">
+
+        {{ status_form|as_bootstrap }}
+        {{ details_form.media }}
+        {{ details_form|as_bootstrap }}
+
+    </div>
+    <div class="form-group col-md-12">
+        <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Submit Sample">
+    </div>
+</form>
+
+
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}
 <h2>Welcome, {{ user.username }}</h2>
 <p>{{ user.email }}</p>
-<p><a class="btn btn-primary"href="{% url 'newsample' %}">New Sample</a></p>
+<p><a class="btn btn-primary"href="{% url 'submit' %}">New Sample</a></p>
 
 <div class="row">
     <table class="col-xs-12">

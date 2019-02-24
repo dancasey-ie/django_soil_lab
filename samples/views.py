@@ -4,7 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.utils import timezone
 from .models import Sample, Soil1Results, SampleStatus
-from .forms import SampleCustomerForm, Soil1ResultsForm, SampleResultsForm
+from .forms import SampleCustomerForm, Soil1ResultsForm, SampleResultsForm, SampleDetailsForm, SampleStatusForm
 import os
 
 @login_required
@@ -29,6 +29,33 @@ def newsample(request):
         sample_form = SampleCustomerForm()
 
     return render(request, "sampledetails.html", {'sample_form': sample_form})
+
+@login_required()
+def submit(request):
+    """A view that manages the customer sample submission form"""
+    if request.method == 'POST':
+        status_form = SampleStatusForm(request.POST)
+        details_form = SampleDetailsForm(request.POST)
+        if status_form.is_valid() and details_form.is_valid():
+            status = status_form.save(commit=False)
+            status.submitted_by = request.user
+            status.submit_date = timezone.now()
+            status.status = 'Submitted'
+            status.save()
+
+
+            details = details_form.save(commit=False)
+            details.save()
+            details.sample = status
+            details.save()
+            return redirect(yourportal)
+
+    else:
+        status_form = SampleStatusForm()
+        details_form = SampleDetailsForm()
+
+    return render(request, "submitdetails.html", {'status_form': status_form,
+                                                  'details_form': details_form})
 
 @login_required()
 def viewreport(request, sample_id):
