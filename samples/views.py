@@ -69,7 +69,7 @@ def labdetails(request):
 
 @staff_member_required
 def labportal(request):
-    samples = Sample.objects.all()
+    samples = SampleStatus.objects.all()
     results_form = SampleResultsForm()
     return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form})
 
@@ -107,7 +107,5 @@ def results(request):
             return redirect(labportal)
 
     else:
-        results_form = SampleResultsForm()
         print("Error in results form")
-    results_form = SampleResultsForm(request.POST)
     return redirect(labportal)

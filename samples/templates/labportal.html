@@ -38,13 +38,20 @@
         <tr>
             <th>Sample Ref.</th>
             <th>Status</th>
-            <th>Customer Ref.</th>
+            <th>Submitted By</th>
+            <th>Submitted Date</th>
+            <th>Received Date</th>
+            <th>Tested Date</th>
         </tr>
         {% for sample in samples %}
         <tr>
             <td>{{ sample.sample_ref }}</td>
             <td>{{ sample.status }}</td>
-            <td class="btn"><a href="{% url 'labdetails' %}">Update</a></td>
+            <td>{{ sample.submitted_by }}</td>
+            <td>{{ sample.submit_date }}</td>
+            <td>{{ sample.received_date }}</td>
+            <td>{{ sample.tested_date }}</td>
+
         </tr>
         {% endfor %}
     </table>

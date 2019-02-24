@@ -21,7 +21,9 @@ class SampleStatus(models.Model):
     submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                      on_delete=models.CASCADE,
                                      related_name = 'submittedby',)
-    submit_date = models.DateField(auto_now_add=True)
+
+    submit_date = models.DateTimeField(blank=True,
+                                     null=True)
 
     received_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                     limit_choices_to={'is_staff': True},
@@ -29,7 +31,7 @@ class SampleStatus(models.Model):
                                     related_name = 'recievedby',
                                     blank=True,
                                     null=True)
-    received_date = models.DateField(blank=True,
+    received_date = models.DateTimeField(blank=True,
                                      null=True)
 
     tested_by = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -38,7 +40,7 @@ class SampleStatus(models.Model):
                                   related_name = 'testedby',
                                   blank=True,
                                   null=True)
-    test_date = models.DateField(blank=True, null=True)
+    tested_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.sample_ref, self.status)
