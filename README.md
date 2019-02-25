@@ -11,11 +11,11 @@ reducing paper work and allowing lab technicians to concentrating on the science
 
 The key features of the app are:
 
--Customer can 'Order a Sample Kit', they will then receive the kit in the post with a reference number
--Customer can 'Submit Sample Details' online
--Staff can 'Receive Sample' into the lab for testing
--Staff can 'Upload Results'
--Customer and Staff can 'View Report' of the sample details and results
+* Customer can 'Order a Sample Kit', they will then receive the kit in the post with a reference number
+* Customer can 'Submit Sample Details' online
+* Staff can 'Receive Sample' into the lab for testing
+* Staff can 'Upload Results'
+* Customer and Staff can 'View Report' of the sample details and results
 
 The app is developed using Django framework for efficient developement. A Postgres relational database is used for storing data.
 
@@ -28,48 +28,53 @@ __User Stories__
 User stories were developed to plan out the features for the application.
 
 __Site Visitor User Story__
-*As a site visitor I should see the different services on offer, the purpose of each service and price of each service.
-*As a site visitor I should be able to add services to a shopping cart.
-*As a site visitor I should be able to view the contents of the shopping cart
-*As a site visitor I must log in or register to order a service a service
+
+* As a site visitor I should see the different services on offer, the purpose of each service and price of each service.
+* As a site visitor I should be able to add services to a shopping cart.
+* As a site visitor I should be able to view the contents of the shopping cart
+* As a site visitor I must log in or register to order a service a service
 
 __Registered User User Story__
-*As a registered user I should be able to place an order.
-*As a registered user I should be able to pay in a secure and confidential manor.
-*As a registered user I should get a valid receipt after paying.
-*As a register user I should be able to submit the soil sample details online,
+
+* As a registered user I should be able to place an order.
+* As a registered user I should be able to pay in a secure and confidential manor.
+* As a registered user I should get a valid receipt after paying.
+* As a register user I should be able to submit the soil sample details online,
 using a sample reference number printed on the soil sample kit received in the post.
-*As a registered user I should be able to update my user info and change my password.
-*As a registered user I should be able to view my order history including the status of samples being processed and view test result reports.
-*As a registered user I expect the results to be presented to in a clear report.
-*As a registered user I should be provided by an emailed confirmation of my orders change of status. 
+* As a registered user I should be able to update my user info and change my password.
+* As a registered user I should be able to view my order history including the status of samples being processed and view test result reports.
+* As a registered user I expect the results to be presented to in a clear report.
+* As a registered user I should be provided by an emailed confirmation of my orders change of status. 
 
 
 __Staff User Story__
-*As lab staff I should have all the features availble to a registered user, so I can submit sample details for site visits.
-*As lab staff I should be able to view the full sample database.
-*As lab staff I should be able to filter the database for customers, order status and location.
-*As lab staff I should be able to mark samples as 'received' when the sample reaches the lab. 
-*As lab staff I should be able to upload results of tests.
-*As lab staff I should be able explore the full sample archive, provided with the sample details, as well as when and by who the sample was received and tested.
-*As lab staff I should be able to filter the sample archive for ease of use.
+
+* As lab staff I should have all the features availble to a registered user, so I can submit sample details for site visits.
+* As lab staff I should be able to view the full sample database.
+* As lab staff I should be able to filter the database for customers, order status and location.
+* As lab staff I should be able to mark samples as 'received' when the sample reaches the lab. 
+* As lab staff I should be able to upload results of tests.
+* As lab staff I should be able explore the full sample archive, provided with the sample details, as well as when and by who the sample was received and tested.
+* As lab staff I should be able to filter the sample archive for ease of use.
 
 __Admin User Story__
-*As admin I should have all Staff privileges
-*As admin I should be able to backup the database as .csv file.
+
+* As admin I should have all Staff privileges
+* As admin I should be able to backup the database as .csv file.
 
 Features 
 ---------
 
 __Existing Features__
-*Display soil sample services on offer
-*Cusomer can register
-*Customer can order samples
-*Customer can submit the sample details through the 'Your Portal' view. A google map is used for marking the sample position. Geocoding automatically saves the address
-*Customer can view all their samples and access the report with results displayed if the results are available
-*Staff can receive the the sample into the lab, through the 'Lab Portal' view
-*Staff can upload the test results, through the 'Lab Portal' view
-*Staff can view all samples and access the report with results displayed if the results are available
+
+* Display soil sample services on offer
+* Cusomer can register
+* Customer can order samples
+* Customer can submit the sample details through the 'Your Portal' view. A google map is used for marking the sample position. Geocoding automatically saves the address
+* Customer can view all their samples and access the report with results displayed if the results are available
+* Staff can receive the the sample into the lab, through the 'Lab Portal' view
+* Staff can upload the test results, through the 'Lab Portal' view
+* Staff can view all samples and access the report with results displayed if the results are available
 
 __Features to be Implemented__
 *Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
