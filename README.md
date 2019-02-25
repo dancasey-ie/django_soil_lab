@@ -9,12 +9,80 @@ The web-app developed digitalises processes for a made up envirnonmental science
 The app was developed with consultation with Southern Scientific, with the intention of adopting the app for digitising their processes, 
 reducing paper work and allowing lab technicians to concentrating on the science.
 
-With the app a customer can choose and order a soil sample kit appropriete to their needs.
-After receiveing the sample kit in the post, the customer can submit required sample details (location, date, soil type etc)
-online, before sending the soil sample into the lab.
-The staff can keep record of the status of the sample through the web app and after testing upload the results as a report for the customer to view.
+The key features of the app are:
 
-The app is developed using Django framework for efficient developement. A Postgres relational database is used for the storing data.
+-Customer can 'Order a Sample Kit', they will then receive the kit in the post with a reference number
+-Customer can 'Submit Sample Details' online
+-Staff can 'Receive Sample' into the lab for testing
+-Staff can 'Upload Results'
+-Customer and Staff can 'View Report' of the sample details and results
+
+The app is developed using Django framework for efficient developement. A Postgres relational database is used for storing data.
+
+UX
+----
+The app was developed to be used by farmers requireing soil testing and by the lab staff providing the testing.
+
+__User Stories__
+
+User stories were developed to plan out the features for the application.
+
+__Site Visitor User Story__
+*As a site visitor I should see the different services on offer, the purpose of each service and price of each service.
+*As a site visitor I should be able to add services to a shopping cart.
+*As a site visitor I should be able to view the contents of the shopping cart
+*As a site visitor I must log in or register to order a service a service
+
+__Registered User User Story__
+*As a registered user I should be able to place an order.
+*As a registered user I should be able to pay in a secure and confidential manor.
+*As a registered user I should get a valid receipt after paying.
+*As a register user I should be able to submit the soil sample details online,
+using a sample reference number printed on the soil sample kit received in the post.
+*As a registered user I should be able to update my user info and change my password.
+*As a registered user I should be able to view my order history including the status of samples being processed and view test result reports.
+*As a registered user I expect the results to be presented to in a clear report.
+*As a registered user I should be provided by an emailed confirmation of my orders change of status. 
+
+
+__Staff User Story__
+*As lab staff I should have all the features availble to a registered user, so I can submit sample details for site visits.
+*As lab staff I should be able to view the full sample database.
+*As lab staff I should be able to filter the database for customers, order status and location.
+*As lab staff I should be able to mark samples as 'received' when the sample reaches the lab. 
+*As lab staff I should be able to upload results of tests.
+*As lab staff I should be able explore the full sample archive, provided with the sample details, as well as when and by who the sample was received and tested.
+*As lab staff I should be able to filter the sample archive for ease of use.
+
+__Admin User Story__
+*As admin I should have all Staff privileges
+*As admin I should be able to backup the database as .csv file.
+
+Features 
+---------
+
+__Existing Features__
+*Display soil sample services on offer
+*Cusomer can register
+*Customer can order samples
+*Customer can submit the sample details through the 'Your Portal' view. A google map is used for marking the sample position. Geocoding automatically saves the address
+*Customer can view all their samples and access the report with results displayed if the results are available
+*Staff can receive the the sample into the lab, through the 'Lab Portal' view
+*Staff can upload the test results, through the 'Lab Portal' view
+*Staff can view all samples and access the report with results displayed if the results are available
+
+__Features to be Implemented__
+*Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
+*Add About section to site explaining the company
+*Add descriptions to what is expected in each form field
+*Should only be able receive samples already submitted, try to use an autocomplete add in rather than a foreign key
+*Should not be able to submit the same reference number twice
+*Testing
+*Stying
+*Show test results using a dc.js chart making it clear where the soil nutrients sit relatie to the nutrient threshholds for the specific land use
+*Results submit should require all fields to be filled before completing
+
+
 
 Technologies Used
 -----------------------
@@ -35,58 +103,6 @@ Technologies Used
 * __json__ (http://www.json.org/) was used to store and access non-database data.
 * __CSVJSON__ (https://www.csvjson.com/csv2json) was used to convert CSV formatted data to json.
 * __Firefox Developer Edition__ (https://www.mozilla.org/en-US/firefox/developer/) was used for debugging of the running app.
-
-
-UX
-----
-
-
-__User Stories__
-
-User stories were developed to plan out the features for the application.
-
-__Site Visitor User Story__
-*As a site visitor I should see the different services on offer, the purpose of each service and price of each service.
-*As a site visitor I should be able to add services to a shopping cart (water sample kit, soil sample kit).
-*As a site visitor I should be able to view the contents of the shopping cart
-*As a site visitor I should be made aware that the prices in the shopping cart are preliminary, that they will not be charged when ordering but will be charged when the result are availables, at which point they will have more options for customising the the test and thus its final cost. 
-*As a site visitor I must log in or register to order a service a service
-
-__Registered User User Story__
-*As a registered user I should be able to place an order.
-*As a registered user I should be able to pay for the results in a secure and confidential manor.
-*As a registered user I should get a valid receipt after paying.
-*As a register user I should be able to submit the soil sample details online,
-using a sample reference number printed on the soil sample kit received in the post.
-*As a registered user I should be able to update my user info and change my password.
-*As a registered user I should be able to view my order history including the status of samples being processed and view test result reports.
-*As a registered user I expect the results to be presented to me in a clear graphical manor.
-*As a registered user I should be provided by an emailed confirmation of my orders change of status. 
-
-
-__Staff User Story__
-*As lab staff I should have all the features availble to a registered user, so I can submit sample details for site visits
-*As lab staff I should be able to view the full sample database.
-*As lab staff I should be able to filter the database for customers, order status and location.
-*As lab staff I should be able to mark samples as 'received' when the sample reaches the lab. 
-A record should be kept of who received the sample and when it was received. This should be automated using the login in user.
-*As lab staff I should be able to upload results of tests.
-A record should be kept of who tested the sample and when it was tested. This should be automated using the login in user.
-
-__Admin User Story__
-*As admin I should have all Staff privileges
-*As admin I should be able to change registered user passwords
-*As admin I should be able to delete users from the database
-*As admin I should be able to backup the database as .csv file.
-
-
-
-Features and Process
------------------
-
-__Existing Features__
-
-
 
 
 Testing
