@@ -7,19 +7,32 @@
     <table class="col-xs-12">
         <tr>
             <th>Sample Ref.</th>
+            <th>Your Reference</th>
+            <th>Date Sampled</th>
             <th>Status</th>
-            <th></th>
+            <th>Details</th>
         </tr>
-        {% for sample in samples %}
+        {% for status in statuss %}
         <tr>
-            <td>{{ sample.sample_ref }}</td>
-            <td>{{ sample.status }}</td>
+            <td>{{ status.sample_ref }}</td>
+            <td>{{ status.status }}</td>
+
+            {% for sample in details %}
+            {% if sample.sample == status %}
+                <td>
+                    {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
+                </td>
+                <td>
+                    {{ sample.sample_date }}
+                </td>
+
+            {% endif %}
+            {% endfor %}
             <td>
-                <form action="{% url 'viewreport' sample.id %}" method="post">
+                <form action="{% url 'viewreport' status.id %}" method="post">
                     {% csrf_token %}
                     <input class="btn btn-primary" type="submit" value="View Report">
                 </form>
-
             </td>
         </tr>
         {% endfor %}

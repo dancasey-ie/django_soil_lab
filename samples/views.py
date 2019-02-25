@@ -10,8 +10,9 @@ import os
 @login_required
 def yourportal(request):
     """A view that displays the profile page of a logged in user"""
-    samples = Sample.objects.filter(user=request.user)
-    return render(request, 'yourportal.html', {"samples": samples})
+    statuss = SampleStatus.objects.filter(submitted_by=request.user)
+    details = SampleDetails.objects.all()
+    return render(request, 'yourportal.html', {"statuss": statuss, "details": details})
 
 @login_required()
 def newsample(request):

@@ -12,12 +12,13 @@
     <h1>Soil Sample Report: {{ status.sample_ref }} </h1>
     <h3>Sample Details</h3>
     <div class="row">
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-sm-6">
             <div class="row">
                 <div class="col-xs-6">
                     <p>Sample Reference:</p>
                     <p>Customer Name:</p>
                     <p>Customer Reference:</p>
+                    <p>Sample Location:</p>
                     <p>Sample Address:</p>
                     <p>Sample Date:</p>
                     <p>Soil Type:</p>
@@ -28,6 +29,7 @@
                     <p>{{ status.sample_ref }}</p>
                     <p>{{ details.customer_name }}</p>
                     <p>{{ details.customer_ref_1 }} {{ details.customer_ref_2 }}</p>
+                    <p>{{ details.sample_location }}</p>
                     <p>{{ details.sample_address }}</p>
                     <p>{{ details.sample_date }}</p>
                     <p>{{ details.soil_type }}</p>
@@ -44,19 +46,20 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
-        <h3>Results</h3>
-        {% if results == "" %}
-        <p> Results pending</p>
-        {% else %}
-        <div class="row">
-            <div class="col-xs-12">
-                <table>
+    <h3>Sample Results</h3>
+    {% if results == "" %}
+    <p> Results pending</p>
+    {% else %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <table class="col-xs-12 col-sm-6">
                     <tr>
-                        <th>Phospherous, P (ppm)</th>
-                        <th>Potassium, K (ppm)</th>
-                        <th>LR pH Buffer</th>
+                        <th>P (ppm)</th>
+                        <th>K (ppm)</th>
+                        <th>LR pH</th>
                         <th>pH</th>
                     </tr>
                     <tr>
@@ -64,13 +67,38 @@
                         <td>{{ results.k }}</td>
                         <td>{{ results.lr_ph }}</td>
                         <td>{{ results.ph }}</td>
-
                     </tr>
                 </table>
             </div>
+            </div>
         </div>
-        {% endif %}
+    {% endif %}
+    <h3>Status Details</h3>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="row">
+                <div class="col-xs-6">
+                    <p>Status</p>
+                    <p>Submitted By</p>
+                    <p>Submitted Date</p>
+                    <p>Received By</p>
+                    <p>Received Date</p>
+                    <p>Tested By</p>
+                    <p>Tested Date</p>
+                </div>
+                <div class="col-xs-6">
+                    <p>{{ status.status }}</p>
+                    <p>{{ status.submitted_by }}</p>
+                    <p>{{ status.submit_date }}</p>
+                    <p>{{ status.received_by }}</p>
+                    <p>{{ status.received_date }}</p>
+                    <p>{{ status.tested_by }}</p>
+                    <p>{{ status.tested_date }}</p>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 <script>
 
     function initMap() {
