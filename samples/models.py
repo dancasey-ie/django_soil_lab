@@ -46,8 +46,8 @@ class SampleStatus(models.Model):
         return "{0}-{1}-{2}".format(self.id, self.sample_ref, self.status)
 
 class SampleDetails(models.Model):
-    SOIL_TYPES = ((('Clay - low plasticity, lean'),('Clay - low plasticity, lean')),
-                  (('Clay - high plasticity, fat'),('Clay - high plasticity, fat')),
+    SOIL_TYPES = ((('Clay - low plasticity, lean clay'),('Clay - low plasticity, lean clay')),
+                  (('Clay - high plasticity, fat clay'),('Clay - high plasticity, fat clay')),
                   (('Clay - organic'),('Clay - organic')),
                   (('Gravel - well-graded, fine to coarse gravel'),('Gravel - well-graded, fine to coarse gravel')),
                   (('Gravel - poorly graded'),('Gravel - poorly graded')),
@@ -58,8 +58,8 @@ class SampleDetails(models.Model):
                   (('Sand - silty'),('Sand - silty')),
                   (('Sand - clayey'),('Sand - clayey')),
                   (('Peat'),('Peat')),
-                  (('Silt - low plasticity, lean'),('Silt - low plasticity, lean')),
-                  (('Silt - high plasticity, fat'),('Silt - high plasticity, fat')),
+                  (('Silt - low plasticity, lean silt'),('Silt - low plasticity, lean silt')),
+                  (('Silt - high plasticity, fat silt'),('Silt - high plasticity, fat silt')),
                   (('Silt - organic'),('Silt - organic')))
 
 

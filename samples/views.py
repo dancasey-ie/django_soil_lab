@@ -64,15 +64,17 @@ def viewreport(request, sample_id):
         try:
             status = SampleStatus.objects.get(id=sample_id)
             details = SampleDetails.objects.get(sample=status)
-           # results = SampleResults.objects.get(sample=status)
+            results = SampleResults.objects.get(sample=status)
 
-
-            results = ""
-
-            return render(request, "viewreport.html", {'status': status, 'details': details,'results': results})
         except SampleStatus.DoesNotExist:
             print("Sample ID does not exist")
+        except SampleDetails.DoesNotExist:
+            print("Can not find sample details")
+        except SampleResults.DoesNotExist:
+            print("Results pending")
+            results = ""
         pass
+        return render(request, "viewreport.html", {'status': status, 'details': details,'results': results})
 
     else:
         error_message = "You do not have access to this url"
