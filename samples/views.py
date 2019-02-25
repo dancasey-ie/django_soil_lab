@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.utils import timezone
-from .models import Sample, Soil1Results, SampleStatus
+from .models import Sample, Soil1Results, SampleStatus, SampleDetails, SampleResults
 from .forms import SampleCustomerForm, Soil1ResultsForm, SampleResultsForm, SampleDetailsForm, SampleStatusForm
 import os
 
@@ -62,20 +62,28 @@ def viewreport(request, sample_id):
     os.getenv('GOOGLE_MAP_API_KEY')
     if request.method == 'POST':
         try:
-            sample = Sample.objects.get(id=sample_id)
+            status = SampleStatus.objects.get(id=sample_id)
+            details = SampleDetails.objects.get(sample=status)
+           # results = SampleResults.objects.get(sample=status)
+
+
             results = ""
-            print(sample.sample_location.latitude)
-            return render(request, "viewreport.html", {'sample': sample, 'results': results})
-        except Sample.DoesNotExist:
+
+            return render(request, "viewreport.html", {'status': status, 'details': details,'results': results})
+        except SampleStatus.DoesNotExist:
             print("Sample ID does not exist")
         pass
 
     else:
         error_message = "You do not have access to this url"
-        sample = ""
+        status = ""
+        details = ""
+        results = ""
     return render(request, "viewreport.html",
                   {'GOOGLE_MAP_API_KEY': os.getenv('GOOGLE_MAP_API_KEY'),
-                                               'sample': sample,
+                                               'status': status,
+                                               'details': details,
+                                               'results': results,
                                                'error_message': error_message})
 
 

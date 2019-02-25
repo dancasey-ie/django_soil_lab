@@ -9,7 +9,7 @@
 
 
 <div class="row">
-    <h1>Soil Sample Report: {{ sample.sample_ref }} </h1>
+    <h1>Soil Sample Report: {{ status.sample_ref }} </h1>
     <h3>Sample Details</h3>
     <div class="row">
         <div class="col-xs-12 col-md-6">
@@ -25,14 +25,14 @@
                     <p>Other Comments:</p>
                 </div>
                 <div class="col-xs-6">
-                    <p>{{ sample.sample_ref }}</p>
-                    <p>{{ sample.customer_name }}</p>
-                    <p>{{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}</p>
-                    <p>{{ sample.sample_address }}</p>
-                    <p>{{ sample.sample_date }}</p>
-                    <p>{{ sample.soil_type }}</p>
-                    <p>{{ sample.land_use }}</p>
-                    <p>{{ sample.other_comments }}</p>
+                    <p>{{ status.sample_ref }}</p>
+                    <p>{{ details.customer_name }}</p>
+                    <p>{{ details.customer_ref_1 }} {{ details.customer_ref_2 }}</p>
+                    <p>{{ details.sample_address }}</p>
+                    <p>{{ details.sample_date }}</p>
+                    <p>{{ details.soil_type }}</p>
+                    <p>{{ details.land_use }}</p>
+                    <p>{{ details.other_comments }}</p>
                 </div>
             </div>
         </div>
@@ -60,10 +60,10 @@
                         <th>pH</th>
                     </tr>
                     <tr>
-                        <td>{{ results.p_morgan_result }}</td>
-                        <td>{{ results.k_morgan_result }}</td>
-                        <td>{{ results.lr_ph_result }}</td>
-                        <td>{{ results.ph_result }}</td>
+                        <td>{{ results.p }}</td>
+                        <td>{{ results.k }}</td>
+                        <td>{{ results.lr_ph }}</td>
+                        <td>{{ results.ph }}</td>
 
                     </tr>
                 </table>
@@ -77,8 +77,8 @@
         //  var myLatLng = new google.maps.LatLng({{ sample.sample_location.latitude }}, {{ sample.sample_location.longitude }});
 
         var myLatLng = {
-            lat: {{ sample.sample_location.latitude }},
-            lng: {{ sample.sample_location.longitude }}
+            lat: {{ details.sample_location.latitude }},
+            lng: {{ details.sample_location.longitude }}
             };
         var map = new google.maps.Map(document.getElementById('mymap'), {
             zoom: 15,

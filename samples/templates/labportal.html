@@ -38,6 +38,7 @@
         <tr>
             <th>Sample Ref.</th>
             <th>Status</th>
+            <th>Details</th>
             <th>Submitted By</th>
             <th>Submitted Date</th>
             <th>Received Date</th>
@@ -47,6 +48,12 @@
         <tr>
             <td>{{ sample.sample_ref }}</td>
             <td>{{ sample.status }}</td>
+            <td>
+                <form action="{% url 'viewreport' sample.id %}" method="post">
+                    {% csrf_token %}
+                    <input class="btn btn-primary" type="submit" value="View">
+                </form>
+            </td>
             <td>{{ sample.submitted_by }}</td>
             <td>{{ sample.submit_date }}</td>
             <td>{{ sample.received_date }}</td>
