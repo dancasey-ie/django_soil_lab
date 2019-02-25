@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.utils import timezone
+from geopy.geocoders import GoogleV3, Nominatim
 from .models import SampleStatus, SampleDetails, SampleResults
 from .forms import SampleResultsForm, SampleDetailsForm, SampleStatusForm
 import os
@@ -17,10 +18,12 @@ def yourportal(request):
 @login_required()
 def submit(request):
     """A view that manages the customer sample submission form"""
+
     if request.method == 'POST':
         status_form = SampleStatusForm(request.POST)
         details_form = SampleDetailsForm(request.POST)
         if status_form.is_valid() and details_form.is_valid():
+
             status = status_form.save(commit=False)
             status.submitted_by = request.user
             status.submit_date = timezone.now()
@@ -30,6 +33,10 @@ def submit(request):
 
             details = details_form.save(commit=False)
             details.save()
+            #geolocator = GoogleV3(api_key=os.getenv('GOOGLE_MAP_API_KEY'))
+            geolocator = Nominatim(user_agent="specify_your_app_name_here")
+            print("lat {0} long {1}".format(details.sample_location.latitude, details.sample_location.longitude))
+            details.sample_address = geolocator.reverse((details.sample_location.latitude, details.sample_location.longitude))
             details.sample = status
             details.save()
             return redirect(yourportal)
@@ -107,7 +114,7 @@ def results(request):
             sample = results.sample
             sample.status = 'Complete'
             sample.tested_by = request.user
-            sample.test_date = timezone.now()
+            sample.tested_date = timezone.now()
             sample.save()
             return redirect(labportal)
 

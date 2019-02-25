@@ -76,7 +76,7 @@ class SampleDetails(models.Model):
     customer_ref_1 = models.CharField(max_length=50, blank=True, null=True)
     customer_ref_2 = models.CharField(max_length=50, blank=True, null=True)
     sample_location = GeopositionField(null=True)
-    sample_address = models.CharField(max_length=50, blank=True, null=True)
+    sample_address = models.CharField(max_length=250, blank=True, null=True)
     sample_date = models.DateField(blank=False, default=timezone.now)
     soil_type = models.CharField(max_length=50, choices=SOIL_TYPES)
     land_use = models.CharField(max_length=50, choices=LAND_USES)

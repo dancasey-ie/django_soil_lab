@@ -15,23 +15,24 @@
         {% for status in statuss %}
         <tr>
             <td>{{ status.sample_ref }}</td>
-            <td>{{ status.status }}</td>
+
 
             {% for sample in details %}
             {% if sample.sample == status %}
-                <td>
-                    {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
-                </td>
-                <td>
-                    {{ sample.sample_date }}
-                </td>
+            <td>
+                {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
+            </td>
+            <td>
+                {{ sample.sample_date }}
+            </td>
 
             {% endif %}
             {% endfor %}
+            <td>{{ status.status }}</td>
             <td>
                 <form action="{% url 'viewreport' status.id %}" method="post">
                     {% csrf_token %}
-                    <input class="btn btn-primary" type="submit" value="View Report">
+                    <input class="btn btn-primary" type="submit" value="View">
                 </form>
             </td>
         </tr>
