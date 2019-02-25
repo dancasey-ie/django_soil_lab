@@ -2,10 +2,10 @@ from django import forms
 from .models import SampleResults, SampleStatus, SampleDetails
 
 
-class SampleStatusForm(forms.ModelForm):
-    class Meta:
-        model = SampleStatus
-        fields = ('sample_ref',)
+#class SampleStatusForm(forms.ModelForm):
+ #   class Meta:
+   #     model = SampleStatus
+   #     fields = ('sample_ref',)
 
 class SampleDetailsForm(forms.ModelForm):
     class Meta:

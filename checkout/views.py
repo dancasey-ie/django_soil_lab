@@ -6,6 +6,7 @@ from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
 from products.models import Product
+from samples.models import SampleStatus
 import stripe
 
 
@@ -22,7 +23,7 @@ def checkout(request):
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
-            order.username = request.user.username
+            order.user = request.user
             order.save()
 
             cart = request.session.get('cart', {})
@@ -36,7 +37,18 @@ def checkout(request):
                     quantity = quantity
                     )
                 order_line_item.save()
+                for x in range(quantity):
+                    sample = SampleStatus(
+                        status = 'Ordered',
+                        order = order,
+                        testing_required = product.test_type,
+                        ordered_by = request.user,
+                        ordered_date = timezone.now(),
+                        )
 
+                    sample.save()
+                    sample.sample_ref = "{0}-{1}".format(sample.testing_required, sample.id)
+                    sample.save()
             try:
                 # using stripe API
                 customer = stripe.Charge.create(

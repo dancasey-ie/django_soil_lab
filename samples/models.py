@@ -3,24 +3,55 @@ from django.utils import timezone
 from geoposition import Geoposition
 from django.conf import settings
 from geoposition.fields import GeopositionField
+from checkout.models import Order
 
 # Create your models here.
 
 class SampleStatus(models.Model):
 
-    STATUS_CHOICES = ((('Submitted'),('Submitted')),
+    STATUS_CHOICES = ((('Ordered'),('Ordered')),
+                      (('Dispatched'),('Dispatched')),
+                      (('Submitted'),('Submitted')),
                       (('Received'),('Received')),
                       (('Complete'),('Complete')))
 
+    TEST_CHOICES = ((('SS1'),('Soil 1 - Basic')),
+                    (('SS2'),('Soil 2 - Beef, Sheep & Horses')),)
+
+    order = models.ForeignKey(Order, null=False)
+
     sample_ref = models.CharField(max_length=50,
-                                  blank=False)
+                                   blank=False)
+
     status = models.CharField(max_length=50,
                               choices=STATUS_CHOICES,
-                              default='Submitted',)
+                              default='Ordered',)
+
+    testing_required = models.CharField(max_length=50, choices=TEST_CHOICES)
+
+    ordered_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                     on_delete=models.CASCADE,
+                                     related_name = 'orderedby',
+                                     blank=True,
+                                     null=True)
+
+    ordered_date = models.DateTimeField(blank=True,
+                                     null=True)
+
+    dispatched_by = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                     on_delete=models.CASCADE,
+                                     related_name = 'dispatchedby',
+                                     blank=True,
+                                     null=True)
+
+    dispatched_date = models.DateTimeField(blank=True,
+                                     null=True)
 
     submitted_by = models.ForeignKey(settings.AUTH_USER_MODEL,
                                      on_delete=models.CASCADE,
-                                     related_name = 'submittedby',)
+                                     related_name = 'submittedby',
+                                     blank=True,
+                                     null=True)
 
     submit_date = models.DateTimeField(blank=True,
                                      null=True)
@@ -43,7 +74,7 @@ class SampleStatus(models.Model):
     tested_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return "{0}-{1}-{2}".format(self.id, self.sample_ref, self.status)
+        return "{0}-{1}-{2}".format(self.testing_required, self.id, self.status)
 
 class SampleDetails(models.Model):
     SOIL_TYPES = ((('Clay - low plasticity, lean clay'),('Clay - low plasticity, lean clay')),
@@ -84,15 +115,15 @@ class SampleDetails(models.Model):
 
 
     def __str__(self):
-        return "{0}-{1}-Details".format(self.id, self.sample.sample_ref)
+        return "{0}-{1}-Details".format(self.sample.testing_required, self.sample.id)
 
 class SampleResults(models.Model):
     sample = models.ForeignKey(SampleStatus, null=False, limit_choices_to={'status': 'Received'},)
-    p = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    k = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    lr_ph = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
-    ph = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    p = models.DecimalField(max_digits=4, decimal_places=2, null=False)
+    k = models.DecimalField(max_digits=4, decimal_places=2, null=False)
+    lr_ph = models.DecimalField(max_digits=4, decimal_places=2, null=False)
+    ph = models.DecimalField(max_digits=4, decimal_places=2, null=False)
     other_comments = models.TextField(max_length=254, blank=True)
 
     def __str__(self):
-        return "{0}-{1}-Results".format(self.id, self.sample.sample_ref)
+        return "{0}-{1}-Results".format(self.sample.testing_required, self.sample.id)

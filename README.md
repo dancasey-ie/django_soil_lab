@@ -68,7 +68,7 @@ Features
 __Existing Features__
 
 * Display soil sample services on offer
-* Cusomer can register
+* User registration
 * Customer can order samples
 * Customer can submit the sample details through the 'Your Portal' view. A google map is used for marking the sample position. Geocoding automatically saves the address
 * Customer can view all their samples and access the report with results displayed if the results are available
@@ -77,15 +77,15 @@ __Existing Features__
 * Staff can view all samples and access the report with results displayed if the results are available
 
 __Features to be Implemented__
-*Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
-*Add About section to site explaining the company
-*Add descriptions to what is expected in each form field
-*Should only be able receive samples already submitted, try to use an autocomplete add in rather than a foreign key
-*Should not be able to submit the same reference number twice
-*Testing
-*Stying
-*Show test results using a dc.js chart making it clear where the soil nutrients sit relatie to the nutrient threshholds for the specific land use
-*Results submit should require all fields to be filled before completing
+
+* Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
+* Add About section to site explaining the company
+* Add descriptions to what is expected in each form field
+* Should only be able receive samples already submitted, try to use an autocomplete add in rather than a foreign key
+* Should not be able to submit the same reference number twice
+* Testing
+* Stying
+* Show test results using a dc.js chart making it clear where the soil nutrients sit relatie to the nutrient threshholds for the specific land use
 
 
 

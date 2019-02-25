@@ -24,7 +24,7 @@ class Order(models.Model):
 
 
     def __str__(self):
-        return "{0}-{1}-{2}".format(self.id, self.date, self.username)
+        return "{0}-{1}-{2}".format(self.id, self.date, self.user.username)
 
 
 class OrderLineItem(models.Model):
