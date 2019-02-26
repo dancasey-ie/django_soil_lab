@@ -30,13 +30,12 @@
 {% endblock %}
 
 {% block content %}
-
+<h3>Submit Details: {{ status.sample_ref }}</h3>
 <div id="demo"></div>
-<form role="form" method="post" id="" action="{% url 'submit' %}">
+<form role="form" method="post" id="" action="{% url 'submit' status.id %}">
     {% csrf_token %}
     <div class="form-group col-md-6">
 
-        {{ status_form|as_bootstrap }}
         {{ details_form.media }}
         {{ details_form|as_bootstrap }}
 

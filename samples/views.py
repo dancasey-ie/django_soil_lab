@@ -17,33 +17,34 @@ def yourportal(request):
     return render(request, 'yourportal.html', {"statuss": statuss, "details": details})
 
 @login_required()
-def submit(request, sample_id):
+def submit(request, status_id):
     """A view that manages the customer sample submission form"""
 
+    status = SampleStatus.objects.get(id=status_id)
     if request.method == 'POST':
-        status_form = SampleStatusForm(request.POST)
+        details_form = SampleDetailsForm(request.POST)
 
         if details_form.is_valid():
-            status = SampleStatus.objects.get(id=sample_id)
+            status = SampleStatus.objects.get(id=status_id)
             status.submitted_by = request.user
             status.submit_date = timezone.now()
             status.status = 'Submitted'
             status.save()
 
-
             details = details_form.save(commit=False)
             details.save()
             geolocator = GoogleV3(api_key=os.getenv('GOOGLE_MAP_API_KEY'))
-            details.sample_address = geolocator.reverse((details.sample_location.latitude, details.sample_location.longitude))
+            sample_address = geolocator.reverse((details.sample_location.latitude,
+                                                         details.sample_location.longitude))
+            details.sample_address = sample_address[0]
             details.sample = status
             details.save()
             return redirect(yourportal)
 
     else:
-        #status_form = SampleStatusForm()
         details_form = SampleDetailsForm()
 
-    return render(request, "submitdetails.html", {'details_form': details_form})
+    return render(request, "submitdetails.html", {'details_form': details_form, 'status': status})
 
 @login_required()
 def viewreport(request, sample_id):

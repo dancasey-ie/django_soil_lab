@@ -41,9 +41,6 @@
         <div class="col-xs-12 col-md-6">
             <div class="mymap_wrapper">
                 <div id="mymap"></div>
-                <div>
-                    <p>test</p>
-                </div>
             </div>
         </div>
     </div>
@@ -79,6 +76,8 @@
             <div class="row">
                 <div class="col-xs-6">
                     <p>Status</p>
+                    <p>Ordered By</p>
+                    <p>Ordered Date</p>
                     <p>Submitted By</p>
                     <p>Submitted Date</p>
                     <p>Received By</p>
@@ -88,6 +87,8 @@
                 </div>
                 <div class="col-xs-6">
                     <p>{{ status.status }}</p>
+                    <p>{{ status.ordered_by }}</p>
+                    <p>{{ status.ordered_date }}</p>
                     <p>{{ status.submitted_by }}</p>
                     <p>{{ status.submit_date }}</p>
                     <p>{{ status.received_by }}</p>

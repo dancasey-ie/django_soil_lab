@@ -103,15 +103,15 @@ class SampleDetails(models.Model):
 
     sample = models.ForeignKey(SampleStatus, null=True)
 
-    customer_name = models.CharField(max_length=50, blank=True, null=True)
+    customer_name = models.CharField(max_length=50, blank=False)
     customer_ref_1 = models.CharField(max_length=50, blank=True, null=True)
     customer_ref_2 = models.CharField(max_length=50, blank=True, null=True)
-    sample_location = GeopositionField(null=True)
+    sample_location = GeopositionField()
     sample_address = models.CharField(max_length=250, blank=True, null=True)
     sample_date = models.DateField(blank=False, default=timezone.now)
     soil_type = models.CharField(max_length=50, choices=SOIL_TYPES)
     land_use = models.CharField(max_length=50, choices=LAND_USES)
-    other_comments = models.TextField(max_length=254, blank=True)
+    other_comments = models.TextField(max_length=500, blank=True)
 
 
     def __str__(self):

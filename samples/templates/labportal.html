@@ -49,10 +49,13 @@
             <td>{{ sample.sample_ref }}</td>
             <td>{{ sample.status }}</td>
             <td>
+                {% if sample.status == "Ordered" %}
+                {% else %}
                 <form action="{% url 'viewreport' sample.id %}" method="post">
                     {% csrf_token %}
                     <input class="btn btn-primary" type="submit" value="View">
                 </form>
+                {% endif %}
             </td>
             <td>{{ sample.submitted_by }}</td>
             <td>{{ sample.submit_date }}</td>
