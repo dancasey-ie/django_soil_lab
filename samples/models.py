@@ -8,7 +8,8 @@ from checkout.models import Order
 # Create your models here.
 
 class SampleStatus(models.Model):
-
+    """Sample Status model is automatically generated when an sample is ordered,
+    it is updated automatically as the sample gets processesed"""
     STATUS_CHOICES = ((('Ordered'),('Ordered')),
                       (('Dispatched'),('Dispatched')),
                       (('Submitted'),('Submitted')),
@@ -77,6 +78,7 @@ class SampleStatus(models.Model):
         return "{0}-{1}-{2}".format(self.testing_required, self.id, self.status)
 
 class SampleDetails(models.Model):
+    """Sample Details model stores the data entered by the customer about each sample"""
     SOIL_TYPES = ((('Clay - low plasticity, lean clay'),('Clay - low plasticity, lean clay')),
                   (('Clay - high plasticity, fat clay'),('Clay - high plasticity, fat clay')),
                   (('Clay - organic'),('Clay - organic')),
@@ -103,21 +105,22 @@ class SampleDetails(models.Model):
 
     sample = models.ForeignKey(SampleStatus, null=True)
 
-    customer_name = models.CharField(max_length=50, blank=False)
-    customer_ref_1 = models.CharField(max_length=50, blank=True, null=True)
-    customer_ref_2 = models.CharField(max_length=50, blank=True, null=True)
-    sample_location = GeopositionField()
+    customer_name = models.CharField(max_length=50, blank=False, help_text="i.e. Tom Cronin")
+    customer_ref_1 = models.CharField(max_length=50, blank=True, null=True, help_text="i.e Tom Cronins Main Farm")
+    customer_ref_2 = models.CharField(max_length=50, blank=True, null=True, help_text="i.e East Field")
+    sample_location = GeopositionField(help_text="Drag the marker to the location of the sample site, or start typing an address in search box on right")
     sample_address = models.CharField(max_length=250, blank=True, null=True)
-    sample_date = models.DateField(blank=False, default=timezone.now)
-    soil_type = models.CharField(max_length=50, choices=SOIL_TYPES)
-    land_use = models.CharField(max_length=50, choices=LAND_USES)
-    other_comments = models.TextField(max_length=500, blank=True)
+    sample_date = models.DateField(blank=False, default=timezone.now, help_text="Enter the day the sample was taken, todays submission date will be saved automatically")
+    soil_type = models.CharField(max_length=50, choices=SOIL_TYPES, help_text="Select the soil type that is closest to your sample")
+    land_use = models.CharField(max_length=50, choices=LAND_USES, help_text="Select a land use")
+    other_comments = models.TextField(max_length=500, blank=True, help_text="i.e. The soil was saturated when taking the sample")
 
 
     def __str__(self):
         return "{0}-{1}-Details".format(self.sample.testing_required, self.sample.id)
 
 class SampleResults(models.Model):
+    """Sample Results stores the sample test results for each sample"""
     sample = models.ForeignKey(SampleStatus, null=False, limit_choices_to={'status': 'Received'},)
     p = models.DecimalField(max_digits=4, decimal_places=2, null=False)
     k = models.DecimalField(max_digits=4, decimal_places=2, null=False)
