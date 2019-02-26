@@ -1,11 +1,6 @@
 from django import forms
-from .models import SampleResults, SampleStatus, SampleDetails
+from .models import SampleResults, SampleDetails
 
-
-#class SampleStatusForm(forms.ModelForm):
- #   class Meta:
-   #     model = SampleStatus
-   #     fields = ('sample_ref',)
 
 class SampleDetailsForm(forms.ModelForm):
     class Meta:

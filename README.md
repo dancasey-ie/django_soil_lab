@@ -118,6 +118,9 @@ Technologies Used
 * __json__ (http://www.json.org/) was used to store and access non-database data.
 * __CSVJSON__ (https://www.csvjson.com/csv2json) was used to convert CSV formatted data to json.
 * __Firefox Developer Edition__ (https://www.mozilla.org/en-US/firefox/developer/) was used for debugging of the running app.
+* __Stripe__
+* __GeoPy__
+* __GeoPosition__
 
 
 Testing
