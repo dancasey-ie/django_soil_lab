@@ -84,6 +84,26 @@ def labportal(request):
     return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form})
 
 @staff_member_required
+def dispatch(request):
+
+    if request.method == 'POST':
+        sample_ref =  request.POST['sample_ref']
+        try:
+            sample = SampleStatus.objects.get(sample_ref=sample_ref)
+            if sample.status == 'Ordered':
+                sample.status = 'Dispatched'
+                sample.dispatched_by = request.user
+                sample.dispatched_date = timezone.now()
+                sample.save()
+            else:
+                messages.error(request, 'Only samples with status "Ordered" can be dispatched')
+            return redirect(labportal)
+        except SampleStatus.DoesNotExist:
+            messages.error(request, 'Not a valid Sample Reference')
+        pass
+
+    return redirect(labportal)
+@staff_member_required
 def receive(request):
 
     if request.method == 'POST':

@@ -5,6 +5,19 @@
 {% load bootstrap_tags %}
 {% block content %}
 
+<h3>Dispatch Sample</h3>
+<div class="row">
+    <form role="form" method="post" id="dispatch_form" action="{% url 'dispatch' %}">
+        {% csrf_token %}
+        <div class="form-group col-md-6">
+            <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
+        </div>
+        <div class="form-group col-md-12">
+            <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Dispatch">
+        </div>
+    </form>
+</div>
+
 <h3>Receive Sample</h3>
 <div class="row">
     <form role="form" method="post" id="receive_form" action="{% url 'receive' %}">
@@ -33,13 +46,16 @@
     </form>
 </div>
 
+<h3>View Samples</h3>
 <div class="row">
     <table class="col-xs-12">
         <tr>
             <th>Sample Ref.</th>
             <th>Status</th>
             <th>Details</th>
-            <th>Submitted By</th>
+            <th>Ordered By</th>
+            <th>Ordered Date</th>
+            <th>Dispatched Date</th>
             <th>Submitted Date</th>
             <th>Received Date</th>
             <th>Tested Date</th>
@@ -49,7 +65,7 @@
             <td>{{ sample.sample_ref }}</td>
             <td>{{ sample.status }}</td>
             <td>
-                {% if sample.status == "Ordered" %}
+                {% if sample.status == "Ordered" or sample.status == "Dispatched" %}
                 {% else %}
                 <form action="{% url 'viewreport' sample.id %}" method="post">
                     {% csrf_token %}
@@ -57,10 +73,12 @@
                 </form>
                 {% endif %}
             </td>
-            <td>{{ sample.submitted_by }}</td>
-            <td>{{ sample.submit_date }}</td>
-            <td>{{ sample.received_date }}</td>
-            <td>{{ sample.tested_date }}</td>
+            <td>{{ sample.ordered_by }}</td>
+            <td>{{ sample.ordered_date.date }}</td>
+            <td>{{ sample.dispatched_date.date  }}</td>
+            <td>{{ sample.submit_date.date  }}</td>
+            <td>{{ sample.received_date.date  }}</td>
+            <td>{{ sample.tested_date.date  }}</td>
 
         </tr>
         {% endfor %}
