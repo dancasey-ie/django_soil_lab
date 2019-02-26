@@ -80,8 +80,6 @@ __Existing Features__
 __Features to be Implemented__
 
 * ! 3hr Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
-* ! 2hr Add About section to site explaining the company
-* ! 1hr Add descriptions to what is expected in each form field
 * ! 1hr Should only be able receive samples already submitted, try to use an autocomplete add in rather than a foreign key
 * ! 4hr Stying
 * ! 2hr Wrap lab and user portal sections in accordion style clapse div

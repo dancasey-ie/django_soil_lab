@@ -96,10 +96,10 @@ def dispatch(request):
                 sample.dispatched_date = timezone.now()
                 sample.save()
             else:
-                messages.error(request, 'Only samples with status "Ordered" can be dispatched')
+                messages.error(request, '{0} has already been dispatched'.format(sample_ref))
             return redirect(labportal)
         except SampleStatus.DoesNotExist:
-            messages.error(request, 'Not a valid Sample Reference')
+            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
         pass
 
     return redirect(labportal)
@@ -110,14 +110,19 @@ def receive(request):
         sample_ref =  request.POST['sample_ref']
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
-            sample.status = 'Received'
-            sample.received_by = request.user
-            sample.received_date = timezone.now()
-            sample.save()
+            if sample.status == "Submitted":
+
+                sample.status = 'Received'
+                sample.received_by = request.user
+                sample.received_date = timezone.now()
+                sample.save()
+                messages.success(request, '{0} has been recorded as "Received"'.format(sample_ref))
+            else:
+                messages.error(request,
+                               '{0} is not available to be "Received", it may not have been "Submitted yet" or has already been processed'.format(sample_ref))
             return redirect(labportal)
         except SampleStatus.DoesNotExist:
-            error_message = "Not a valid Sample Reference"
-            print("Not a valid Sample Reference")
+            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
         pass
 
     return redirect(labportal)
@@ -137,5 +142,5 @@ def results(request):
             return redirect(labportal)
 
     else:
-        print("Error in results form")
+        results_form = SampleResultsForm()
     return redirect(labportal)
