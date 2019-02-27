@@ -6,13 +6,13 @@ html, body {
 
 body {
     font-family: Arial;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 
 .main_container {
     margin-top: 0px;
-    min-height: calc(100vh - 180px);
+    min-height: calc(100vh - 130px);
 }
 
 

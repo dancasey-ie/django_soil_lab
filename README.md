@@ -78,10 +78,10 @@ __Existing Features__
 * Staff can view all samples and access the report with results displayed if the results are available
 * Customer is emailed an order is placed and when results are availalbe
 
+
 __Features to be Implemented__
 
 * ! 3hr Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
-* ! 4hr Stying
 
 *  3hr Automated Testing
 *  3hr Manual Testing
@@ -91,7 +91,9 @@ __Features to be Implemented__
 * 1hr Filter search for sample archive
 * 2hr Map showing markers for all samples
 * 1hr django login and register windows should say Easca Environmental not Django
-* 1hr Use canvas to design a logo
+* 1hr add pagniation to tables
+
+* use input box instead of table to submit details
 
 
 
