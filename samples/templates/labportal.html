@@ -5,19 +5,31 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-<h3>Dispatch Sample</h3>
-<div>
-    <p>Enter an 'Ordered' sample reference to record that the sample kit has been dispatched to customer.</p>
+<div class="container">
     <div class="row">
-        <form role="form" method="post" id="dispatch_form" action="{% url 'dispatch' %}">
-            {% csrf_token %}
-            <div class="form-group col-xs-12 col-sm-3">
-                <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
+        <a data-toggle="collapse" href="#dispatch_collapse" role="button" aria-expanded="true" aria-controls="#dispatch_collapse">
+            <div class="pull-left">
+                <h3>Dispatch Sample</h3>
             </div>
-            <div class="form-group col-xs-12 col-sm-3">
-                <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Dispatch">
+            <div class="pull-right">
+                <h3><i class="fas fa-plus"></i></h3>
             </div>
-        </form>
+            <div class="clearfix"></div>
+        </a>
+    </div>
+    <div class="collapse dispatch_collapse collapse_xs" id="dispatch_collapse">
+        <p>Enter an 'Ordered' sample reference to record that the sample kit has been dispatched to customer.</p>
+        <div class="row">
+            <form role="form" method="post" id="dispatch_form" action="{% url 'dispatch' %}">
+                {% csrf_token %}
+                <div class="form-group col-xs-12 col-sm-3">
+                    <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
+                </div>
+                <div class="form-group col-xs-12 col-sm-3">
+                    <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Dispatch">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -39,17 +51,19 @@
 
 <h3>Submit Results</h3>
 <div>
-    <p>Enter a 'Received' sample reference, with the results from lab test. <br />
-    A blank list means there are no samples received for testing.</p>
+    <p>
+        Enter a 'Received' sample reference, with the results from lab test. <br />
+        A blank list means there are no samples received for testing.
+    </p>
     <div class="row">
         <form role="form" method="post" id="" action="{% url 'results' %}">
             {% csrf_token %}
             <!-- <div class="form-group col-md-6">
 
-        {{ results_form|as_bootstrap }}
+                {{ results_form|as_bootstrap }}
 
-    </div>
-       -->
+            </div>
+               -->
             <div class="row">
                 <div class="form-group col-xs-6 col-sm-3">
                     <label for="{{ results_form.sample.id_for_label }}">Sample Ref.</label>
@@ -66,6 +80,7 @@
                             {{ results_form.k }}
                         </div>
                         <div class="form-group col-xs-6 col-sm-2">
+                            {{
                             <label for="{{ results_form.lr_ph.id_for_label }}">LR pH Buffer</label>
                             {{ results_form.lr_ph }}
                         </div>
@@ -84,45 +99,45 @@
     </div>
 </div>
 
-    <h3>View Samples</h3>
-    <div>
-        <p>Explore the archive of samples.</p>
-        <div class="row">
-            <table class="col-xs-12">
-                <tr>
-                    <th>Sample Ref.</th>
-                    <th>Status</th>
-                    <th>Details</th>
-                    <th>Ordered By</th>
-                    <th>Ordered Date</th>
-                    <th>Dispatched Date</th>
-                    <th>Submitted Date</th>
-                    <th>Received Date</th>
-                    <th>Tested Date</th>
-                </tr>
-                {% for sample in samples %}
-                <tr>
-                    <td>{{ sample.sample_ref }}</td>
-                    <td>{{ sample.status }}</td>
-                    <td>
-                        {% if sample.status == "Ordered" or sample.status == "Dispatched" %}
-                        {% else %}
-                        <form action="{% url 'viewreport' sample.id %}" method="post">
-                            {% csrf_token %}
-                            <input class="btn btn-primary" type="submit" value="View">
-                        </form>
-                        {% endif %}
-                    </td>
-                    <td>{{ sample.ordered_by }}</td>
-                    <td>{{ sample.ordered_date.date }}</td>
-                    <td>{{ sample.dispatched_date.date  }}</td>
-                    <td>{{ sample.submit_date.date  }}</td>
-                    <td>{{ sample.received_date.date  }}</td>
-                    <td>{{ sample.tested_date.date  }}</td>
+<h3>View Samples</h3>
+<div>
+    <p>Explore the archive of samples.</p>
+    <div class="row">
+        <table class="col-xs-12">
+            <tr>
+                <th>Sample Ref.</th>
+                <th>Status</th>
+                <th>Details</th>
+                <th>Ordered By</th>
+                <th>Ordered Date</th>
+                <th>Dispatched Date</th>
+                <th>Submitted Date</th>
+                <th>Received Date</th>
+                <th>Tested Date</th>
+            </tr>
+            {% for sample in samples %}
+            <tr>
+                <td>{{ sample.sample_ref }}</td>
+                <td>{{ sample.status }}</td>
+                <td>
+                    {% if sample.status == "Ordered" or sample.status == "Dispatched" %}
+                    {% else %}
+                    <form action="{% url 'viewreport' sample.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-primary" type="submit" value="View">
+                    </form>
+                    {% endif %}
+                </td>
+                <td>{{ sample.ordered_by }}</td>
+                <td>{{ sample.ordered_date.date }}</td>
+                <td>{{ sample.dispatched_date.date  }}</td>
+                <td>{{ sample.submit_date.date  }}</td>
+                <td>{{ sample.received_date.date  }}</td>
+                <td>{{ sample.tested_date.date  }}</td>
 
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
-        {% endblock %}
+</div>
+            {% endblock %}
