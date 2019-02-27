@@ -2,13 +2,20 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.conf import settings
+from django.db import models
 from django.utils import timezone
 from geopy.geocoders import GoogleV3
 from .models import SampleStatus, SampleDetails, SampleResults
 from checkout.models import Order
 from .forms import SampleResultsForm, SampleDetailsForm
-import os
+from django.core.mail import send_mail
+from django.contrib.auth import get_user_model
 
+
+
+import os
+User = get_user_model()
 @login_required
 def yourportal(request):
     """A view that displays the profile page of a logged in user"""
@@ -139,7 +146,19 @@ def results(request):
             sample.tested_by = request.user
             sample.tested_date = timezone.now()
             sample.save()
+            print(sample.ordered_by)
+            try:
+                user = User.objects.get(username=sample.ordered_by)
+                send_mail('Soil Test Results',
+                          'Easca Environmental would like to inform you that new results are available to you.Follow the link to your portal to access the results. https://dc-easca-environmental.herokuapp.com/yourportal ',
+                          'eascatest@gmail.com',
+                          [user.email],
+                          fail_silently=False,
+                          )
+            except User.doesNotExists:
+                messages.error(request, 'email failed to send, no user found')
             return redirect(labportal)
+
 
     else:
         results_form = SampleResultsForm()
