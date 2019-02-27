@@ -2,129 +2,173 @@
 <h2>Welcome, {{ user.username }}</h2>
 <p>{{ user.email }}</p>
 
-
-<h3>Submit Sample</h3>
-<p>
-    Below is list of samples awaiting for submission from you. <br />
-    Once you have collected your soil sample please submit the sample details referenceing the sample reference on the sample kit.
-</p>
-<div>
+<div class="container">
     <div class="row">
-        <table class="col-xs-12">
-            <tr>
-                <th>Sample Ref.</th>
-                <th>Submit Details</th>
-            </tr>
-            {% for status in statuss %}
-            {% if status.status == "Dispatched" %}
-            <tr>
-                <td>{{ status.sample_ref }}</td>
-                <td>
-                    <form action="{% url 'submit' status.id %}" method="post">
-                        {% csrf_token %}
-                        <input class="btn btn-primary" type="submit" value="Submit Details">
-                    </form>
-                </td>
+        <a data-toggle="collapse" href="#submit_collapse" role="button" aria-expanded="true" aria-controls="#submit_collapse">
+            <div class="pull-left">
+                <h3>Submit Sample</h3>
+            </div>
+            <div class="pull-right">
+                <h3><i class="fas fa-plus"></i></h3>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+    </div>
+    <div class="collapse submit_collapse collapse_xs" id="submit_collapse">
+        <p>
+            Below is list of samples awaiting for submission from you. <br />
+            Once you have collected your soil sample please submit the sample details referenceing the sample reference on the sample kit.
+        </p>
+        <div class="container">
+            <div class="row">
+                <table class="col-xs-12">
+                    <tr>
+                        <th>Sample Ref.</th>
+                        <th>Submit Details</th>
+                    </tr>
+                    {% for status in statuss %}
+                    {% if status.status == "Dispatched" %}
+                    <tr>
+                        <td>{{ status.sample_ref }}</td>
+                        <td>
+                            <form action="{% url 'submit' status.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-primary" type="submit" value="Submit Details">
+                            </form>
+                        </td>
 
-            </tr>
-            {% endif %}
-            {% endfor %}
-        </table>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<h3>Completed Samples</h3>
-<p>
-    Below is list of completed samples. <br />
-    You can access the samples details and results by following the link on each line item.
-</p>
-<div>
+
+
+<div class="container">
     <div class="row">
-        <table class="col-xs-12">
-            <tr>
-                <th>Sample Ref.</th>
-                <th>Your Reference</th>
-                <th>Date Sampled</th>
-                <th>Status</th>
-                <th>View Report</th>
-            </tr>
-            {% for status in statuss %}
-            {% if status.status == "Complete" %}
+        <a data-toggle="collapse" href="#completed_collapse" role="button" aria-expanded="true" aria-controls="#completed_collapse">
+            <div class="pull-left">
+                <h3>Completed Samples</h3>
+            </div>
+            <div class="pull-right">
+                <h3><i class="fas fa-plus"></i></h3>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+    </div>
+    <div class="collapse completed_collapse collapse_xs" id="completed_collapse">
+        <p>
+            Below is list of completed samples. <br />
+            You can access the samples details and results by following the link on each line item.
+        </p>
+        <div class="container">
+            <div class="row">
+                <table class="col-xs-12">
+                    <tr>
+                        <th>Sample Ref.</th>
+                        <th>Your Reference</th>
+                        <th>Date Sampled</th>
+                        <th>Status</th>
+                        <th>View Report</th>
+                    </tr>
+                    {% for status in statuss %}
+                    {% if status.status == "Complete" %}
 
-            <tr>
-                <td>{{ status.sample_ref }}</td>
+                    <tr>
+                        <td>{{ status.sample_ref }}</td>
 
 
-                {% for sample in details %}
-                {% if sample.sample == status %}
-                <td>
-                    {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
-                </td>
-                <td>
-                    {{ sample.sample_date }}
-                </td>
+                        {% for sample in details %}
+                        {% if sample.sample == status %}
+                        <td>
+                            {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
+                        </td>
+                        <td>
+                            {{ sample.sample_date }}
+                        </td>
 
-                {% endif %}
-                {% endfor %}
-                <td>{{ status.status }}</td>
-                <td>
-                    <form action="{% url 'viewreport' status.id %}" method="post">
-                        {% csrf_token %}
-                        <input class="btn btn-primary" type="submit" value="View Report">
-                    </form>
-                </td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-        </table>
+                        {% endif %}
+                        {% endfor %}
+                        <td>{{ status.status }}</td>
+                        <td>
+                            <form action="{% url 'viewreport' status.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-primary" type="submit" value="View Report">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<h3>Samples Being Processed</h3>
-<p>
-    Below is a list of samples being processed by Easca Environmental.
-    <br />It includes samples you have ordered, that we have yet to dispatch, as well as samples you have submitted and are awaiting results.
-</p>
-<div>
+<div class="container">
     <div class="row">
-        <table class="col-xs-12">
-            <tr>
-                <th>Sample Ref.</th>
-                <th>Your Reference</th>
-                <th>Date Sampled</th>
-                <th>Status</th>
-                <th>View Report</th>
-            </tr>
-            {% for status in statuss %}
-            {% if status.status == "Ordered" or status.status == "Submitted" or status.status == "Received" %}
+        <a data-toggle="collapse" href="#processing_collapse" role="button" aria-expanded="true" aria-controls="#processing_collapse">
+            <div class="pull-left">
+                <h3>Samples Being Processed</h3>
+            </div>
+            <div class="pull-right">
+                <h3><i class="fas fa-plus"></i></h3>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+    </div>
+    <div class="collapse processing_collapse collapse_xs" id="processing_collapse">
+        <p>
+            Below is a list of samples being processed by Easca Environmental.
+            <br />It includes samples you have ordered, that we have yet to dispatch, as well as samples you have submitted and are awaiting results.
+        </p>
+        <div class="container">
+            <div class="row">
+                <table class="col-xs-12">
+                    <tr>
+                        <th>Sample Ref.</th>
+                        <th>Your Reference</th>
+                        <th>Date Sampled</th>
+                        <th>Status</th>
+                        <th>View Report</th>
+                    </tr>
+                    {% for status in statuss %}
+                    {% if status.status == "Ordered" or status.status == "Submitted" or status.status == "Received" %}
 
-            <tr>
-                <td>{{ status.sample_ref }}</td>
+                    <tr>
+                        <td>{{ status.sample_ref }}</td>
 
 
-                {% for sample in details %}
-                {% if sample.sample == status %}
-                <td>
-                    {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
-                </td>
-                <td>
-                    {{ sample.sample_date }}
-                </td>
+                        {% for sample in details %}
+                        {% if sample.sample == status %}
+                        <td>
+                            {{ sample.customer_ref_1 }} {{ sample.customer_ref_2 }}
+                        </td>
+                        <td>
+                            {{ sample.sample_date }}
+                        </td>
 
-                {% endif %}
-                {% endfor %}
-                <td>{{ status.status }}</td>
+                        {% endif %}
+                        {% endfor %}
+                        <td>{{ status.status }}</td>
 
-                <td>
-                    <form action="{% url 'viewreport' status.id %}" method="post">
-                        {% csrf_token %}
-                        <input class="btn btn-primary" type="submit" value="View Report">
-                    </form>
-                </td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-        </table>
+                        <td>
+                            <form action="{% url 'viewreport' status.id %}" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-primary" type="submit" value="View Report">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+
 {% endblock %}
