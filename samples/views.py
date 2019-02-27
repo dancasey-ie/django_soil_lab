@@ -88,7 +88,8 @@ def viewreport(request, sample_id):
 def labportal(request):
     samples = SampleStatus.objects.all()
     results_form = SampleResultsForm()
-    return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form})
+    username = request.user.username
+    return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form, 'username': username})
 
 @staff_member_required
 def dispatch(request):
@@ -148,7 +149,7 @@ def results(request):
             sample.save()
             try:
                 user = User.objects.get(username=sample.ordered_by)
-                send_mail('Soil Test Results',
+                send_mail('Sample Results',
                           'Easca Environmental would like to inform you that new results are available to you.Follow the link to your portal to access the results. https://dc-easca-environmental.herokuapp.com/yourportal ',
                           'eascatest@gmail.com',
                           [user.email],

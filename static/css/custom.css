@@ -1,14 +1,73 @@
+html, body {
+    height: 1vh;
+}
+
+
+
 body {
     font-family: Arial;
     padding-top: 100px;
 }
 
+
+.main_container {
+    margin-top: 0px;
+    min-height: calc(100vh - 180px);
+}
+
+
+
+.navbar-custom {
+    background: #328008;
+}
+
+.navbar-brand {
+    padding: 3px;
+}
+
+    .navbar-brand img:hover {
+        opacity: .5;
+    }
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #818108;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #818108;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #818108;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: #818108;
+}
+
+#logo {
+    height: 45px;
+    width: auto;
+}
+
+h3 {
+    color: #265f07
+}
+
+.results_btn {
+    margin-top: 25px;
+}
+
 footer {
-    margin-top: 40px;
     padding-top: 20px;
-    padding-bottom: 20px;
     border-top: 1px solid #ededed;
     color: #A9A9A9;
+    position: relative;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
 }
 
 .icon-bar {
@@ -82,3 +141,6 @@ caption p {
 .product_description {
     min-height: 40px;
 }
+
+
+
