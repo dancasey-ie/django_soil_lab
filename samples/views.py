@@ -146,7 +146,6 @@ def results(request):
             sample.tested_by = request.user
             sample.tested_date = timezone.now()
             sample.save()
-            print(sample.ordered_by)
             try:
                 user = User.objects.get(username=sample.ordered_by)
                 send_mail('Soil Test Results',

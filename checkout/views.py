@@ -7,6 +7,7 @@ from django.conf import settings
 from django.utils import timezone
 from products.models import Product
 from samples.models import SampleStatus
+from django.core.mail import send_mail
 import stripe
 
 
@@ -63,9 +64,21 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 request.session['cart'] = {}
+
+                user = order.user
+                print(user.email)
+                send_mail('Order Confirmation',
+                            'Thank you for ordering your sample testing with Easca Environmental. Once you have collected your soil sample please go to "Your Portal" on our website to submit the sample details. https://dc-easca-environmental.herokuapp.com/yourportal ',
+                            'eascatest@gmail.com',
+                            [user.email],
+                            fail_silently=False,
+                            )
+
                 return redirect(reverse('products'))
             else:
                 messages.error(request, "Unable to take payment")
+
+
         else:
             print(payment_form.errors)
             messages.error(request, "We were unable to take a payment with that card!")
