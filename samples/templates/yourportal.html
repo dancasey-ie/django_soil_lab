@@ -33,7 +33,7 @@
                         <td>
                             <form action="{% url 'submit' status.id %}" method="post">
                                 {% csrf_token %}
-                                <input class="btn btn-primary" type="submit" value="Submit Details">
+                                <input class="btn btn-success" type="submit" value="Submit Details">
                             </form>
                         </td>
 
@@ -97,7 +97,7 @@
                         <td>
                             <form action="{% url 'viewreport' status.id %}" method="post">
                                 {% csrf_token %}
-                                <input class="btn btn-primary" type="submit" value="View Report">
+                                <input class="btn btn-success" type="submit" value="View Report">
                             </form>
                         </td>
                     </tr>
@@ -159,7 +159,7 @@
                         <td>
                             <form action="{% url 'viewreport' status.id %}" method="post">
                                 {% csrf_token %}
-                                <input class="btn btn-primary" type="submit" value="View Report">
+                                <input class="btn btn-success" type="submit" value="View Report">
                             </form>
                         </td>
                     </tr>
