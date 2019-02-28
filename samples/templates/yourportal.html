@@ -78,6 +78,23 @@
                 </table>
             </div>
         </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if completed_samples.has_previous %}
+                <a href="?completed_page=1">&laquo; first</a>
+                <a href="?completed_page={{ completed_samples.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ completed_samples.number }} of {{ completed_samples.paginator.num_pages }}.
+                </span>
+
+                {% if completed_samples.has_next %}
+                <a href="?completed_page={{ completed_samples.next_page_number }}">next</a>
+                <a href="?completed_page={{ completed_samples.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </div>
 
@@ -137,6 +154,22 @@
                     {% endfor %}
                 </table>
             </div>
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if processing_samples.has_previous %}
+                <a href="?processing_page=1">&laquo; first</a>
+                <a href="?processing_page={{ processing_samples.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ processing_samples.number }} of {{ processing_samples.paginator.num_pages }}
+                </span>
+                {% if processing_samples.has_next %}
+                <a href="?processing_page={{ processing_samples.next_page_number }}">next</a>
+                 <a href="?processing_page={{ processing_samples.paginator.num_pages }}">last &raquo;</a>
+                 {% endif %}
+                </span>
         </div>
     </div>
 </div>

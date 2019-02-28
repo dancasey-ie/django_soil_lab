@@ -19,15 +19,28 @@ User = get_user_model()
 
 @login_required
 def yourportal(request):
-
-    completed_samples = SampleStatus.objects.filter(Q(status='Complete') & Q(ordered_by=request.user))
-    processing_samples = SampleStatus.objects.filter(~Q(status='Complete') & Q(ordered_by=request.user))
+    """Gives access to the users sample history and reports"""
     details = SampleDetails.objects.all()
+    complet_filter = Q(status='Complete') & Q(ordered_by=request.user)
+    all_completed_samples = SampleStatus.objects.filter(complet_filter)
+    completed_paginator = Paginator(all_completed_samples, 10)
+    page_completed = request.GET.get('page_completed', 1)
+    completed_samples = completed_paginator.page(page_completed)
+    processing_filter = ~Q(status='Complete') & Q(ordered_by=request.user)
+    all_processing_samples = SampleStatus.objects.filter(processing_filter)
+    processing_paginator = Paginator(all_processing_samples, 10)
+    processing_page = int(request.GET.get('processing_page', 1))
+    processing_samples = processing_paginator.page(processing_page)
 
-    return render(request, 'yourportal.html', {"processing_samples": processing_samples, "completed_samples": completed_samples, "details": details})
+    arg = {"processing_samples": processing_samples,
+           "completed_samples": completed_samples,
+           "details": details}
+
+    return render(request, 'yourportal.html', arg)
 
 @login_required()
 def details(request):
+    """Opens form to submit sample details"""
 
     if request.method == 'POST':
         sample_ref =  request.POST['sample_ref']
@@ -37,14 +50,25 @@ def details(request):
             if sample.status == 'Dispatched':
 
                 details_form = SampleDetailsForm()
-                return render(request, "submitdetails.html", {'details_form': details_form, 'sample': sample})
-            else:
 
-                messages.error(request,
-                '{0} is not available to be "Submitted", it may not have been dispatched yet or has already been processed'.format(sample_ref))
+                arg = {'details_form': details_form,
+                       'sample': sample}
+
+                return render(request,
+                              "submitdetails.html",
+                              arg)
+            else:
+                msg = '{0}{1}{2}{3}'.format(
+                    sample_ref,
+                    ' is not available to be "Submitted",',
+                    ' it may not have been dispatched yet',
+                    ' or has already been processed')
+
+                messages.error(request, msg)
             return redirect(yourportal)
         except SampleStatus.DoesNotExist:
-            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
+            msg = '{0} is not a valid sample reference'.format(sample_ref)
+            messages.error(request, msg)
         pass
     else:
         messages.error(request, 'Not POST')
@@ -54,13 +78,12 @@ def details(request):
 
 @login_required()
 def submit(request, sample_id):
-    """A view that manages the customer sample submission form"""
+    """Submits user inputed sample details"""
 
     if request.method == 'POST':
         details_form = SampleDetailsForm(request.POST)
         sample =  SampleStatus.objects.get(id=sample_id)
         if details_form.is_valid():
-            #sample = SampleStatus.objects.get(id=sample_id)
 
             sample.submitted_by = request.user
             sample.submit_date = timezone.now()
@@ -70,8 +93,9 @@ def submit(request, sample_id):
             details = details_form.save(commit=False)
             details.save()
             geolocator = GoogleV3(api_key=os.getenv('GOOGLE_MAP_API_KEY'))
-            sample_address = geolocator.reverse((details.sample_location.latitude,
-                                                         details.sample_location.longitude))
+            lat_lng = (details.sample_location.latitude,
+                       details.sample_location.longitude)
+            sample_address = geolocator.reverse(lat_lng)
             details.sample_address = sample_address[0]
             details.sample = sample
             details.save()
@@ -79,11 +103,14 @@ def submit(request, sample_id):
 
     else:
         details_form = SampleDetailsForm()
-
-    return render(request, "submitdetails.html", {'details_form': details_form, 'sample': sample})
+        arg = {'details_form': details_form,
+               'sample': sample}
+    return render(request, "submitdetails.html", arg)
 
 @login_required()
 def viewreport(request, sample_id):
+    """Renders report with sample details and results"""
+
     os.getenv('GOOGLE_MAP_API_KEY')
     if request.method == 'POST':
         try:
@@ -99,34 +126,43 @@ def viewreport(request, sample_id):
             print("Results pending")
             results = ""
         pass
-        return render(request, "viewreport.html", {'status': status, 'details': details,'results': results})
+
+        arg = {'status': status,
+               'details': details,
+               'results': results}
+
+        return render(request, "viewreport.html", arg)
 
     else:
         error_message = "You do not have access to this url"
-        status = ""
-        details = ""
-        results = ""
-    return render(request, "viewreport.html",
-                  {'GOOGLE_MAP_API_KEY': os.getenv('GOOGLE_MAP_API_KEY'),
-                                               'status': status,
-                                               'details': details,
-                                               'results': results,
-                                               'error_message': error_message})
+
+    arg = {'GOOGLE_MAP_API_KEY': os.getenv('GOOGLE_MAP_API_KEY'),
+           'status': "",
+           'details': "",
+           'results': "",
+           'error_message': error_message}
+
+    return render(request, "viewreport.html", arg)
 
 @staff_member_required
 def labportal(request):
+    """Renders view to lab managment system.
+    Staff can record samples as being dispatched to customer, received into
+    lab, can upload test results and can search the sample archive"""
+
     all_samples = SampleStatus.objects.all()
     paginator = Paginator(all_samples, 10)
     page = request.GET.get('page', 1)
-    samples = paginator.page(page)
+    arg = {"samples": paginator.page(page),
+           'results_form': SampleResultsForm(),
+           'username': request.user.username}
 
-    results_form = SampleResultsForm()
-    username = request.user.username
+    return render(request, 'labportal.html', arg)
 
-    return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form, 'username': username})
 
 @staff_member_required
 def dispatch(request):
+    """Records an inputed sample reference as dispatched to customer"""
 
     if request.method == 'POST':
         sample_ref =  request.POST['sample_ref']
@@ -138,15 +174,21 @@ def dispatch(request):
                 sample.dispatched_date = timezone.now()
                 sample.save()
             else:
-                messages.error(request, '{0} has already been dispatched'.format(sample_ref))
+                msg = '{0} has already been dispatched'.format(sample_ref)
+                messages.error(request, msg)
             return redirect(labportal)
         except SampleStatus.DoesNotExist:
-            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
+            msg = '{0} is not a valid sample reference'.format(sample_ref)
+            messages.error(request, msg)
         pass
 
     return redirect(labportal)
+
+
 @staff_member_required
 def receive(request):
+    """Records an inputed sample reference as
+    received into the lab for analysis"""
 
     if request.method == 'POST':
         sample_ref =  request.POST['sample_ref']
@@ -158,13 +200,20 @@ def receive(request):
                 sample.received_by = request.user
                 sample.received_date = timezone.now()
                 sample.save()
-                messages.success(request, '{0} has been recorded as "Received"'.format(sample_ref))
+                msg = '{0} has been recorded as "Received"'.format(sample_ref)
+                messages.success(request, msg)
             else:
-                messages.error(request,
-                               '{0} is not available to be "Received", it may not have been "Submitted yet" or has already been processed'.format(sample_ref))
+                msg = '{0}{1}{2}{3}'.format(
+                    sample_ref,
+                    ' is not available to be "Received",',
+                    ' it may not have been "Submitted yet" or',
+                    'has already been processed')
+
+                messages.error(request, msg)
             return redirect(labportal)
         except SampleStatus.DoesNotExist:
-            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
+            msg = '{0} is not a valid sample reference'.format(sample_ref)
+            messages.error(request, msg)
         pass
 
     return redirect(labportal)
@@ -184,7 +233,7 @@ def results(request):
             try:
                 user = User.objects.get(username=sample.ordered_by)
                 send_mail('Sample Results',
-                          'Easca Environmental would like to inform you that new results are available to you.Follow the link to your portal to access the results. https://dc-easca-environmental.herokuapp.com/yourportal ',
+                          results_email(user.username),
                           'eascatest@gmail.com',
                           [user.email],
                           fail_silently=False,
@@ -197,3 +246,25 @@ def results(request):
     else:
         results_form = SampleResultsForm()
     return redirect(labportal)
+
+def results_email(username):
+    """Return email content to be sent to customer when their
+    results are complete"""
+    email_content = """\
+    Hi {0},
+
+    Your soil test results are complete and available to view.
+
+    Just log into 'Your Portal':
+
+    https://dc-easca-environmental.herokuapp.com/yourportal
+
+    Regards,
+
+    Dan Casey
+
+    Lab Rat
+    Easca Environmental
+
+    """.format(username)
+    return email_content

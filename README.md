@@ -74,6 +74,7 @@ __Existing Features__
 * Staff can upload the test results, through the 'Lab Portal' view, this processes is time stamped and the loged in staff member is recorded
 * Staff can view all samples and access the report with results displayed if the results are available
 * Customer is emailed an order is placed and when results are availalbe
+* Pagination of all tables in the Lab and Your Portal
 
 
 __Features to be Implemented__
@@ -87,10 +88,6 @@ __Features to be Implemented__
 * 1hr Add save/print pdf button to the report
 * 1hr Filter search for sample archive
 * 2hr Map showing markers for all samples
-* 1hr add pagniation to tables
-
-
-
 
 Technologies Used
 -----------------------
