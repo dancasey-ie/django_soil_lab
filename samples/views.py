@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-from django.contrib import messages
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
@@ -10,7 +11,8 @@ from .models import SampleStatus, SampleDetails, SampleResults
 from checkout.models import Order
 from .forms import SampleResultsForm, SampleDetailsForm
 from django.core.mail import send_mail
-from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator
+
 
 
 
@@ -86,7 +88,14 @@ def viewreport(request, sample_id):
 
 @staff_member_required
 def labportal(request):
-    samples = SampleStatus.objects.all()
+    all_samples = SampleStatus.objects.all()
+    paginator = Paginator(all_samples, 10)
+    page = request.GET.get('page', 1)
+    samples = paginator.page(page)
+
+
+
+
     results_form = SampleResultsForm()
     username = request.user.username
     return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form, 'username': username})

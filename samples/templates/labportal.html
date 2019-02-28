@@ -173,6 +173,23 @@
                 </table>
             </div>
         </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if samples.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ samples.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ samples.number }} of {{ samples.paginator.num_pages }}.
+                </span>
+
+                {% if samples.has_next %}
+                <a href="?page={{ samples.next_page_number }}">next</a>
+                <a href="?page={{ samples.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </div>
 
