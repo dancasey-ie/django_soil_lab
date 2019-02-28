@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.conf import settings
 from django.db import models
+from django.db.models import Q
 from django.utils import timezone
 from geopy.geocoders import GoogleV3
 from .models import SampleStatus, SampleDetails, SampleResults
@@ -12,12 +13,10 @@ from checkout.models import Order
 from .forms import SampleResultsForm, SampleDetailsForm
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
-
-
-
-
 import os
+
 User = get_user_model()
+
 @login_required
 def yourportal(request):
 
@@ -37,10 +36,12 @@ def yourportal(request):
         pass
 
     else:
-         statuss = SampleStatus.objects.filter(ordered_by=request.user)
-         details = SampleDetails.objects.all()
 
-    return render(request, 'yourportal.html', {"statuss": statuss, "details": details})
+        completed_samples = SampleStatus.objects.filter(Q(status='Complete') & Q(ordered_by=request.user))
+        processing_samples = SampleStatus.objects.filter(~Q(status='Complete') & Q(ordered_by=request.user))
+        details = SampleDetails.objects.all()
+
+    return render(request, 'yourportal.html', {"processing_samples": processing_samples, "completed_samples": completed_samples, "details": details})
 
 @login_required()
 def submit(request, status_id):
@@ -110,11 +111,9 @@ def labportal(request):
     page = request.GET.get('page', 1)
     samples = paginator.page(page)
 
-
-
-
     results_form = SampleResultsForm()
     username = request.user.username
+
     return render(request, 'labportal.html', {"samples": samples, 'results_form': results_form, 'username': username})
 
 @staff_member_required
