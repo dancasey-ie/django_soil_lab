@@ -90,10 +90,10 @@ __Features to be Implemented__
 * 1hr Add save/print pdf button to the report
 * 1hr Filter search for sample archive
 * 2hr Map showing markers for all samples
-* 1hr django login and register windows should say Easca Environmental not Django
 * 1hr add pagniation to tables
 
 * use input box instead of table to submit details
+* javascript in seperate file
 
 
 

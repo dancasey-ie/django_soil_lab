@@ -37,15 +37,14 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'index' %}"><i class="fas fa-info"></i> About</a></li>
-                    {% if user.is_staff %}
-                    <li><a href="{% url 'labportal' %}"><i class="fas fa-flask"></i> Lab Portal</a></li>
-                    {% endif %}
                     <li><a href="{% url 'products' %}"><i class="fab fa-product-hunt"></i> Services</a></li>
                     {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                        <li><a href="{% url 'labportal' %}"><i class="fas fa-flask"></i> Lab Portal</a></li>
+                        {% endif %}
                     <li><a href="{% url 'yourportal' %}"><i class="fa fa-user"></i> Your Portal</a></li>
                     <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i> Log Out</a></li>
                     {%  else %}
-                    <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
                     <li><a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></li>
                     {% endif %}
                     <li>

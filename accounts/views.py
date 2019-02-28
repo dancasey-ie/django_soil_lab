@@ -39,8 +39,9 @@ def login(request):
                 user_form.add_error(None, "Your username or password are incorrect")
     else:
         user_form = UserLoginForm()
+        registration_form = UserRegistrationForm()
 
-    args = {'user_form': user_form, 'next': request.GET.get('next', '')}
+    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', '')}
     return render(request, 'login.html', args)
 
 
@@ -53,9 +54,9 @@ def profile(request):
 def register(request):
     """A view that manages the registration form"""
     if request.method == 'POST':
-        user_form = UserRegistrationForm(request.POST)
-        if user_form.is_valid():
-            user_form.save()
+        registration_form = UserRegistrationForm(request.POST)
+        if registration_form.is_valid():
+            registration_form.save()
 
             user = auth.authenticate(request.POST.get('email'),
                                      password=request.POST.get('password1'))
@@ -68,7 +69,7 @@ def register(request):
             else:
                 messages.error(request, "unable to log you in at this time!")
     else:
-        user_form = UserRegistrationForm()
+        registration_form = UserRegistrationForm()
 
-    args = {'user_form': user_form}
+    args = {'registration_form': registration_form}
     return render(request, 'register.html', args)
