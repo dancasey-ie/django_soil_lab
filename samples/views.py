@@ -20,9 +20,26 @@ import os
 User = get_user_model()
 @login_required
 def yourportal(request):
-    """A view that displays the profile page of a logged in user"""
-    statuss = SampleStatus.objects.filter(ordered_by=request.user)
-    details = SampleDetails.objects.all()
+
+    if request.method == 'POST':
+        sample_ref =  request.POST['sample_ref']
+        try:
+            sample = SampleStatus.objects.get(sample_ref=sample_ref)
+            if sample.status == "Dispatched":
+
+                return submit(request, sample.id)
+            else:
+                messages.error(request,
+                                '{0} is not available to be "Submitted", it may not have been dispatched yet or has already been processed'.format(sample_ref))
+            return redirect(yourportal)
+        except SampleStatus.DoesNotExist:
+            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
+        pass
+
+    else:
+         statuss = SampleStatus.objects.filter(ordered_by=request.user)
+         details = SampleDetails.objects.all()
+
     return render(request, 'yourportal.html', {"statuss": statuss, "details": details})
 
 @login_required()

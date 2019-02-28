@@ -6,7 +6,7 @@
     <div class="row">
         <a data-toggle="collapse" href="#submit_collapse" role="button" aria-expanded="true" aria-controls="#submit_collapse">
             <div class="pull-left">
-                <h3>Submit Sample</h3>
+                <h3>Submit Sample Details</h3>
             </div>
             <div class="pull-right">
                 <h3><i class="fas fa-plus"></i></h3>
@@ -15,38 +15,20 @@
         </a>
     </div>
     <div class="collapse submit_collapse collapse_xs" id="submit_collapse">
-        <p>
-            Below is list of samples awaiting for submission from you. Only samples that have been dispatched from our lab can be submitted.<br />
-            Once you have collected your soil sample please submit the sample details referenceing the sample reference on the sample kit.
-        </p>
-        <div class="container">
-            <div class="row">
-                <table class="col-xs-12">
-                    <tr>
-                        <th>Sample Ref.</th>
-                        <th>Submit Details</th>
-                    </tr>
-                    {% for status in statuss %}
-                    {% if status.status == "Dispatched" %}
-                    <tr>
-                        <td>{{ status.sample_ref }}</td>
-                        <td>
-                            <form action="{% url 'submit' status.id %}" method="post">
-                                {% csrf_token %}
-                                <input class="btn btn-success" type="submit" value="Submit Details">
-                            </form>
-                        </td>
-
-                    </tr>
-                    {% endif %}
-                    {% endfor %}
-                </table>
-            </div>
+        <p>Enter the sample reference on the sample kit to submit the sample details. Only samples already dispatched can have their details submitted</p>
+        <div class="row">
+            <form role="form" method="post" id="submit_form" action="{% url 'yourportal' %}">
+                {% csrf_token %}
+                <div class="form-group col-xs-12 col-sm-3">
+                    <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
+                </div>
+                <div class="form-group col-xs-12 col-sm-3">
+                    <input class="btn btn-success" id="submit_sample_btn" name="commit" type="submit" value="Enter Details">
+                </div>
+            </form>
         </div>
     </div>
 </div>
-
-
 
 <div class="container">
     <div class="row">
