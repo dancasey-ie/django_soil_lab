@@ -26,3 +26,11 @@ $('.collapse').on('shown.bs.collapse', function () {
 }).on('hidden.bs.collapse', function () {
     $(this).parent().find(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
 });
+
+
+// use in submitdetails.html form
+$(function () {
+    $(".datepicker").datepicker({
+        format: 'YYYY-MM-DD'
+    });
+});

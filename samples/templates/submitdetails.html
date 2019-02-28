@@ -2,33 +2,6 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
-{% block head_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
-<script>
-    $(function () {
-        $(".datepicker").datepicker({
-            format: 'YYYY-MM-DD'
-        });
-    });
-</script>
-<script>
-    var x = document.getElementById("demo");
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-
-    function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br>Longitude: " + position.coords.longitude;
-    }
-</script>
-
-{% endblock %}
-
 {% block content %}
 <h3>Submit Details: {{ sample.sample_ref }}</h3>
 <div id="demo"></div>
@@ -44,6 +17,10 @@
         <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Submit Sample">
     </div>
 </form>
+
+{% block head_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+{% endblock %}
 
 
 {% endblock %}

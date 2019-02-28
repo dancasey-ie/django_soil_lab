@@ -2,8 +2,7 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
-{% block head_js %}
-{% endblock %}
+
 
 {% block content %}
 
@@ -83,8 +82,8 @@
                     </tr>
                 </table>
             </div>
-            </div>
         </div>
+    </div>
     {% endif %}
     <h3>Status Details</h3>
     <div class="row">
@@ -116,26 +115,19 @@
         </div>
     </div>
 </div>
-<script>
-    function initMap() {
-        //  var myLatLng = new google.maps.LatLng({{ sample.sample_location.latitude }}, {{ sample.sample_location.longitude }});
 
+{% block head_js %}
+
+
+<script>
         var myLatLng = {
             lat: {{ details.sample_location.latitude }},
             lng: {{ details.sample_location.longitude }}
             };
-        var map = new google.maps.Map(document.getElementById('mymap'), {
-            zoom: 15,
-            center: myLatLng,
-            mapTypeId: 'satellite'
-        });
-
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Sample Site' });
-    }
 </script>
+<script src="{% static 'js/initMap.js' %}"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE__MAPS_API_KEY }}&callback=initMap" type="text/javascript"></script>
 
+
+{% endblock %}
 {% endblock %}

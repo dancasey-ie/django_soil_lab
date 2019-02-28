@@ -89,8 +89,6 @@ __Features to be Implemented__
 * 2hr Map showing markers for all samples
 * 1hr add pagniation to tables
 
-* use input box instead of table to submit details
-* javascript in seperate file
 
 
 
