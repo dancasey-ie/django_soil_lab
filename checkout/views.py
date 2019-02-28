@@ -48,7 +48,10 @@ def checkout(request):
                         )
 
                     sample.save()
-                    sample.sample_ref = "{0}-{1}".format(sample.testing_required, sample.id)
+                    sample.sample_ref = "{0}-{1}".format(
+                        sample.testing_required,
+                        sample.id)
+
                     sample.save()
             try:
                 # using stripe API
@@ -68,22 +71,47 @@ def checkout(request):
                 user = order.user
                 print(user.email)
                 send_mail('Order Confirmation',
-                            'Thank you for ordering your sample testing with Easca Environmental. Once you have collected your soil sample please go to "Your Portal" on our website to submit the sample details. https://dc-easca-environmental.herokuapp.com/yourportal ',
-                            'eascatest@gmail.com',
-                            [user.email],
-                            fail_silently=False,
-                            )
+                           order_confirm_email(order),
+                           'eascatest@gmail.com',
+                           [user.email],
+                           fail_silently=False,
+                           )
 
                 return redirect(reverse('products'))
             else:
                 messages.error(request, "Unable to take payment")
-
-
         else:
             print(payment_form.errors)
-            messages.error(request, "We were unable to take a payment with that card!")
+            messages.error(request,
+                           "We were unable to take a payment with that card!")
     else:
         payment_form = MakePaymentForm()
         order_form = OrderForm()
+    arg = {'order_form': order_form,
+           'payment_form': payment_form,
+           'publishable': settings.STRIPE_PUBLISHABLE}
 
-    return render(request, "checkout.html", {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
+    return render(request, "checkout.html", arg)
+
+
+def order_confirm_email(order):
+    """Return email content to be sent to customer when their
+    results are complete"""
+    email_content = """\
+    Hi {0},
+
+    You will receive your soil sample kit in the post in the next few days.
+    To upload the samples details online, just log into 'Your Portal':
+
+    https://dc-easca-environmental.herokuapp.com/yourportal
+
+
+    Regards,
+
+    Dan Casey
+
+    Lab Rat
+    Easca Environmental
+
+    """.format(order.user.username)
+    return email_content

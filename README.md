@@ -73,7 +73,7 @@ __Existing Features__
 * Staff can mark the sample as "received" when it comes into the lab, through the 'Lab Portal' view, this processes is time stamped and the loged in staff member is recorded
 * Staff can upload the test results, through the 'Lab Portal' view, this processes is time stamped and the loged in staff member is recorded
 * Staff can view all samples and access the report with results displayed if the results are available
-* Customer is emailed an order is placed and when results are availalbe
+* Customer is emailed when an order is placed and when results are availalbe
 * Pagination of all tables in the Lab and Your Portal
 
 
