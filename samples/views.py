@@ -220,6 +220,8 @@ def receive(request):
 
 @staff_member_required
 def results(request):
+    """Upload results of a sample test"""
+
     if request.method == 'POST':
         results_form = SampleResultsForm(request.POST)
         if results_form.is_valid():
