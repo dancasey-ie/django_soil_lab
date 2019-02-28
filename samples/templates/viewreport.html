@@ -14,28 +14,44 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="row">
-                <div class="col-xs-6">
-                    <p>Sample Reference:</p>
-                    <p>Customer Name:</p>
-                    <p>Customer Reference:</p>
-                    <p>Sample location:</p>
-                    <p>Sample Address:</p>
-                    <p>Sample Date:</p>
-                    <p>Soil Type:</p>
-                    <p>Land Use:</p>
-                    <p>Other Comments:</p>
-                </div>
-                <div class="col-xs-6">
-                    <p>{{ status.sample_ref }}</p>
-                    <p>{{ details.customer_name }}</p>
-                    <p>{{ details.customer_ref_1 }} {{ details.customer_ref_2 }}</p>
-                    <p>Lat: {{ details.sample_location.latitude }}, Lng: {{ details.sample_location.longitude }}</p>
-                    <p>{{ details.sample_address }}</p>
-                    <p>{{ details.sample_date }}</p>
-                    <p>{{ details.soil_type }}</p>
-                    <p>{{ details.land_use }}</p>
-                    <p>{{ details.other_comments }}</p>
-                </div>
+                <div class="col-xs-6"><p>Sample Reference:</p></div>
+                <div class="col-xs-6"><p>{{ status.sample_ref }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Customer Name:</p></div>
+                <div class="col-xs-6"><p>{{ details.customer_name }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Customer Reference:</p></div>
+                <div class="col-xs-6"><p>{{ details.customer_ref_1 }} - {{ details.customer_ref_2 }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Latitude:</p></div>
+                <div class="col-xs-6"><p>{{ details.sample_location.latitude }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Longitude:</p></div>
+                <div class="col-xs-6"><p>{{ details.sample_location.longitude }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Address:</p></div>
+                <div class="col-xs-6"><p>{{ details.sample_address }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Date Sampled:</p></div>
+                <div class="col-xs-6"><p>{{ details.sample_date }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Soil Type:</p></div>
+                <div class="col-xs-6"><p>{{ details.soil_type }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Land Use:</p></div>
+                <div class="col-xs-6"><p>{{ details.land_use }}</p></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6"><p>Other Comments:</p></div>
+                <div class="col-xs-6"><p>{{ details.other_comments }}</p></div>
             </div>
         </div>
         <div class="col-xs-12 col-md-6">
@@ -101,7 +117,6 @@
     </div>
 </div>
 <script>
-
     function initMap() {
         //  var myLatLng = new google.maps.LatLng({{ sample.sample_location.latitude }}, {{ sample.sample_location.longitude }});
 
@@ -118,11 +133,9 @@
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: 'Hello World!'
-        });
+            title: 'Sample Site' });
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE__MAPS_API_KEY }}&callback=initMap"
-        type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE__MAPS_API_KEY }}&callback=initMap" type="text/javascript"></script>
 
 {% endblock %}
