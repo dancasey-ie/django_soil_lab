@@ -4,20 +4,17 @@
 Full Stack Software Development: Easca Environmental 
 =========================================================
 
-This project was developed as the final project in a diploma in Full Stack Software Development through The Code Institute. 
-The web-app developed digitalises processes for a made up envirnonmental science lab, Easca Environmental, offering a variatey of soil testing services.
-The app was developed with consultation with Southern Scientific, with the intention of adopting the app for digitising their processes, 
-reducing paper work and allowing lab technicians to concentrating on the science.
+This Django project is a combined online shop and lab managment system for an environmental science laboratory, offering a variatey of soil testing services.
 
 The key features of the app are:
 
-* Customer can 'Order a Sample Kit', they will then receive the kit in the post with a reference number
+* Customer can 'Order a Sample Kit', they will then receive a sample kit in the post with a reference number
 * Customer can 'Submit Sample Details' online
 * Staff can 'Receive Sample' into the lab for testing
 * Staff can 'Upload Results'
 * Customer and Staff can 'View Report' of the sample details and results
 
-The app is developed using Django framework for efficient developement. A Postgres relational database is used for storing data.
+This project was developed as the final project in a diploma in Full Stack Software Development through The Code Institute, with consultation with Soutern Scientific Services.
 
 UX
 ----

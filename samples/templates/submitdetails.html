@@ -30,9 +30,9 @@
 {% endblock %}
 
 {% block content %}
-<h3>Submit Details: {{ status.sample_ref }}</h3>
+<h3>Submit Details: {{ sample.sample_ref }}</h3>
 <div id="demo"></div>
-<form role="form" method="post" id="" action="{% url 'submit' status.id %}">
+<form role="form" method="post" id="" action="{% url 'submit' sample.id %}">
     {% csrf_token %}
     <div class="form-group col-md-6">
 

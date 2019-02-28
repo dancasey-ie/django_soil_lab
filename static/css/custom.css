@@ -50,8 +50,8 @@ body {
     width: auto;
 }
 
-h2, h3 {
-    color: #265f07
+h1, h2, h3, h4 {
+    color: #40ae49
 }
 
 .results_btn {

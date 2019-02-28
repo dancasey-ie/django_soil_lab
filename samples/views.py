@@ -20,43 +20,52 @@ User = get_user_model()
 @login_required
 def yourportal(request):
 
-    if request.method == 'POST':
-        sample_ref =  request.POST['sample_ref']
-        try:
-            sample = SampleStatus.objects.get(sample_ref=sample_ref)
-            if sample.status == "Dispatched":
-
-                return submit(request, sample.id)
-            else:
-                messages.error(request,
-                                '{0} is not available to be "Submitted", it may not have been dispatched yet or has already been processed'.format(sample_ref))
-            return redirect(yourportal)
-        except SampleStatus.DoesNotExist:
-            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
-        pass
-
-    else:
-
-        completed_samples = SampleStatus.objects.filter(Q(status='Complete') & Q(ordered_by=request.user))
-        processing_samples = SampleStatus.objects.filter(~Q(status='Complete') & Q(ordered_by=request.user))
-        details = SampleDetails.objects.all()
+    completed_samples = SampleStatus.objects.filter(Q(status='Complete') & Q(ordered_by=request.user))
+    processing_samples = SampleStatus.objects.filter(~Q(status='Complete') & Q(ordered_by=request.user))
+    details = SampleDetails.objects.all()
 
     return render(request, 'yourportal.html', {"processing_samples": processing_samples, "completed_samples": completed_samples, "details": details})
 
 @login_required()
-def submit(request, status_id):
+def details(request):
+
+    if request.method == 'POST':
+        sample_ref =  request.POST['sample_ref']
+
+        try:
+            sample = SampleStatus.objects.get(sample_ref=sample_ref)
+            if sample.status == 'Dispatched':
+
+                details_form = SampleDetailsForm()
+                return render(request, "submitdetails.html", {'details_form': details_form, 'sample': sample})
+            else:
+
+                messages.error(request,
+                '{0} is not available to be "Submitted", it may not have been dispatched yet or has already been processed'.format(sample_ref))
+            return redirect(yourportal)
+        except SampleStatus.DoesNotExist:
+            messages.error(request, '{0} is not a valid sample reference'.format(sample_ref))
+        pass
+    else:
+        messages.error(request, 'Not POST')
+    return redirect(yourportal)
+
+
+
+@login_required()
+def submit(request, sample_id):
     """A view that manages the customer sample submission form"""
 
-    status = SampleStatus.objects.get(id=status_id)
     if request.method == 'POST':
         details_form = SampleDetailsForm(request.POST)
-
+        sample =  SampleStatus.objects.get(id=sample_id)
         if details_form.is_valid():
-            status = SampleStatus.objects.get(id=status_id)
-            status.submitted_by = request.user
-            status.submit_date = timezone.now()
-            status.status = 'Submitted'
-            status.save()
+            #sample = SampleStatus.objects.get(id=sample_id)
+
+            sample.submitted_by = request.user
+            sample.submit_date = timezone.now()
+            sample.status = 'Submitted'
+            sample.save()
 
             details = details_form.save(commit=False)
             details.save()
@@ -64,14 +73,14 @@ def submit(request, status_id):
             sample_address = geolocator.reverse((details.sample_location.latitude,
                                                          details.sample_location.longitude))
             details.sample_address = sample_address[0]
-            details.sample = status
+            details.sample = sample
             details.save()
             return redirect(yourportal)
 
     else:
         details_form = SampleDetailsForm()
 
-    return render(request, "submitdetails.html", {'details_form': details_form, 'status': status})
+    return render(request, "submitdetails.html", {'details_form': details_form, 'sample': sample})
 
 @login_required()
 def viewreport(request, sample_id):

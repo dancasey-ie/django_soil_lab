@@ -17,7 +17,7 @@
     <div class="collapse submit_collapse collapse_xs" id="submit_collapse">
         <p>Enter the sample reference on the sample kit to submit the sample details. Only samples already dispatched can have their details submitted</p>
         <div class="row">
-            <form role="form" method="post" id="submit_form" action="{% url 'yourportal' %}">
+            <form role="form" method="post" id="submit_form" action="{% url 'details' %}">
                 {% csrf_token %}
                 <div class="form-group col-xs-12 col-sm-3">
                     <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
