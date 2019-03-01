@@ -54,6 +54,22 @@ h1, h2, h3, h4 {
     color: #40ae49
 }
 
+.portal_section {
+    margin-top: 20px;
+}
+.section_header {
+    background-color: #328008;
+    border-radius: 10px;
+    height: 40px;
+}
+
+.section_title {
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 0px;
+    margin-top: 5px;
+}
+
 .results_btn {
     margin-top: 25px;
 }

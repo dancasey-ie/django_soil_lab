@@ -5,18 +5,15 @@
 {% load bootstrap_tags %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <a data-toggle="collapse" href="#dispatch_collapse" role="button" aria-expanded="true" aria-controls="#dispatch_collapse">
-            <div class="pull-left">
-                <h3>Dispatch Sample</h3>
+<div class="container portal_section">
+    <div class="row section_header">
+            <div class="col-xs-12 col-sm-4">
+                <a data-toggle="collapse" href="#dispatch_collapse" role="button" aria-expanded="true" aria-controls="#dispatch_collapse">
+                    <h3 class="pull-left section_title">Dispatch Sample</h3>
+                    <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+                </a>
             </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
-    </div>
+</div>
     <div class="collapse dispatch_collapse collapse_xs" id="dispatch_collapse">
         <p>Enter an 'Ordered' sample reference to record that the sample kit has been dispatched to customer.</p>
         <div class="row">
@@ -33,18 +30,16 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <a data-toggle="collapse" href="#receive_collapse" role="button" aria-expanded="true" aria-controls="#receive_collapse">
-            <div class="pull-left">
-                <h3>Receive Sample</h3>
+<div class="container portal_section">
+    <div class="row section_header">
+
+            <div class="col-xs-12 col-sm-4">
+                <a data-toggle="collapse" href="#receive_collapse" role="button" aria-expanded="true" aria-controls="#receive_collapse">
+                    <h3 class="pull-left section_title">Receive Sample</h3>
+                    <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+                </a>
             </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
-    </div>
+</div>
     <div class="collapse receive_collapse collapse_xs" id="receive_collapse">
         <p>Enter a 'Submitted' sample reference to record that the sample has been received into the lab.</p>
         <div class="row">
@@ -61,18 +56,16 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <a data-toggle="collapse" href="#results_collapse" role="button" aria-expanded="true" aria-controls="#results_collapse">
-            <div class="pull-left">
-                <h3>Submit Results</h3>
-            </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
+<div class="container portal_section">
+    <div class="row section_header">
+        <div class="col-xs-12 col-sm-4">
+            <a data-toggle="collapse" href="#results_collapse" role="button" aria-expanded="true" aria-controls="#results_collapse">
+                <h3 class="pull-left section_title">Upload Results</h3>
+                <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+            </a>
+        </div>
     </div>
+
     <div class="collapse results_collapse collapse_xs" id="results_collapse">
         <p>
             Enter a 'Received' sample reference, with the results from lab test. <br />
@@ -120,17 +113,16 @@
     </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <a data-toggle="collapse" href="#archive_collapse" role="button" aria-expanded="true" aria-controls="#archive_collapse">
-            <div class="pull-left">
-                <h3>Sample Archive</h3>
-            </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
+<div class="container portal_section">
+    <div class="row section_header">
+
+        <div class="col-xs-12 col-sm-4 ">
+            <a data-toggle="collapse" href="#archive_collapse" role="button" aria-expanded="true" aria-controls="#archive_collapse">
+                <h3 class="pull-left section_title">Sample Archive</h3>
+                <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+            </a>
+        </div>
+
     </div>
     <div class="collapse archive_collapse collapse_xs" id="archive_collapse">
         <p>Explore the archive of samples.</p>

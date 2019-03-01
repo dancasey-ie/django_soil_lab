@@ -88,6 +88,7 @@ __Features to be Implemented__
 * 1hr Add save/print pdf button to the report
 * 1hr Filter search for sample archive
 * 2hr Map showing markers for all samples
+* expand icons should show correct on first load
 
 Technologies Used
 -----------------------
@@ -137,8 +138,24 @@ __Visual Testing__
 The dev tool within Firefox Development Edition was used to test that the pages were displaying correctly (alignment, spacing, position etc.) across different screen widths.
 
 
-|                                                       | Galaxy S5 | Pixel 2 | Pixel 2XL | iPhone 5/SE |	iPhone 6/7/8 | iPhone 6/7/8 + | iPhone X | iPad  | iPad Pro   | Responsive 1366 x 768 | Responsive 1680 x 1050 |  
-| ----------------------------------------------------- | --------- | ------- | --------- | ----------- | -------------- | -------------- | -------- | ------| ---------- | --------------------- | ---------------------- |
+|                                                       | Galaxy S5 | Pixel 2 | Pixel 2XL | iPhone 5/SE | iPhone 6/7/8 | iPhone 6/7/8 + | iPhone X | iPad  | iPad Pro   | Responsive 1366 x 768 | Responsive 1680 x 1050 |  
+| ----------------------------------------------------- | --------- | ------- | --------- | ----------- | ------------ | -------------- | -------- | ------| ---------- | --------------------- | ---------------------- |
+| Home/ About                                           | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Nav - Collapse/ Expand in xs, hover and focus         | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Services                                              | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Log in/ Register                                      | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Cart                                                  | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Checkout                                              | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Your Portal - Collapse/ Expand in xs, hover and focus | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Enter Details                                         | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Lab Portal                                            | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Order Confirmation Email                              | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Results In Email                                      | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Sample Report                                         | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+
+
+
+
 
 
 __Manual Testing__
