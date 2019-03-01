@@ -129,7 +129,12 @@ def viewreport(request, sample_id):
 
         arg = {'status': status,
                'details': details,
-               'results': results}
+               'results': results,
+               'p_perc' : (results.p/12)*100,
+               'k_perc' : (results.k/200)*100,
+               'ph_perc' : (results.ph/12)*100,
+               'lr_ph_perc' : (results.lr_ph/12)*100,
+               }
 
         return render(request, "viewreport.html", arg)
 

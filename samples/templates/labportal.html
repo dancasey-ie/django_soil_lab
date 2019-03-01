@@ -71,45 +71,42 @@
             Enter a 'Received' sample reference, with the results from lab test. <br />
             A blank list means there are no samples received for testing.
         </p>
-            <form role="form" method="post" id="" action="{% url 'results' %}">
-                {% csrf_token %}
-                <!-- <div class="form-group col-md-6">
+        <form role="form" method="post" id="" action="{% url 'results' %}">
+            {% csrf_token %}
 
-                {{ results_form|as_bootstrap }}
+            <!-- if left out completly results form is not styled, if not commented out results form is rendered twice  {{ results_form|as_bootstrap }} -->
+            <div class="row">
+                <div class="form-group col-xs-6 col-sm-3">
 
-            </div>
-               -->
-                <div class="row">
-                    <div class="form-group col-xs-6 col-sm-3">
-                        <label for="{{ results_form.sample.id_for_label }}">Sample Ref.</label>
-                        {{ results_form.sample }}
-                    </div>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <div class="form-group col-xs-6 col-sm-2">
-                                <label for="{{ results_form.p.id_for_label }}">P</label>
-                                {{ results_form.p }}
-                            </div>
-                            <div class="form-group col-xs-6 col-sm-2">
-                                <label for="{{ results_form.k.id_for_label }}">K</label>
-                                {{ results_form.k }}
-                            </div>
-                            <div class="form-group col-xs-6 col-sm-2">
+                    <label for="{{ results_form.sample.id_for_label }}">Sample Ref.</label>
+                    {{ results_form.sample }}
+                </div>
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="form-group col-xs-6 col-sm-2">
+                            <label for="{{ results_form.p.id_for_label }}">P</label>
+                            {{ results_form.p }}
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-2">
+                            <label for="{{ results_form.k.id_for_label }}">K</label>
+                            {{ results_form.k }}
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-2">
                             <label for="{{ results_form.lr_ph.id_for_label}}">LR pH Buffer</label>
-                                {{ results_form.lr_ph }}
-                            </div>
-                            <div class="form-group col-xs-6 col-sm-2">
-                                <label for="{{ results_form.pH.id_for_label }}">pH</label>
-                                {{ results_form.ph }}
-                            </div>
-                            <div class="form-group col-xs-6 col-sm-2">
-                                <input class="btn btn-success results_btn" id="submit_sample_btn" name="commit" type="submit" value="Submit Results">
-                            </div>
+                            {{ results_form.lr_ph }}
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-2">
+                            <label for="{{ results_form.pH.id_for_label }}">pH</label>
+                            {{ results_form.ph }}
+                        </div>
+                        <div class="form-group col-xs-6 col-sm-2">
+                            <input class="btn btn-success results_btn" id="submit_sample_btn" name="commit" type="submit" value="Submit Results">
                         </div>
                     </div>
-
                 </div>
-            </form>
+
+            </div>
+        </form>
     </div>
 </div>
 

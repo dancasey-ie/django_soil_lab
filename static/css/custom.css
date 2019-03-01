@@ -58,13 +58,11 @@ h1, h2, h3, h4 {
     margin-top: 20px;
 }
 .section_header {
-    background-color: #328008;
-    border-radius: 10px;
-    height: 40px;
+    border-bottom: #40ae49;
+    border-bottom-style: solid;
 }
 
 .section_title {
-    color: #ffffff;
     vertical-align: middle;
     margin: 0px;
     margin-top: 5px;
@@ -158,5 +156,41 @@ caption p {
     min-height: 40px;
 }
 
+.p_color_scale {
+    background-image: linear-gradient(to right, white, orange);
+}
+.p_number_scale {
+}
 
+.k_color_scale {
+    background-image: linear-gradient(to right, white, purple);
+}
+
+.ph_color_scale {
+    background-image: linear-gradient(to right, red, green, blue);
+}
+
+.lr_ph_color_scale {
+    background-image: linear-gradient(to right, orange, white, blue);
+}
+
+.k_number_scale {
+}
+
+.scale_section {
+    text-align: center;
+    border-left-style: solid;
+    border-left-width:thin;
+}
+
+.scale_num {
+    padding: 0px;
+}
+
+.scale_value {
+    font-weight: bold;
+    border-left-style: solid;
+    border-left-width: thin;
+    padding-left: 3px;
+}
 
