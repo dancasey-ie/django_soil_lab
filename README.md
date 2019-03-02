@@ -144,10 +144,11 @@ Travis CI was used for continuous integration insuring that the host environment
 
 __Code Validation__
 
-* __Python__ was validated using http://pep8online.com/. Both run.py and test_app.py are pep8 compliant.
+* __Python__ was validated using http://pep8online.com/.
 * __HTML__ was validated using https://validator.w3.org/. Due to the python code embedded in the HTML templates there were a number of errors.
 * __CSS__ was validated using https://jigsaw.w3.org/css-validator/. No errors were found.
 * __Spelling and Grammar__ was validated using Google Docs.
+* __JavaScript__ was validated using https://jshint.com/
 
 __Unittest Automated Testing__
 
