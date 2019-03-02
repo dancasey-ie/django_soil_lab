@@ -85,8 +85,8 @@ __Features to be Implemented__
 
 * ! 3hr Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
 
-*  3hr Automated Testing
-*  3hr Manual Testing
+*  !! 3hr Automated Testing
+*  !! 3hr Manual Testing
 
 * 2hr Show test results using a dc.js chart making it clear where the soil nutrients sit relatie to the nutrient threshholds for the specific land use
 * 1hr Add save/print pdf button to the report
@@ -95,6 +95,9 @@ __Features to be Implemented__
 * expand icons should show correct on first load
 * is it bad practice to have registration templates in base template folder
 * contact page, bounce back email confirmation
+* Clean up CSS
+* Better landing page
+* Sales statistics in labportal only admin access
 
 note:  should do this 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.

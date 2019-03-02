@@ -85,8 +85,63 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
             <h4>Phospherous, P = {{ results.p }} mg/l</h4>
+            <div class="container">
+            <div class="row">
+                <table class="col-xs-12">
+                    <tr>
+                        <th>Your Result (mg/l)</th>
+                        <th>Index Range (mg/l)</th>
+                        <th>Index Description</th>
+                        <th>Response to Fertilizer</th>
+                    </tr>
+                    {% if results.p <= 3 %}
+                    <tr class="this_index">
+                        <td>{{ results.p }}</td>
+                        {% else %}
+                    <tr>
+                        <td></td>
+                        {% endif %}
+                        <td>0.0-3.0</td>
+                        <td>Very Low</td>
+                        <td>Definite</td>
+                    </tr>
+                    {% if results.p > 3 and results.p <= 5 %}
+                    <tr class="this_index">
+                        <td>{{ results.p }}</td>
+                        {% else %}
+                    <tr>
+                        <td></td>
+                        {% endif %}
+                        <td>3.1-5.0</td>
+                        <td>Low</td>
+                        <td>Likely</td>
+                    </tr>
+                    {% if results.p > 5 and results.p <= 8 %}
+                    <tr class="this_index">
+                        <td>{{ results.p }}</td>
+                        {% else %}
+                    <tr>
+                        <td></td>
+                        {% endif %}
+                        <td>5.1-8.0</td>
+                        <td>Medium / Adequate</td>
+                        <td>Unlikely / Tenuous</td>
+                    </tr>
+                    {% if results.p > 8 %}
+                    <tr class="this_index">
+                        <td>{{ results.p }}</td>
+                        {% else %}
+                    <tr>
+                        <td></td>
+                        {% endif %}
+                        <td>>8</td>
+                        <td>Sufficient / High</td>
+                        <td>None</td>
+                    </tr>
+                </table>
+            </div>
+            </div>
             <div class="row">
                 <div class="scale_value" style="position:relative; left: {{ p_perc }}%;"> {{ results.p }} mg/l</div>
             </div>
@@ -123,6 +178,62 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <h4>Potasium, K = {{ results.k }} mg/l</h4>
+            <div class="container">
+                <div class="row">
+                    <table class="col-xs-12">
+                        <tr>
+                            <th>Your Result (mg/l)</th>
+                            <th>Range (mg/l)</th>
+                            <th>Description</th>
+                            <th>Response to Fertilizer</th>
+                        </tr>
+                        {% if results.k <= 50 %}
+                        <tr class="this_index">
+                            <td>{{ results.k }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>0-50</td>
+                            <td>Very Low</td>
+                            <td>Definite</td>
+                        </tr>
+                        {% if results.k > 50 and results.k <= 100 %}
+                        <tr class="this_index">
+                            <td>{{ results.k }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>50-150</td>
+                            <td>Low</td>
+                            <td>Likely</td>
+                        </tr>
+                        {% if results.k > 100 and results.k <= 150 %}
+                        <tr class="this_index">
+                            <td>{{ results.k }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>101-150</td>
+                            <td>Medium / Adequate</td>
+                            <td>Unlikely / Tenuous</td>
+                        </tr>
+                        {% if results.k > 150 %}
+                        <tr class="this_index">
+                            <td>{{ results.k }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>>150</td>
+                            <td>Sufficient / High</td>
+                            <td>None</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <div class="row">
                 <div class="scale_value" style="position:relative; left: {{ k_perc }}%;"> {{ results.k }} mg/l</div>
             </div>
@@ -160,6 +271,63 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <h4>pH = {{ results.ph }}</h4>
+            <div class="container">
+                <div class="row">
+                    <table class="col-xs-12">
+                        <tr>
+                            <th>Your Result</th>
+                            <th>Range</th>
+                            <th>Description</th>
+                            <th>Response to Lime</th>
+                        </tr>
+                        {% if results.ph <= 3 %}
+                        <tr class="this_index">
+                            <td>{{ results.ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>0-3</td>
+                            <td>Very Acidic</td>
+                            <td>Definite</td>
+                        </tr>
+                        {% if results.ph > 3 and results.ph <= 6 %}
+                        <tr class="this_index">
+                            <td>{{ results.ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>3-6</td>
+                            <td>Acidic</td>
+                            <td>Likely</td>
+                        </tr>
+                        {% if results.ph > 6 and results.ph <= 8 %}
+                        <tr class="this_index">
+                            <td>{{ results.ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>6-8</td>
+                            <td>Neutral</td>
+                            <td>Unlikely / Tenuous</td>
+                        </tr>
+                        {% if results.ph > 8 %}
+                        <tr class="this_index">
+                            <td>{{ results.ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>>8</td>
+                            <td>Basic</td>
+                            <td>None</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="scale_value" style="position:relative; left: {{ ph_perc }}%;"> {{ results.ph }}</div>
             </div>
@@ -197,6 +365,62 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <h4>Lime Reqirement pH = {{ results.lr_ph }}</h4>
+            <div class="container">
+                <div class="row">
+                    <table class="col-xs-12">
+                        <tr>
+                            <th>Your Result</th>
+                            <th>Range</th>
+                            <th>Description</th>
+                            <th>Response to Lime</th>
+                        </tr>
+                        {% if results.lr_ph <= 3 %}
+                        <tr class="this_index">
+                            <td>{{ results.lr_ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>0-3</td>
+                            <td>Very Acidic</td>
+                            <td>Definite</td>
+                        </tr>
+                        {% if results.lr_ph > 3 and results.lr_ph <= 6 %}
+                        <tr class="this_index">
+                            <td>{{ results.lr_ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>3-6</td>
+                            <td>Acidic</td>
+                            <td>Likely</td>
+                        </tr>
+                        {% if results.lr_ph > 6 and results.lr_ph <= 8 %}
+                        <tr class="this_index">
+                            <td>{{ results.lr_ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>6-8</td>
+                            <td>Neutral</td>
+                            <td>Unlikely / Tenuous</td>
+                        </tr>
+                        {% if results.lr_ph > 8 %}
+                        <tr class="this_index">
+                            <td>{{ results.lr_ph }}</td>
+                            {% else %}
+                        <tr>
+                            <td></td>
+                            {% endif %}
+                            <td>>8</td>
+                            <td>Basic</td>
+                            <td>None</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
             <div class="row">
                 <div class="scale_value" style="position:relative; left: {{ lr_ph_perc }}%;"> {{ results.lr_ph }}</div>
             </div>

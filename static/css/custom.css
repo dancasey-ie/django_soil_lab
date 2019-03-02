@@ -189,8 +189,18 @@ caption p {
 
 .scale_value {
     font-weight: bold;
-    border-left-style: solid;
     border-left-width: thin;
     padding-left: 3px;
+}
+
+.this_index {
+    background-color: yellow;
+}
+
+table, tr, td, th {
+    border-style: solid;
+    border-width: thin;
+    text-align: center;
+
 }
 
