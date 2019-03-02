@@ -5,6 +5,10 @@ var widget = document.getElementById("div_id_sample_location").getElementsByClas
 var data_map_options = widget.getAttribute("data-map-options")
 var data_marker_options = widget.getAttribute("data-marker-options")
 
+// A bit hacky: checks if the marker has already been set so that the user isnt asked for location access a second time
+function checkLocation() {
+    if (document.getElementById("id_sample_location_0").value == "") { getLocation() };
+}
 // Check if geolocation is available
 function getLocation() {
 
@@ -29,8 +33,9 @@ function showPosition(position) {
     lngInput.value = lng;
     data_map_options = '{ "zooom": 15, "center": { "lat": ' + lat + ', "lng": ' + lng + ' }, "mapTypeId": "satellite"}';
     data_marker_options = '{ "position": { "lat": ' + lat + ', "lng": ' + lng + ' } }';
+    window.location.reload(false);
 
 }
 
-getLocation();
+checkLocation();
 

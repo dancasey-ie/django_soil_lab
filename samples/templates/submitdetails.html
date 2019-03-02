@@ -3,12 +3,13 @@
 {% load bootstrap_tags %}
 
 {% block content %}
+
 <h3>Submit Details: {{ sample.sample_ref }}</h3>
 <div id="default_info"></div>
+
 <form role="form" method="post" id="" action="{% url 'submit' sample.id %}">
     {% csrf_token %}
     <div class="form-group col-md-6">
-
         {{ details_form.media }}
         {{ details_form|as_bootstrap }}
 
