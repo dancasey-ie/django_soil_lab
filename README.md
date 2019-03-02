@@ -72,7 +72,7 @@ __Existing Features__
 * User registration
 * Customer can order samples
 * Unique sample_reference number is generated for each sample ordered
-* Customer can submit the sample details through the 'Your Portal' view. A google map is used for marking the sample position. Geocoding automatically saves the address
+* Customer can submit the sample details through the 'Your Portal' view. A google map is used for marking the sample position. HTML5 geolocate is used for initialising the marker position Geocoding automatically saves the address
 * Customer can view all their samples and access the report with results displayed if the results are available
 * Staff can mark the sample as "received" when it comes into the lab, through the 'Lab Portal' view, this processes is time stamped and the loged in staff member is recorded
 * Staff can upload the test results, through the 'Lab Portal' view, this processes is time stamped and the loged in staff member is recorded
@@ -81,9 +81,8 @@ __Existing Features__
 * Pagination of all tables in the Lab and Your Portal
 
 
-__Features to be Implemented__
 
-* ! 3hr Use HTML5 Geolocator function to set sample_location, may be awkard as the django-geoposition marker initial position is set in settings.py not in the template
+__Features to be Implemented__
 
 *  !! 3hr Automated Testing
 *  !! 3hr Manual Testing

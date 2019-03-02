@@ -170,13 +170,13 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 GEOPOSITION_GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAP_API_KEY')
 
-#GEOPOSITION_MAP_OPTIONS = {
- #           'zoom': 5,
-  #          'center': { 'lat': 52.18, 'lng': -9.43 },
-   #         'mapTypeId': 'satellite'
-#}
+GEOPOSITION_MAP_OPTIONS = {
+       #     'zoom': 5,
+       #     'center': { 'lat': 52.18, 'lng': -6.43 },
+            'mapTypeId': 'hybrid'
+}
 
 #GEOPOSITION_MARKER_OPTIONS = {
- #   'position': { 'lat': 52.18, 'lng': -9.43 },
-  #   }
+   # 'position': { 'lat': 52.18, 'lng': -6.43 },
+   #  }
 

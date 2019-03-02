@@ -117,23 +117,30 @@ def viewreport(request, sample_id):
             status = SampleStatus.objects.get(id=sample_id)
             details = SampleDetails.objects.get(sample=status)
             results = SampleResults.objects.get(sample=status)
+            p_perc = (results.p/12)*100
+            k_perc = (results.k/200)*100
+            ph_perc = (results.ph/12)*100
+            lr_ph_perc = (results.lr_ph/12)*100
 
         except SampleStatus.DoesNotExist:
             print("Sample ID does not exist")
         except SampleDetails.DoesNotExist:
             print("Can not find sample details")
         except SampleResults.DoesNotExist:
-            print("Results pending")
             results = ""
+            p_perc = ""
+            k_perc = ""
+            ph_perc = ""
+            lr_ph_perc = ""
         pass
 
         arg = {'status': status,
                'details': details,
                'results': results,
-               'p_perc' : (results.p/12)*100,
-               'k_perc' : (results.k/200)*100,
-               'ph_perc' : (results.ph/12)*100,
-               'lr_ph_perc' : (results.lr_ph/12)*100,
+               'p_perc' : p_perc,
+               'k_perc' : k_perc,
+               'ph_perc' : ph_perc,
+               'lr_ph_perc' : lr_ph_perc,
                }
 
         return render(request, "viewreport.html", arg)

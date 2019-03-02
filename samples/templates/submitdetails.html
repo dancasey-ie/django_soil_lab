@@ -4,7 +4,7 @@
 
 {% block content %}
 <h3>Submit Details: {{ sample.sample_ref }}</h3>
-<div id="demo"></div>
+<div id="default_info"></div>
 <form role="form" method="post" id="" action="{% url 'submit' sample.id %}">
     {% csrf_token %}
     <div class="form-group col-md-6">
@@ -19,9 +19,9 @@
 </form>
 
 {% block head_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
-<script src="{% static 'js/datePicker.js' %}"></script>
-<script src="{% static 'js/getLocation.js' %}"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+<script type="text/javascript" src="{% static 'js/datePicker.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/getLocation.js' %}"></script>
 {% endblock %}
 
 
