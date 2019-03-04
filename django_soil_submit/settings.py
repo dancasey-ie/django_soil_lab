@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import sys
 import dj_database_url
 
 if os.path.isfile("env.py"):
@@ -94,7 +95,8 @@ WSGI_APPLICATION = 'django_soil_submit.wsgi.application'
 
 
 # if statement to deal with travis not having access to cloud db
-if "DATABASE_URL" in os.environ:
+testing = ('test' in sys.argv or 'test_coverage' in sys.argv)
+if "DATABASE_URL" in os.environ and not testing:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 else:
     print("Database URL not found. Using SQLite instead")

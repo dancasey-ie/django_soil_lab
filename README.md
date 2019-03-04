@@ -92,11 +92,12 @@ __Features to be Implemented__
 * 1hr Filter search for sample archive
 * 2hr Map showing markers for all samples
 * expand icons should show correct on first load
-* is it bad practice to have registration templates in base template folder
 * contact page, bounce back email confirmation
 * Clean up CSS
 * Better landing page
 * Sales statistics in labportal only admin access
+
+
 
 note:  should do this 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
