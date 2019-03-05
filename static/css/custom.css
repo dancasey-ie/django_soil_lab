@@ -60,6 +60,8 @@ h1, h2, h3, h4 {
 .section_header {
     border-bottom: #40ae49;
     border-bottom-style: solid;
+    border-width:thin;
+    padding-bottom:5px;
 }
 
 .section_title {
@@ -203,9 +205,13 @@ table, tr, td, th {
     text-align: center;
 }
 
-.section_header .fas {
+.section_title .fas {
     border-radius: 50%;
     border-style: solid;
     font-size:medium;
     padding: 2px;
+}
+
+table {
+    overflow: scroll;
 }

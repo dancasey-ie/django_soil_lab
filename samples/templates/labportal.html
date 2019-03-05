@@ -131,11 +131,11 @@
                         <th>Status</th>
                         <th>Details</th>
                         <th>Ordered By</th>
-                        <th>Ordered Date</th>
-                        <th>Dispatched Date</th>
-                        <th>Submitted Date</th>
-                        <th>Received Date</th>
-                        <th>Tested Date</th>
+                        <th class="visible-md visible-lg">Ordered Date</th>
+                        <th class="visible-md visible-lg">Dispatched Date</th>
+                        <th class="visible-md visible-lg">Submitted Date</th>
+                        <th class="visible-md visible-lg">Received Date</th>
+                        <th class="visible-md visible-lg">Tested Date</th>
                     </tr>
                     {% for sample in samples %}
                     <tr>
@@ -151,11 +151,11 @@
                             {% endif %}
                         </td>
                         <td>{{ sample.ordered_by }}</td>
-                        <td>{{ sample.ordered_date.date }}</td>
-                        <td>{{ sample.dispatched_date.date  }}</td>
-                        <td>{{ sample.submit_date.date  }}</td>
-                        <td>{{ sample.received_date.date  }}</td>
-                        <td>{{ sample.tested_date.date  }}</td>
+                        <td class="visible-md visible-lg">{{ sample.ordered_date.date }}</td>
+                        <td class="visible-md visible-lg">{{ sample.dispatched_date.date  }}</td>
+                        <td class="visible-md visible-lg">{{ sample.submit_date.date  }}</td>
+                        <td class="visible-md visible-lg">{{ sample.received_date.date  }}</td>
+                        <td class="visible-md visible-lg">{{ sample.tested_date.date  }}</td>
 
                     </tr>
                     {% endfor %}

@@ -91,7 +91,7 @@ __Features to be Implemented__
 * 1hr Add save/print pdf button to the report
 * 1hr Filter search for sample archive
 * 2hr Map showing markers for all samples
-* expand icons should show correct on first load
+
 * contact page, bounce back email confirmation
 * Clean up CSS
 * Better landing page

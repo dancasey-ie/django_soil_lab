@@ -107,13 +107,13 @@
             </p>
             <div class="container">
                 <div class="row">
-                    <table class="col-xs-12">
+                    <table class="col-sm-12">
                         <tr>
                             <th>Sample Ref.</th>
                             <th>Status</th>
-                            <th>Ordered Date</th>
-                            <th>Submitted Date</th>
-                            <th>Received Date</th>
+                            <th class="visible-md visible-lg">Ordered Date</th>
+                            <th class="visible-md visible-lg">Submitted Date</th>
+                            <th class="visible-md visible-lg">Received Date</th>
                             <th>Your Ref.</th>
                             <th>Details</th>
                         </tr>
@@ -122,9 +122,9 @@
                         <tr>
                             <td>{{ sample.sample_ref }}</td>
                             <td>{{ sample.status }}</td>
-                            <td>{{ sample.ordered_date.date }}</td>
-                            <td>{{ sample.submit_date.date }}</td>
-                            <td>{{ sample.received_date.date }}</td>
+                            <td class="visible-md visible-lg">{{ sample.ordered_date.date }}</td>
+                            <td class="visible-md visible-lg">{{ sample.submit_date.date }}</td>
+                            <td class="visible-md visible-lg">{{ sample.received_date.date }}</td>
                             {% for sample_details in details %}
                             {% if sample_details.sample == sample %}
                             <td>
