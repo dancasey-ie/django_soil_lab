@@ -203,3 +203,9 @@ table, tr, td, th {
     text-align: center;
 }
 
+.section_header .fas {
+    border-radius: 50%;
+    border-style: solid;
+    font-size:medium;
+    padding: 2px;
+}

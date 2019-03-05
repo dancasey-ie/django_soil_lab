@@ -4,174 +4,165 @@
 
 <div class="container">
     <div class="row">
-        <a data-toggle="collapse" href="#submit_collapse" role="button" aria-expanded="true" aria-controls="#submit_collapse">
-            <div class="pull-left">
-                <h3>Submit Sample Details</h3>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a data-toggle="collapse" href="#submit_collapse" role="button" aria-expanded="true" aria-controls="#submit_collapse">
+                    <h3 class="pull-left section_title">Submit Sample Details</h3>
+                    <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+            </a>
+        </div>
+        </div>
+        <div class="collapse submit_collapse collapse_xs" id="submit_collapse">
+            <p>Enter the sample reference on the sample kit to submit the sample details. Only samples already dispatched can have their details submitted</p>
+            <div class="row">
+                <form role="form" method="post" id="submit_form" action="{% url 'details' %}">
+                    {% csrf_token %}
+                    <div class="form-group col-xs-12 col-sm-3">
+                        <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-3">
+                        <input class="btn btn-success" id="submit_sample_btn" name="commit" type="submit" value="Enter Details">
+                    </div>
+                </form>
             </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
-    </div>
-    <div class="collapse submit_collapse collapse_xs" id="submit_collapse">
-        <p>Enter the sample reference on the sample kit to submit the sample details. Only samples already dispatched can have their details submitted</p>
-        <div class="row">
-            <form role="form" method="post" id="submit_form" action="{% url 'details' %}">
-                {% csrf_token %}
-                <div class="form-group col-xs-12 col-sm-3">
-                    <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
-                </div>
-                <div class="form-group col-xs-12 col-sm-3">
-                    <input class="btn btn-success" id="submit_sample_btn" name="commit" type="submit" value="Enter Details">
-                </div>
-            </form>
         </div>
     </div>
-</div>
 
 <div class="container">
     <div class="row">
-        <a data-toggle="collapse" href="#completed_collapse" role="button" aria-expanded="true" aria-controls="#completed_collapse">
-            <div class="pull-left">
-                <h3>Completed Samples</h3>
-            </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
-    </div>
-    <div class="collapse completed_collapse collapse_xs" id="completed_collapse">
-        <p>
-            Below is list of completed samples. <br />
-            You can access the samples details and results by following the link on each line item.
-        </p>
-        <div class="container">
-            <div class="row">
-                <table class="col-xs-12">
-                    <tr>
-                        <th>Sample Ref.</th>
-                        <th>Your Ref.</th>
-                        <th>View Report</th>
-                    </tr>
-                    {% for sample in completed_samples %}
-                    <tr>
-                        <td>{{ sample.sample_ref }}</td>
-                        {% for sample_details in details %}
-                        {% if sample_details.sample == sample %}
-                        <td>
-                            {{ sample_details.customer_ref_1 }} {{ sample_details.customer_ref_2 }}
-                        </td>
-
-                        {% endif %}
-                        {% endfor %}
-                        <td>
-
-                            <form action="{% url 'viewreport' sample.id %}" method="post">
-                                {% csrf_token %}
-                                <input class="btn btn-success" type="submit" value="View Report">
-                            </form>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a data-toggle="collapse" href="#completed_collapse" role="button" aria-expanded="true" aria-controls="#completed_collapse">
+                    <h3 class="pull-left section_title">Completed Samples</h3>
+                    <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+            </a>
         </div>
-        <div class="pagination">
-            <span class="step-links">
-                {% if completed_samples.has_previous %}
-                <a href="?completed_page=1">&laquo; first</a>
-                <a href="?completed_page={{ completed_samples.previous_page_number }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ completed_samples.number }} of {{ completed_samples.paginator.num_pages }}.
-                </span>
-
-                {% if completed_samples.has_next %}
-                <a href="?completed_page={{ completed_samples.next_page_number }}">next</a>
-                <a href="?completed_page={{ completed_samples.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
         </div>
-    </div>
-</div>
+        <div class="collapse completed_collapse collapse_xs" id="completed_collapse">
+            <p>
+                Below is list of completed samples. <br />
+                You can access the samples details and results by following the link on each line item.
+            </p>
+            <div class="container">
+                <div class="row">
+                    <table class="col-xs-12">
+                        <tr>
+                            <th>Sample Ref.</th>
+                            <th>Your Ref.</th>
+                            <th>View Report</th>
+                        </tr>
+                        {% for sample in completed_samples %}
+                        <tr>
+                            <td>{{ sample.sample_ref }}</td>
+                            {% for sample_details in details %}
+                            {% if sample_details.sample == sample %}
+                            <td>
+                                {{ sample_details.customer_ref_1 }} {{ sample_details.customer_ref_2 }}
+                            </td>
 
-<div class="container">
-    <div class="row">
-        <a data-toggle="collapse" href="#processing_collapse" role="button" aria-expanded="true" aria-controls="#processing_collapse">
-            <div class="pull-left">
-                <h3>Processing Samples</h3>
-            </div>
-            <div class="pull-right">
-                <h3><i class="fas fa-plus"></i></h3>
-            </div>
-            <div class="clearfix"></div>
-        </a>
-    </div>
-    <div class="collapse processing_collapse collapse_xs" id="processing_collapse">
-        <p>
-            Below is a list of samples being processed by Easca Environmental.
-        </p>
-        <div class="container">
-            <div class="row">
-                <table class="col-xs-12">
-                    <tr>
-                        <th>Sample Ref.</th>
-                        <th>Status</th>
-                        <th>Ordered Date</th>
-                        <th>Submitted Date</th>
-                        <th>Received Date</th>
-                        <th>Your Ref.</th>
-                        <th>Details</th>
-                    </tr>
-                    {% for sample in processing_samples %}
-
-                    <tr>
-                        <td>{{ sample.sample_ref }}</td>
-                        <td>{{ sample.status }}</td>
-                        <td>{{ sample.ordered_date.date }}</td>
-                        <td>{{ sample.submit_date.date }}</td>
-                        <td>{{ sample.received_date.date }}</td>
-                        {% for sample_details in details %}
-                        {% if sample_details.sample == sample %}
-                        <td>
-                            {{ sample_details.customer_ref_1 }} {{ sample_details.customer_ref_2 }}
-                        </td>
-                        {% endif %}
-                        {% endfor %}
-                        <td>
-                            {% if sample.status == "Submitted" or sample.status == "Received" %}
-                            <form action="{% url 'viewreport' sample.id %}" method="post">
-                                {% csrf_token %}
-                                <input class="btn btn-success" type="submit" value="Details">
-                            </form>
                             {% endif %}
-                        </td>
-                    </tr>
+                            {% endfor %}
+                            <td>
 
-                    {% endfor %}
-                </table>
+                                <form action="{% url 'viewreport' sample.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="btn btn-success" type="submit" value="View Report">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if completed_samples.has_previous %}
+                    <a href="?completed_page=1">&laquo; first</a>
+                    <a href="?completed_page={{ completed_samples.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ completed_samples.number }} of {{ completed_samples.paginator.num_pages }}.
+                    </span>
+
+                    {% if completed_samples.has_next %}
+                    <a href="?completed_page={{ completed_samples.next_page_number }}">next</a>
+                    <a href="?completed_page={{ completed_samples.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
             </div>
         </div>
-        <div class="pagination">
-            <span class="step-links">
-                {% if processing_samples.has_previous %}
-                <a href="?processing_page=1">&laquo; first</a>
-                <a href="?processing_page={{ processing_samples.previous_page_number }}">previous</a>
-                {% endif %}
+    </div>
 
-                <span class="current">
-                    Page {{ processing_samples.number }} of {{ processing_samples.paginator.num_pages }}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+            <a data-toggle="collapse" href="#processing_collapse" role="button" aria-expanded="true" aria-controls="#processing_collapse">
+                    <h3 class="pull-left section_title">Processing Samples</h3>
+                    <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
+            </a>
+        </div>
+        </div>
+        <div class="collapse processing_collapse collapse_xs" id="processing_collapse">
+            <p>
+                Below is a list of samples being processed by Easca Environmental.
+            </p>
+            <div class="container">
+                <div class="row">
+                    <table class="col-xs-12">
+                        <tr>
+                            <th>Sample Ref.</th>
+                            <th>Status</th>
+                            <th>Ordered Date</th>
+                            <th>Submitted Date</th>
+                            <th>Received Date</th>
+                            <th>Your Ref.</th>
+                            <th>Details</th>
+                        </tr>
+                        {% for sample in processing_samples %}
+
+                        <tr>
+                            <td>{{ sample.sample_ref }}</td>
+                            <td>{{ sample.status }}</td>
+                            <td>{{ sample.ordered_date.date }}</td>
+                            <td>{{ sample.submit_date.date }}</td>
+                            <td>{{ sample.received_date.date }}</td>
+                            {% for sample_details in details %}
+                            {% if sample_details.sample == sample %}
+                            <td>
+                                {{ sample_details.customer_ref_1 }} {{ sample_details.customer_ref_2 }}
+                            </td>
+                            {% endif %}
+                            {% endfor %}
+                            <td>
+                                {% if sample.status == "Submitted" or sample.status == "Received" %}
+                                <form action="{% url 'viewreport' sample.id %}" method="post">
+                                    {% csrf_token %}
+                                    <input class="btn btn-success" type="submit" value="Details">
+                                </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="pagination">
+                <span class="step-links">
+                    {% if processing_samples.has_previous %}
+                    <a href="?processing_page=1">&laquo; first</a>
+                    <a href="?processing_page={{ processing_samples.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ processing_samples.number }} of {{ processing_samples.paginator.num_pages }}
+                    </span>
+                    {% if processing_samples.has_next %}
+                    <a href="?processing_page={{ processing_samples.next_page_number }}">next</a>
+                    <a href="?processing_page={{ processing_samples.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
                 </span>
-                {% if processing_samples.has_next %}
-                <a href="?processing_page={{ processing_samples.next_page_number }}">next</a>
-                 <a href="?processing_page={{ processing_samples.paginator.num_pages }}">last &raquo;</a>
-                 {% endif %}
-                </span>
+            </div>
         </div>
     </div>
-</div>
 
 {% endblock %}
