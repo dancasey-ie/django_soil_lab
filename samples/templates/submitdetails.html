@@ -6,14 +6,98 @@
 
 <h3>Submit Details: {{ sample.sample_ref }}</h3>
 <div id="default_info"></div>
-<input id="clickMe" type="button" value="clickme" onclick="useCurrentPos();" />
+
 <form role="form" method="post" id="" action="{% url 'submit' sample.id %}">
     {% csrf_token %}
     <div class="form-group col-md-6">
+        <!--
+    {{ details_form|as_bootstrap }}
+       -->
         {{ details_form.media }}
-        {{ details_form|as_bootstrap }}
+        <div id="div_id_customer_name" class="form-group  ">
+            <label for="id_customer_name" class="control-label required-field ">
+                Customer name
+            </label>
+            <div class="">
+                <p class="help-block">i.e. Tom Cronin</p>
+                {{ details_form.customer_name }}
+            </div>
+        </div>
+        <div id="div_id_customer_ref_1" class="form-group  ">
+            <label for="id_customer_ref_1" class="control-label  ">
+                Customer ref 1
+            </label>
+            <div class="">
+                <p class="help-block">i.e Tom Cronins Main Farm</p>
+                {{ details_form.customer_ref_1 }}
+            </div>
+        </div>
+        <div id="div_id_customer_ref_2" class="form-group  ">
+            <label for="id_customer_ref_2" class="control-label  ">
+                Customer ref 2
+            </label>
+            <div class="">
+                <p class="help-block">i.e East Field</p>
+                {{ details_form.customer_ref_2 }}
+            </div>
+        </div>
+        <div id="div_id_sample_location" class="form-group  ">
+            <label for="id_sample_location" class="control-label required-field ">
+                Sample location
+            </label>
+            <div class="">
+                <p>Options:</p>
+                <ol>
+                    <li>Click 'Use Device Location' button below, to set the initial location<br />Click the 'Latitude' input box and click 'Tab' to view map</li>
+                    <li>or fill in the Latitude and Longitude entry table below</li>
+                    <li>or enter your address into the search box on the right</li>
+                    <li>or drag and drop the marker to the location</li>
 
-    </div>
+                </ol>
+                <p>For all options you can drag and drop the marker for more accurate positioning</p>
+                <input id="useDeviceLoc" class="btn btn-primary" type="button" value="Use Device Location" onclick="useCurrentPos();" />
+            </div>
+                <div class="">
+                    {{ details_form.sample_location }}
+                </div>
+            </div>
+            <div id="div_id_sample_date" class="form-group  ">
+                <label for="id_sample_date" class="control-label required-field ">
+                    Sample date
+                </label>
+                <div class="">
+                    <p class="help-block">Enter the day the sample was taken, todays submission date will be saved automatically</p>
+                    {{ details_form.sample_date }}
+                </div>
+            </div>
+            <div id="div_id_soil_type" class="form-group  ">
+                <label for="id_soil_type" class="control-label required-field ">
+                    Soil type
+                </label>
+                <div class="">
+                    <p class="help-block">Select the soil type that is closest to your sample</p>
+                    {{ details_form.soil_type }}
+                </div>
+            </div>
+            <div id="div_id_land_use" class="form-group  ">
+                <label for="id_land_use" class="control-label required-field ">
+                    Land use
+                </label>
+                <div class="">
+                    <p class="help-block">Select a land use</p>
+                    {{ details_form.land_use }}
+                </div>
+            </div>
+            <div id="div_id_other_comments" class="form-group  ">
+                <label for="id_other_comments" class="control-label  ">
+                    Other comments
+                </label>
+                <div class="">
+                    <p class="help-block">i.e. The soil was saturated when taking the sample</p>
+                    {{ details_form.other_comments}}
+                </div>
+            </div>
+        </div>
     <div class="form-group col-md-12">
         <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Submit Sample">
     </div>

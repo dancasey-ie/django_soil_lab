@@ -11,8 +11,8 @@ function success(pos) {
 
     $("#id_sample_location_0").val(lat).change();
     $("#id_sample_location_1").val(lng).change();
-    window.location.reload(false);
 }
+
 
 function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
@@ -20,5 +20,6 @@ function error(err) {
 
 function useCurrentPos() {
     navigator.geolocation.getCurrentPosition(success, error, options);
-
 }
+
+

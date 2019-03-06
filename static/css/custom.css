@@ -215,3 +215,7 @@ table, tr, td, th {
 table {
     overflow: scroll;
 }
+
+#useDeviceLoc{
+    margin-bottom:5px;
+}
