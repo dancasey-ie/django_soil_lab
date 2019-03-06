@@ -4,6 +4,8 @@ var options = {
     maximumAge: 0
 };
 
+var geo_error_msg = document.getElementById("geo_error_msg");
+
 function success(pos) {
     var crd = pos.coords;
     var lat = crd.latitude;
@@ -16,6 +18,7 @@ function success(pos) {
 
 function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
+    geo_error_msg.innerHTML = "Geolocation is not supported by this browser.";
 }
 
 function useCurrentPos() {
