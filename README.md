@@ -87,15 +87,12 @@ __Features to be Implemented__
 *  !! 3hr Automated Testing
 *  !! 3hr Manual Testing
 
-* 2hr Show test results using a dc.js chart making it clear where the soil nutrients sit relatie to the nutrient threshholds for the specific land use
-* 1hr Add save/print pdf button to the report
 * 1hr Filter search for sample archive
-* 2hr Map showing markers for all samples
 
 * contact page, bounce back email confirmation
 * Clean up CSS
 * Better landing page
-* Sales statistics in labportal only admin access
+
 
 
 

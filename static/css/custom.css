@@ -199,6 +199,22 @@ caption p {
     background-color: yellow;
 }
 
+.very_low_result {
+    background-color: #ffb3b3;
+}
+
+.low_result {
+    background-color: #ffdb99;
+}
+
+.medium_result {
+    background-color: #ffff99;
+}
+
+.high_result {
+    background-color: #99ff99;
+}
+
 table, tr, td, th {
     border-style: solid;
     border-width: thin;
