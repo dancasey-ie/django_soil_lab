@@ -6,48 +6,102 @@ html, body {
 
 body {
     font-family: Arial;
-    padding-top: 50px;
+    padding-top: 80px;
+    z-index: 2;
+    background-color: #f9f9f9;
 }
 
+.nav_bg_container {
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    z-index: -2;
+    overflow: hidden;
+    padding:0px;
+}
+#nav_bg {
+    width: 100%;
+    height: 100px;
 
+
+}
 .main_container {
     margin-top: 0px;
     min-height: calc(100vh - 130px);
 }
 
-
-
-.navbar-custom {
-    background: #328008;
+nav {
+    height: 80px;
+    color:#5e0909;
 }
 
-.navbar-brand {
-    padding: 3px;
+
+.navbar-default .navbar-brand {
+    color: #282828;
+    margin-bottom:10px;
 }
 
-    .navbar-brand img:hover {
-        opacity: .5;
+.logo_leaf {
+    color: #328008;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #328008;
+}
+
+
+
+.header_contact {
+    height: 15px;
+    margin-right: 15px;
+    margin-bottom:5px;
+    padding-top: 8px;
+    color: #328008;
+    display: block;
+    text-align:right;
+}
+
+    .header_contact > a {
+        color: #328008;
     }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: #818108;
-}
+
+
+
+    .navbar-default .navbar-nav > li > a {
+        color: #282828;
+        font-family: 'Overpass', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+    }
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+        color: #328008;
+        background-color: transparent;
+    }
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #818108;
+    background-color: #328008;
+
 }
 
 .navbar-default .navbar-toggle {
-    border-color: #818108;
+    border-color: #328008;
+    background-color: #328008;
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #818108;
+
 }
 
-#logo {
-    height: 45px;
-    width: auto;
+.navbar-collapse.in {
+    overflow-y: visible;
+    background-color: white;
+}
+
+.phone_link{
+    margin-left:10px;
 }
 
 h1, h2, h3, h4 {
@@ -158,47 +212,6 @@ caption p {
     min-height: 40px;
 }
 
-.p_color_scale {
-    background-image: linear-gradient(to right, white, orange);
-}
-.p_number_scale {
-}
-
-.k_color_scale {
-    background-image: linear-gradient(to right, white, purple);
-}
-
-.ph_color_scale {
-    background-image: linear-gradient(to right, red, green, blue);
-}
-
-.lr_ph_color_scale {
-    background-image: linear-gradient(to right, orange, white, blue);
-}
-
-.k_number_scale {
-}
-
-.scale_section {
-    text-align: center;
-    border-left-style: solid;
-    border-left-width:thin;
-}
-
-.scale_num {
-    padding: 0px;
-}
-
-.scale_value {
-    font-weight: bold;
-    border-left-width: thin;
-    padding-left: 3px;
-}
-
-.this_index {
-    background-color: yellow;
-}
-
 .very_low_result {
     background-color: #ffb3b3;
 }
@@ -216,8 +229,6 @@ caption p {
 }
 
 table, tr, td, th {
-    border-style: solid;
-    border-width: thin;
     text-align: center;
 }
 
