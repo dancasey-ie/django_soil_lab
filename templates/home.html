@@ -17,6 +17,9 @@
 </head>
 <body>
     <!-- Fixed masthead -->
+    <div class="home_bg_wrapper">
+        <img id="home_bg" src="{% static 'img/Slide1.jpg' %}" alt="bg" />
+    </div>
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <div class="navbar-header">
@@ -32,11 +35,11 @@
             </div>
             <div class="header_contact">
                 <a Target=”_blank” href="mailto:eascatest@gmail.com"> <i class="far fa-envelope"></i> eascatest@gmail.com    </a>
-                <a Target=”_blank” class="phone_link"href="tel:+353857863656"><i class="fas fa-phone"></i> +353 85 786 3656</a>
+                <a Target=”_blank” class="phone_link" href="tel:+353857863656"><i class="fas fa-phone"></i> +353 85 786 3656</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'index' %}"><i class="fas fa-info"></i> About</a></li>
+                    <li><a href="{% url 'about' %}"><i class="fas fa-info"></i> About</a></li>
                     <li><a href="{% url 'products' %}"><i class="fab fa-product-hunt"></i> Services</a></li>
                     {% if user.is_authenticated %}
                     {% if user.is_staff %}
@@ -68,8 +71,8 @@
         </div>
     </div>
     {% endif %}
-    <div class="container main_container">
-        {% block content %} {% endblock %}
+    <div class="container home_container">
+
     </div>
     <footer>
         <div class="container">

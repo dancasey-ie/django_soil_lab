@@ -1,0 +1,41 @@
+﻿{% extends 'base.html' %}
+
+{% block content %}
+<h3>About</h3>
+<div class="row">
+    <div class="col-xs-12">
+        <p>
+            We are an Irish owned and operated environmental consultancy and testing facility.
+            Easca Environment's name is derrived from the Irish word for easy, easca, and we strive to make your environmental testing as easy as possible.
+        </p>
+        <p>
+            We are passionate about applying science to deliver integrated scientific and environmental services and solutions to society.
+            Our company is home to highly qualified and experienced scientists who deliver a wide range of analytical and specialist consulting services to our clients in the agricultural,
+            environmental, food, and pharmaceutical sectors. We pride ourselves in the quality of our work and the confidence you can place in our results.
+        </p>
+        <p>
+            Easca Environmental operate to the highest standards of quality so that customers can have the confidence to act on our results.
+            We take great pride in providing a friendly and prompt service every time you need us. Our personal guarantee is based on the confidence
+            we place on our Team's ability to resolve your specific requirements within an agreed timeframe.
+        </p>
+    </div>
+</div>
+<h3>What makes us different?</h3>
+<div class="row">
+    <div class="col-xs-12">
+        <p>
+            By adopting progressive digitization of our services, we offer the quickest most efficient means of getting you tests results and tracking your land nutrient levels.
+        </p>
+        <ul>
+            <li>Select and order the most appropriete testing for your needs from our comprehensive tests <a href="{% url 'products' %}" Target=”_blank”>options</a></li>
+            <li>The sample kit will we dispatched to you on the same day as you ordered</li>
+            <li>Each sample test ordered will be assigned a unique 'Sample Reference' so you can track the processing of the sample</li>
+            <li>By logging into <a href="{% url 'yourportal' %}" Target=”_blank”>'Your Portal'</a> you will see the status of your samples</li>
+            <li>Once you have received your sample kit, you can 'Submit Details' of the sample through <a href="{% url 'yourportal' %}" Target=”_blank”>'Your Portal'</a></li>
+            <li>After submitting the sample detaials online, you can return the sample to us using provided packageing</li>
+            <li>You will be informed via email when your results are available for viewing</li>
+            <li>You can view the sample results and details report through <a href="{% url 'yourportal' %}" Target=”_blank”>'Your Portal'</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
