@@ -23,19 +23,20 @@ def yourportal(request):
     """Gives access to the users sample history and reports"""
     details = SampleDetails.objects.all()
     complet_filter = Q(status='Complete') & Q(ordered_by=request.user)
-    all_completed_samples = SampleStatus.objects.filter(complet_filter)
+    all_completed_samples = SampleStatus.objects.filter(complet_filter).order_by('-id')
     completed_paginator = Paginator(all_completed_samples, 10)
     page_completed = request.GET.get('page_completed', 1)
     completed_samples = completed_paginator.page(page_completed)
     processing_filter = ~Q(status='Complete') & Q(ordered_by=request.user)
-    all_processing_samples = SampleStatus.objects.filter(processing_filter)
+    all_processing_samples = SampleStatus.objects.filter(processing_filter).order_by('-id')
     processing_paginator = Paginator(all_processing_samples, 10)
     processing_page = int(request.GET.get('processing_page', 1))
     processing_samples = processing_paginator.page(processing_page)
 
-    arg = {"processing_samples": processing_samples,
-           "completed_samples": completed_samples,
-           "details": details}
+    arg = {'processing_samples': processing_samples,
+           'completed_samples': completed_samples,
+           'details': details,
+           'title': 'Your Portal'}
 
     return render(request, 'yourportal.html', arg)
 
@@ -53,7 +54,8 @@ def details(request):
                 details_form = SampleDetailsForm()
 
                 arg = {'details_form': details_form,
-                       'sample': sample}
+                       'sample': sample,
+                       'title': 'Your Portal'}
 
                 return render(request,
                               "submitdetails.html",
@@ -105,7 +107,8 @@ def submit(request, sample_id):
     else:
         details_form = SampleDetailsForm()
         arg = {'details_form': details_form,
-               'sample': sample}
+               'sample': sample,
+               'title': 'Your Portal'}
     return render(request, "submitdetails.html", arg)
 
 @login_required()
@@ -142,6 +145,7 @@ def viewreport(request, sample_id):
                'k_perc' : k_perc,
                'ph_perc' : ph_perc,
                'lr_ph_perc' : lr_ph_perc,
+               'title': 'Report'
                }
 
         return render(request, "viewreport.html", arg)
@@ -153,7 +157,8 @@ def viewreport(request, sample_id):
            'status': "",
            'details': "",
            'results': "",
-           'error_message': error_message}
+           'error_message': error_message,
+           'title': 'Report'}
 
     return render(request, "viewreport.html", arg)
 
@@ -170,7 +175,8 @@ def labportal(request):
     arg = {"samples": filtered_qs,
            'results_form': SampleResultsForm(),
            'username': request.user.username,
-           'filter': sample_filter}
+           'filter': sample_filter,
+           'title': 'Lab Portal'}
 
     return render(request, 'labportal.html', arg)
 

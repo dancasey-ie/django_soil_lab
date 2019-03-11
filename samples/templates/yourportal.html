@@ -20,7 +20,7 @@
                         <input type="text" name="sample_ref" class="form-control search-input" id="sample_ref" />
                     </div>
                     <div class="form-group col-xs-12 col-sm-3">
-                        <input class="btn btn-success" id="submit_sample_btn" name="commit" type="submit" value="Enter Details">
+                        <input class="btn btn-primary" id="submit_sample_btn" name="commit" type="submit" value="Enter Details">
                     </div>
                 </form>
             </div>
@@ -31,7 +31,7 @@
     <div class="row section_header">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
             <a data-toggle="collapse" href="#completed_collapse" role="button" aria-expanded="true" aria-controls="#completed_collapse">
-                    <h3 class="pull-left section_title">Completed Samples</h3>
+                    <h3 class="pull-left section_title">View Completed Samples</h3>
                     <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
             </a>
         </div>
@@ -43,7 +43,7 @@
             </p>
             <div class="container">
                 <div class="row">
-                    <table class="col-xs-12">
+                    <table class="col-xs-12 sample_table">
                         <tr>
                             <th>Sample Ref.</th>
                             <th>Your Ref.</th>
@@ -57,14 +57,12 @@
                             <td>
                                 {{ sample_details.customer_ref_1 }} {{ sample_details.customer_ref_2 }}
                             </td>
-
                             {% endif %}
                             {% endfor %}
                             <td>
-
                                 <form action="{% url 'viewreport' sample.id %}" method="post">
                                     {% csrf_token %}
-                                    <input class="btn btn-success" type="submit" value="View Report">
+                                    <input class="btn btn-primary row_btn" type="submit" value="View Report">
                                 </form>
                             </td>
                         </tr>
@@ -96,7 +94,7 @@
     <div class="row section_header">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
             <a data-toggle="collapse" href="#processing_collapse" role="button" aria-expanded="true" aria-controls="#processing_collapse">
-                    <h3 class="pull-left section_title">Processing Samples</h3>
+                    <h3 class="pull-left section_title">View Active Samples</h3>
                     <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
             </a>
         </div>
@@ -107,7 +105,7 @@
             </p>
             <div class="container">
                 <div class="row">
-                    <table class="col-sm-12">
+                    <table class="col-sm-12 sample_table">
                         <tr>
                             <th>Sample Ref.</th>
                             <th>Status</th>
@@ -125,23 +123,29 @@
                             <td class="visible-md visible-lg">{{ sample.ordered_date.date }}</td>
                             <td class="visible-md visible-lg">{{ sample.submit_date.date }}</td>
                             <td class="visible-md visible-lg">{{ sample.received_date.date }}</td>
-                            {% for sample_details in details %}
-                            {% if sample_details.sample == sample %}
+
                             <td>
+                                {% if sample.status == "Submitted" or sample.status == "Received" %}
+                                {% for sample_details in details %}
+                                {% if sample_details.sample == sample %}
                                 {{ sample_details.customer_ref_1 }} {{ sample_details.customer_ref_2 }}
+                                {% endif %}
+                                {% endfor %}
+                                {% else %}
+                                NA
+                                {% endif %}
                             </td>
-                            {% endif %}
-                            {% endfor %}
                             <td>
                                 {% if sample.status == "Submitted" or sample.status == "Received" %}
                                 <form action="{% url 'viewreport' sample.id %}" method="post">
                                     {% csrf_token %}
-                                    <input class="btn btn-success" type="submit" value="Details">
+                                    <input class="btn btn-primary row_btn" type="submit" value="Details">
                                 </form>
+                                {% else %}
+                                NA
                                 {% endif %}
                             </td>
                         </tr>
-
                         {% endfor %}
                     </table>
                 </div>
