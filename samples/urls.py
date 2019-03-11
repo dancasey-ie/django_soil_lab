@@ -7,5 +7,5 @@ urlpatterns = [
     url(r'^receive/', receive, name="receive"),
     url(r'^results/', results, name="results"),
     url(r'^submit/(?P<sample_id>\d+)/$', submit, name="submit"),
-    url(r'^details/', details, name="details")
+    url(r'^details/', details, name="details"),
 ]

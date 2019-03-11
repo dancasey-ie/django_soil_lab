@@ -54,7 +54,7 @@ body {
 
 .main_container {
     margin-top: 0px;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 140px);
 }
 
 nav {
@@ -153,9 +153,6 @@ h1, h2, h3, h4 {
     margin-top: 5px;
 }
 
-.results_btn {
-    margin-top: 25px;
-}
 
 footer {
     padding-top: 20px;
@@ -281,4 +278,14 @@ table {
 
 #useDeviceLoc{
     margin-bottom:5px;
+}
+
+
+.sample_list_table {
+    max-height: 400px;
+    overflow:scroll;
+}
+
+.filter_btn, .results_btn {
+    margin-top: 25px;
 }

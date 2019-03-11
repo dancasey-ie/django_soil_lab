@@ -124,7 +124,31 @@
     <div class="collapse archive_collapse collapse_xs" id="archive_collapse">
         <p>Explore the archive of samples.</p>
         <div class=" container">
-            <div class="row">
+            <form method="get">
+                <!-- if left out completly form is not styled, if not commented out results form is rendered twice  {{ filter.form|as_bootstrap }} -->
+                <div class="row">
+                    <div class="form-group col-xs-7 col-sm-3">
+                        {{ filter.form.sample_ref.label_tag }}
+                        {{ filter.form.sample_ref }}
+
+                    </div>
+                    <div class="form-group col-xs-7 col-sm-3">
+                        {{ filter.form.status.label_tag }}
+                        {{ filter.form.status }}
+
+                    </div>
+                    <div class="form-group col-xs-7 col-sm-3">
+                        {{ filter.form.ordered_by.label_tag }}
+                        {{ filter.form.ordered_by }}
+                    </div>
+                    <div class="form-group col-xs-7 col-sm-3">
+                        <button class="btn btn-primary filter_btn" type="submit"><i class="fas fa-search"></i> Filter</button>
+                    </div>
+                </div>
+
+
+            </form>
+            <div class="row sample_list_table">
                 <table class="col-xs-12">
                     <tr>
                         <th>Sample Ref.</th>
@@ -159,25 +183,9 @@
 
                     </tr>
                     {% endfor %}
+
                 </table>
             </div>
-        </div>
-        <div class="pagination">
-            <span class="step-links">
-                {% if samples.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ samples.previous_page_number }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ samples.number }} of {{ samples.paginator.num_pages }}.
-                </span>
-
-                {% if samples.has_next %}
-                <a href="?page={{ samples.next_page_number }}">next</a>
-                <a href="?page={{ samples.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
         </div>
     </div>
 </div>

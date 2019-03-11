@@ -12,7 +12,8 @@ from .models import SampleStatus, SampleDetails, SampleResults
 from checkout.models import Order
 from .forms import SampleResultsForm, SampleDetailsForm
 from django.core.mail import send_mail
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .filter import SampleFilter
 import os
 
 User = get_user_model()
@@ -162,12 +163,14 @@ def labportal(request):
     Staff can record samples as being dispatched to customer, received into
     lab, can upload test results and can search the sample archive"""
 
-    all_samples = SampleStatus.objects.all()
-    paginator = Paginator(all_samples, 10)
-    page = request.GET.get('page', 1)
-    arg = {"samples": paginator.page(page),
+    sample_list = SampleStatus.objects.all().order_by('-id')
+    sample_filter = SampleFilter(request.GET, queryset=sample_list)
+    filtered_qs = sample_filter.qs
+
+    arg = {"samples": filtered_qs,
            'results_form': SampleResultsForm(),
-           'username': request.user.username}
+           'username': request.user.username,
+           'filter': sample_filter}
 
     return render(request, 'labportal.html', arg)
 
