@@ -87,11 +87,11 @@ __Features to be Implemented__
 *  !! 3hr Automated Testing
 *  !! 3hr Manual Testing
 
-* 1hr Filter search for sample archive
-
 * contact page, bounce back email confirmation
 * Clean up CSS
-* Better landing page
+
+
+
 
 
 
@@ -218,6 +218,11 @@ Customer pagination of tables
 
 __Known Bugs__
 
+- Shaded border below nav, causing unwanted seperation between cloudy sky and white background
+- background image reduced in height when opened on mobile, works fine when using both chrome and firefox dev tools
+- footer position not uniform between home and rest
+- nav list position should be positione at bottom of nav
+- brand should be bigger in > md
 
 
 
