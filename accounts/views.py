@@ -17,6 +17,30 @@ def logout(request):
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('index'))
 
+def register(request):
+    """A view that manages the registration form"""
+    if request.method == 'POST':
+        registration_form = UserRegistrationForm(request.POST)
+        if registration_form.is_valid():
+            registration_form.save()
+
+            user = auth.authenticate(request.POST.get('email'),
+                                     password=request.POST.get('password1'))
+
+            if user:
+                auth.login(request, user)
+                messages.success(request, "You have successfully registered")
+                return redirect(reverse('index'))
+
+            else:
+                messages.error(request, "unable to log you in at this time!")
+                return redirect(login)
+    else:
+        user_form = UserLoginForm()
+        registration_form = UserRegistrationForm()
+
+    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', '')}
+    return render(request, 'login.html', args)
 
 def login(request):
     """A view that manages the login form"""
@@ -37,6 +61,7 @@ def login(request):
                     return redirect(reverse('index'))
             else:
                 user_form.add_error(None, "Your username or password are incorrect")
+                registration_form = UserRegistrationForm()
     else:
         user_form = UserLoginForm()
         registration_form = UserRegistrationForm()
@@ -51,25 +76,4 @@ def profile(request):
     return render(request, 'profile.html')
 
 
-def register(request):
-    """A view that manages the registration form"""
-    if request.method == 'POST':
-        registration_form = UserRegistrationForm(request.POST)
-        if registration_form.is_valid():
-            registration_form.save()
 
-            user = auth.authenticate(request.POST.get('email'),
-                                     password=request.POST.get('password1'))
-
-            if user:
-                auth.login(request, user)
-                messages.success(request, "You have successfully registered")
-                return redirect(reverse('index'))
-
-            else:
-                messages.error(request, "unable to log you in at this time!")
-    else:
-        registration_form = UserRegistrationForm()
-
-    args = {'registration_form': registration_form}
-    return render(request, 'register.html', args)
