@@ -13,12 +13,12 @@ body {
 
 .main_container {
     margin-top: 0px;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 130px);
 }
 
 .home_container {
     margin-top: 0px;
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 110px);
 }
 
 h1, h2, h3, h4 {
@@ -34,12 +34,14 @@ nav {
     border: none;
     padding-top: 8px;
     box-shadow: none;
+    margin-bottom: 0px;
+    background-color: #fafafa;
 }
 
 
 .navbar-default .navbar-brand {
     color: #282828;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .logo_leaf {
@@ -63,21 +65,23 @@ nav {
         color: #328008;
     }
 
-.nav_container {
-    height:100px;
-}
+
 .navbar-default .navbar-nav {
     position: relative;
     bottom: 5px;
 }
 
-.navbar-default .navbar-nav > li > a {
-    color: #282828;
-    font-family: 'Overpass', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1;
-}
+    .navbar-default .navbar-nav > li {
+        margin-bottom: 0px;
+    }
+    .navbar-default .navbar-nav > li > a {
+        color: #282828;
+        font-family: 'Overpass', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1;
+        margin-bottom: 0px;
+    }
 
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
         color: #328008;
@@ -105,6 +109,11 @@ nav {
     border-bottom-width: thin;
 }
 
+.nav > li > a {
+    padding-bottom: 0px;
+    padding-top: 20px;
+}
+
 .phone_link {
     margin-left: 10px;
 }
@@ -128,13 +137,18 @@ footer {
         color: #328008;
     }
 
-.alert-error {
-    color: #721c24;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
+.badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
 }
 
-
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
 /*--------------------------------------------------------------Home Styling*/
 .home_bg {
     background-size: 1800px 100%;
@@ -145,7 +159,6 @@ footer {
 
     .home_bg .navbar {
         background-image: none;
-        background-color: transparent;
     }
 
 .home_info {
@@ -330,18 +343,7 @@ caption p {
 }
 
 
-.badge {
-    padding-left: 9px;
-    padding-right: 9px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
-}
 
-.label-warning[href],
-.badge-warning[href] {
-    background-color: #c67605;
-}
 
 .row.row-flex {
     display: flex;
@@ -351,7 +353,26 @@ caption p {
 
 
 
-
+/*----------------------------------------------------------------Media Queries*/
+/*--------------Stop number phone number wrapping in iPhone SE--*/
+@media only screen and (max-width: 350px) {
+    .contact_icon {
+        display: none;
+    }
+}
+/*-----------------------Show info closer to top in smaller res--*/
+@media only screen and (max-width: 400px) {
+    .home_info {
+        margin-top: 50px;
+    }
+}
+/*------------------Stop nav menu dropping under logo in md res--*/
+@media only screen and (max-width: 1000px) and (min-width: 768px) {
+    .nav > li > a {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
 
 
 
