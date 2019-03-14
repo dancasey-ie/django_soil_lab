@@ -13,12 +13,12 @@ body {
 
 .main_container {
     margin-top: 0px;
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 150px);
 }
 
 .home_container {
     margin-top: 0px;
-    min-height: calc(100vh - 110px);
+    min-height: calc(100vh - 130px);
 }
 
 h1, h2, h3, h4 {
