@@ -8,7 +8,7 @@ body {
     font-family: Arial;
     margin-top: 100px;
     z-index: 2;
-    background-color: #ffffff;
+    background-color: #fafafa;
 }
 
 
@@ -24,12 +24,13 @@ h1, h2, h3, h4 {
 
 nav {
     color: #5e0909;
-    height:100px;
+
 }
 
 .navbar {
     border: none;
     padding-top: 8px;
+    box-shadow: none;
 }
 
 
@@ -67,9 +68,7 @@ nav {
     bottom: 5px;
 }
 
-#navbar {
-    height: 100px;
-}
+
 
 .navbar-default .navbar-nav > li > a {
     color: #282828;
@@ -99,7 +98,10 @@ nav {
 
 .navbar-collapse.in {
     overflow-y: visible;
-    background-color: white;
+    background-color: #fafafa;
+    border-bottom-style: solid;
+    border-bottom-color: #40ae49;
+    border-bottom-width: thin;
 }
 
 .phone_link {
@@ -290,6 +292,7 @@ caption p {
 .panel-default {
     border-color: transparent;
     padding: 0 10px;
+    background-color: #f9f9f9;
 }
 
 .panel-body {
@@ -312,13 +315,6 @@ caption p {
 }
 
 
-
-
-
-
-
-
-
 .icon-bar {
     background-color: #fff;
 }
@@ -326,8 +322,6 @@ caption p {
 .accountform {
     padding-top: 20px;
 }
-
-
 
 
 .badge {
