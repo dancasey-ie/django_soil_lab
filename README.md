@@ -207,8 +207,7 @@ Customer pagination of tables
 
 __Known Bugs__
 
-- Shaded border below nav, causing unwanted seperation between cloudy sky and white background
-- background image reduced in height when opened on mobile, works fine when using both chrome and firefox dev tools
+- background image reduced in height when opened on mobile, works fine when using both chrome and firefox dev tools. only on my phone
 - footer position not uniform between home and rest
 - nav list position should be positione at bottom of nav
 - brand should be bigger in > md
@@ -281,7 +280,7 @@ The text for the About section and product descriptions was taken from https://s
 
 __Media__
 
-
+The images for the Home background and main nav were taken from https://southernscientificireland.com/
 
 __Acknowledgements__
 
@@ -292,5 +291,5 @@ The project was developed from conversations with Southern Scientific Environmen
 Running App
 ------------------------
 
-https://easca-environmental.herokuapp.com/
+https://dc-easca-environmental.herokuapp.com/
 
