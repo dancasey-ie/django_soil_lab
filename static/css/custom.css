@@ -25,7 +25,6 @@ h1, h2, h3, h4 {
     color: #40ae49
 }
 
-
 nav {
     color: #5e0909;
 
@@ -71,8 +70,6 @@ nav {
     position: relative;
     bottom: 5px;
 }
-
-
 
 .navbar-default .navbar-nav > li > a {
     color: #282828;
@@ -279,12 +276,12 @@ table, tr, td, th {
     background-color: #99ff99;
 }
 
-
-
-
+.results_table td, .results_table th {
+    border-style: solid;
+    border-width: thin;
+    border-color: #b1d6ea;
+}
 /*--------------------------------------------------------------Product Styling*/
-
-
 .product_name {
     color: #40ae49;
 }
@@ -345,9 +342,6 @@ caption p {
 .badge-warning[href] {
     background-color: #c67605;
 }
-
-
-
 
 .row.row-flex {
     display: flex;
