@@ -80,21 +80,10 @@ __Existing Features__
 * Customer is emailed when an order is placed and when results are availalbe
 * Pagination of all tables in the Lab and Your Portal
 
-
-
 __Features to be Implemented__
 
 *  !! 3hr Automated Testing
 *  !! 3hr Manual Testing
-
-* contact page, bounce back email confirmation
-* Clean up CSS
-
-
-
-
-
-
 
 note:  should do this 
 For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.

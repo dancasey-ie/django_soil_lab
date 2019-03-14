@@ -11,7 +11,6 @@ body {
     background-color: #fafafa;
 }
 
-
 .main_container {
     margin-top: 0px;
     min-height: calc(100vh - 140px);
@@ -127,6 +126,11 @@ footer {
         color: #328008;
     }
 
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
 
 
 /*--------------------------------------------------------------Home Styling*/

@@ -45,7 +45,7 @@ def details(request):
     """Opens form to submit sample details"""
 
     if request.method == 'POST':
-        sample_ref =  request.POST['sample_ref']
+        sample_ref =  request.POST['sample_ref'].upper()
 
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
@@ -186,7 +186,7 @@ def dispatch(request):
     """Records an inputed sample reference as dispatched to customer"""
 
     if request.method == 'POST':
-        sample_ref =  request.POST['sample_ref']
+        sample_ref = request.POST['sample_ref'].upper()
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
             if sample.status == 'Ordered':
@@ -194,6 +194,8 @@ def dispatch(request):
                 sample.dispatched_by = request.user
                 sample.dispatched_date = timezone.now()
                 sample.save()
+                msg = '{0} has been recorded as "Dispatched"'.format(sample_ref)
+                messages.success(request, msg)
             else:
                 msg = '{0} has already been dispatched'.format(sample_ref)
                 messages.error(request, msg)
@@ -212,7 +214,7 @@ def receive(request):
     received into the lab for analysis"""
 
     if request.method == 'POST':
-        sample_ref =  request.POST['sample_ref']
+        sample_ref =  request.POST['sample_ref'].upper()
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
             if sample.status == "Submitted":
@@ -253,6 +255,8 @@ def results(request):
             sample.tested_by = request.user
             sample.tested_date = timezone.now()
             sample.save()
+            msg = '{0} results have been uploaded.'.format(sample.sample_ref)
+            messages.success(request, msg)
             try:
                 user = User.objects.get(username=sample.ordered_by)
                 send_mail('Sample Results',
