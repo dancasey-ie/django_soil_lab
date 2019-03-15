@@ -6,7 +6,7 @@
         <div class="row section_header">
             <div class="col-xs-12">
                 <a data-toggle="collapse" href="#register_collapse" role="button" aria-expanded="true" aria-controls="#register_collapse">
-                    <h3 class="pull-left section_title">Need to Register?</h3>
+                    <h3 class="pull-left section_title">New Customer?</h3>
                     <h3 class="pull-right section_title"><i class="fas fa-plus"></i></h3>
                 </a>
             </div>
@@ -31,7 +31,7 @@
         <div class="row section_header">
             <div class="col-xs-12">
                 <a data-toggle="collapse" href="#login_collapse" role="button" aria-expanded="true" aria-controls="#login_collapse">
-                    <h3 class="pull-left section_title">Already Registered?</h3>
+                    <h3 class="pull-left section_title">Returning Customer?</h3>
                     <h3 class="pull-right section_title"><i class="fas fa-minus"></i></h3>
                 </a>
             </div>
@@ -44,7 +44,7 @@
                     {% csrf_token %}
                     {{ user_form | as_bootstrap }}
 
-                    <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
+                    <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
 
                     <button type="submit" class="btn btn-primary">Login</button>
                 </fieldset>
