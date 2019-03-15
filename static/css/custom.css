@@ -158,8 +158,17 @@ footer {
 }
 
     .home_bg .navbar {
+        background-color: #ffffff;
         background-image: none;
     }
+
+.home_bg .navbar-collapse.in {
+    overflow-y: visible;
+    background-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-color: #40ae49;
+    border-bottom-width: thin;
+}
 
 .home_info {
     background-color: rgba(255, 255, 255, 0.75);
