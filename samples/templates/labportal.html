@@ -127,7 +127,7 @@
             <form method="get">
                 <!-- if left out completly form is not styled, if not commented out results form is rendered twice  {{ filter.form|as_bootstrap }} -->
                 <div class="row">
-                    <div class="form-group col-xs-6 col-sm-3 col-md-2">
+                    <div class="form-group col-xs-12 col-sm-3 col-md-2">
                         {{ filter.form.sample_ref.label_tag }}
                         {{ filter.form.sample_ref }}
 
@@ -141,7 +141,7 @@
                         {{ filter.form.ordered_by.label_tag }}
                         {{ filter.form.ordered_by }}
                     </div>
-                    <div class="form-group col-xs-6 col-sm-3 col-md-2">
+                    <div class="form-group col-xs-12 col-sm-3 col-md-2">
                         <button class="btn btn-primary filter_btn" type="submit"><i class="fas fa-search"></i> Filter</button>
                     </div>
                 </div>
