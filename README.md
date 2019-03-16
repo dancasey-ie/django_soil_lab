@@ -280,8 +280,6 @@ If env.py file is not found DEBUG is set to False, this insures that while devel
 Note: The 'mock-ups' folder was included in the git repo throughout,
 normally I would remove the mock-ups from the final deployment, but as the Heroku app was deployed by link to the GitHub repo I thought it better to keep them in the repo.
 
-
-
 Credits
 ------------
 
