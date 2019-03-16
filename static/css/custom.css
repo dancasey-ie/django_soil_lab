@@ -38,7 +38,6 @@ margin-bottom: 0px;
 background-color: #fafafa;
 }
 
-
 .navbar-default .navbar-brand {
 color: #282828;
 margin-bottom: 5px;
@@ -62,9 +61,8 @@ text-align: right;
 }
 
 .header_contact > a {
-    color: #328008;
+color: #328008;
 }
-
 
 .navbar-default .navbar-nav {
 position: relative;
@@ -134,7 +132,7 @@ color: #328008;
 }
 
 .LinkedInLink:hover {
-    color: #328008;
+color: #328008;
 }
 
 .badge {
@@ -149,7 +147,9 @@ border-radius: 9px;
 .badge-warning[href] {
 background-color: #c67605;
 }
+
 /*--------------------------------------------------------------Home Styling*/
+
 .home_bg {
 background-size: 1800px 100%;
 background-repeat: no-repeat;
@@ -158,8 +158,8 @@ background-attachment: fixed;
 }
 
 .home_bg .navbar {
-    background-color: #ffffff;
-    background-image: none;
+background-color: #ffffff;
+background-image: none;
 }
 
 .home_bg .navbar-collapse.in {
@@ -180,27 +180,28 @@ padding-bottom: 20px;
 }
 
 .home_info > a {
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: center;
+width: 50%;
+margin: 0 auto;
+margin-bottom: 15px;
+display: flex;
+justify-content: center;
 }
-    .home_info > a:hover {
-        text-decoration: none;
-    }
 
-    .home_quote {
-        color: #282828;
-        font-family: 'Satisfy', cursive;
-        color: #328008;
-        font-size: 28px;
-        font-weight: 400;
-        line-height: 2;
-    }
+.home_info > a:hover {
+    text-decoration: none;
+}
+
+.home_quote {
+    color: #282828;
+    font-family: 'Satisfy', cursive;
+    color: #328008;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 2;
+}
 
 .home_quote_2 {
-    margin-left: 10%;
+margin-left: 10%;
 }
 
 /*--------------------------------------------------------------Portal Styling*/
@@ -208,6 +209,7 @@ padding-bottom: 20px;
 .portal_section {
 margin-top: 20px;
 }
+
 .section_header {
 border-bottom: #40ae49;
 border-bottom-style: solid;
@@ -344,7 +346,6 @@ height: 150px;
 margin: 0 auto;
 }
 
-
 .icon-bar {
 background-color: #fff;
 }
@@ -364,22 +365,26 @@ margin-top: 30px;
 
 /*----------------------------------------------------------------Media Queries*/
 /*--------------Stop number phone number wrapping in iPhone SE--*/
+
 @media only screen and (max-width: 350px) {
 .contact_icon {
-    display: none;
+display: none;
 }
 }
+
 /*-----------------------Show info closer to top in smaller res--*/
+
 @media only screen and (max-width: 400px) {
 .home_info {
-    margin-top: 50px;
+margin-top: 50px;
 }
 }
 /*------------------Stop nav menu dropping under logo in md res--*/
+
 @media only screen and (max-width: 1000px) and (min-width: 768px) {
 .nav > li > a {
-    padding-left: 8px;
-    padding-right: 8px;
+padding-left: 8px;
+padding-right: 8px;
 }
 }
 

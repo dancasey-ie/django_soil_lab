@@ -94,21 +94,19 @@ Technologies Used
 * __GitHub__ (https://github.com/) was used to share the repository.
 * __Heroku__ (https://dashboard.heroku.com/) was used to host the application.
 * __Python3.6__ (https://docs.python.org/3/) was used to develop all back-end code.
+* __Django-1.11.18 (https://www.djangoproject.com/) web develpoment framework was utilised for efficient app development.
 * __HTML5__ (https://www.w3.org/TR/html5/) was used to develop front-end templates.
 * __CSS__ (https://www.w3.org/Style/CSS/) was used for styling of front-end templates.
 * __Bootstrap 3.3.7__ (https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css) was used for more effective CSS layout styling.
-* __Font-Awesome 5.3.1__ (https://use.fontawesome.com/releases/v5.3.1/css/all.css) was for the icons in the header, footer and quiz template.
-* __JavaScript__ was used for interactive front end development.
-* __GeoPy__ (https://geopy.readthedocs.io/en/stable/) was used to get the address of the substations
+* __Font-Awesome 5.3.1__ (https://use.fontawesome.com/releases/v5.3.1/css/all.css) was for the icons were used for user familier icons.
+* __JavaScript__ was used for accesseing Google Maps API and changing page display icons based on state i.e. collapse/expand icons and accessing client side features i.e. getLocation.
+* __Google Maps__ (https://developers.google.com/maps/documentation/) was used to display map windows and select locations.
+* __Google Fonts __ (https://fonts.google.com/) were used for the nav bar text and the home page quote.
 * __FluidUI__ (https://www.fluidui.com) was used to develop wireframes for the initial UI design mockups.
-* __Unittest__ (https://docs.python.org/3/library/unittest.html) unit testing framework was used for the testing of none template rendering functions.
-* __json__ (http://www.json.org/) was used to store and access non-database data.
-* __CSVJSON__ (https://www.csvjson.com/csv2json) was used to convert CSV formatted data to json.
 * __Firefox Developer Edition__ (https://www.mozilla.org/en-US/firefox/developer/) was used for debugging of the running app.
-* __Stripe__
-* __GeoPy__
-* __GeoPosition__
-* __Django-1.11.18__
+* __Stripe__ (https://www.stripe.com) was used for secure credit card payments
+* __django-geoposition__ (https://pypi.org/project/django-geoposition/) was used to enable to select a geographical location using the a google maps API
+* __GeoPy__ (https://geopy.readthedocs.io/en/stable/) was used to get the address of sample locations set using django-geoposition
 
 
 Testing
