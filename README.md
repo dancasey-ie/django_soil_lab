@@ -114,7 +114,7 @@ Testing
 
 __Continuous Integration__
 
-Travis CI was used for continuous integration insuring that the host environment and requirements are met through out the development.
+Travis CI was used for continuous integration insuring that the host environment and requirements are met through out the development. Collect static 
 
 __Code Validation__
 
