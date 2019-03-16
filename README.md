@@ -76,29 +76,9 @@ __Existing Features__
 * Staff can mark the sample as "received" when it comes into the lab, through the 'Lab Portal' view, this processes is time stamped and the logged in staff member is recorded
 * Staff can upload the test results, through the 'Lab Portal' view, this processes is time stamped and the logged in staff member is recorded
 * Staff can view all samples and access the report with results displayed if the results are available
+* Sample report shows the sample details (including the postion on a google maps window), the results for each test is shows in a color coded table.
 * Customer is emailed when an order is placed and when results are available
 * Pagination of all tables in the Lab and Your Portal
-
-
-
-__Features to be Implemented__
-
-*  !! 3hr Automated Testing
-*  !! 3hr Manual Testing
-
-* contact page, bounce back email confirmation
-* Clean up CSS
-
-
-
-
-
-
-
-note:  should do this
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
 __Future Features__ (outside the scope of this project)
 
@@ -187,43 +167,63 @@ Known bugs
 
 __Manual Testing__
 
-The following test were performed manually.
+The following test were performed manually. 
 
-|    Feature            |   Test Action                                                                             |   Expected Result                                |  Chrome (Desktop) |  Firefox (Desktop)  | Chrome (Mobile) |
-| --------------------- | ------------------------------------------------------------------------------------------| ------------------------------------------------ | ----------------- | ------------------- | --------------- |
+Note. To avoid having to jump between a customer and a staff account, you can place orders as a staff member. username: nice_assessor password: StaffPass1
+
+|    Feature                      |   Test Action                                        |   Expected Result                                    |  Chrome (Desktop) |  Firefox (Desktop)  | IE (Desktop)    | Chrome (Mobile) | 
+| ------------------------------- | -----------------------------------------------------| ---------------------------------------------------- | ----------------- | ------------------- | --------------- | --------------- |
+| Pre-Test State                  | Insure you are logged out and on the 'Home' page     |                                                      |                   |                     |                 |                 |
+| Registration                    | Click 'Log In  ' in nav                              | Log in page displays with login and registration forms|       OK         |       OK            |       OK        |       OK        |                                           
+|                                 | Click 'Create Account'                               | Alert: to fill out required fields                   |       OK          |       OK            |       OK        |       OK        |
+|                                 | Fill out required fields -> Click 'Create Account'   | Home page displayed,                                 |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Registration success message,                        |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | User logged in,                                      |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Your Portal visible in nav                           |       OK          |       OK            |       OK        |       OK        |
+| Log Out                         | Click 'Log Out' in nav                               | Home page displayed,                                 |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Log out success message,                             |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | User logged in,                                      |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Your Portal not visible in nav                       |       OK          |       OK            |       OK        |       OK        |
+| Add items to cart               | Click 'Services' in nav                              | Services page displayed                              |       OK          |       OK            |       OK        |       OK        |                                                
+|                                 | Set 'Soil 1-SS' quantity = 0 ->  Click 'Add'         | Alert: Stating the range must be >= 1                |       OK          |       OK            |       OK        |       OK        |
+|                                 | Set 'Soil 1-SS' quantity = 2 -> Click 'Add'          | Nav cart (top right) shows 2 items                   |       OK          |       OK            |       OK        |       OK        |
+| Amend quantity of items in cart | Click 'Cart' in nav                                  | Cart page displayed                                  |       OK          |       OK            |       OK        |       OK        |                                                
+|                                 | Set 'Soil 1-SS' quantity = 4 -> Click 'Ammend'       | Cart badge shows 4 items                             |       OK          |       OK            |       OK        |       OK        |                                               
+|                                 | Set 'Soil 1-SS' quantity = 0 -> Click 'Ammend'       | Cart badge shows 0 items                             |       OK          |       OK            |       OK        |       OK        |                                               
+| Order Sample                    | Click 'Services' in nav                              | Services page displayed                              |       OK          |       OK            |       OK        |       OK        |                                                
+|                                 | Set 'Soil 1-SS' quantity = 3 -> Click 'Add'          | Nav cart (top right) shows 2 items                   |       OK          |       OK            |       OK        |       OK        |
+|                                 | Click 'Cart' in nav                                  | Cart page displayed                                  |       OK          |       OK            |       OK        |       OK        |
+|                                 | Click 'Checkout'                                     | Login page displayed                                 |       OK          |       OK            |       OK        |       OK        |
+|                                 | Login                                                | Checkout page displayed                              |       OK          |       OK            |       OK        |       OK        |
+|                                 | Click 'Submit Payment'                               | Alert: to fill out required fields                   |       OK          |       OK            |       OK        |       OK        |
+|                                 | Fill out required fields -> Click 'Submit Payment'   | Services page displayed, cart shows empty            |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Order confirmation email received by customer        |       OK          |       OK            |       OK        |       OK        |
+| Dispatch Sample                 | Log in as a staff username: nice_assessor password: StaffPass1 | Home page displayed,                       |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Log in success message,                              |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | User logged in,                                      |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Your Portal and Lab Portal visible in nav            |       OK          |       OK            |       OK        |       OK        |                                                  
+|                                 | Click 'Lab Portal' in nav                            | Lab Portal page displayed                            |       OK          |       OK            |       OK        |       OK        |
+|                                 | In the Dispatch Section enter one of the ordered sample references, you can use the Sample Archive section to find the most recent samples | Sample Dispatched success message displayed |       OK          |       OK            |       OK        |       OK        | 
+|                                 |                                                      | Sample status shows dispatched in sample archive     |       OK          |       OK            |       OK        |       OK        | 
+| Submit Sample Details           | Log in as the customer -> Click 'Your Portal'        | Your Portal page displayed                           |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Status of active and completed samples displayed in relevent sections |       OK          |       OK            |       OK        |       OK        |
+|                                 | In the Submit Details section enter a sample reference that has been dispatched | Subimt Sample form page displayed |       OK          |       OK            |       OK        |       OK        |
+|                                 | Click Use Device Location                            | Browser request action appears, once user agrees, current latitude and longitude are entered in input box |       OK          |       OK            |       OK        |       OK        |
+|                                 | Enter required fields and click Submit Sample        | Your Portal page is displayed                        |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Active sample archive shoes submitted sample and can veiw details |       OK          |       OK            |       OK        |       OK        |
+| Receive Sample                  | Log in as staff -> Click 'Lab Portal'                | Lab Portal page displayed                            |       OK          |       OK            |       OK        |       OK        |
+|                                 | In the Receive Sample section enter a submitted sample ref | Success message displayed                      |       OK          |       OK            |       OK        |       OK        |
+| Upload Sample Results           | In the Upload Results section, select the received sample |                                                 |       OK          |       OK            |       OK        |       OK        |
+|                                 | Enter sample results -> Click Submit Results         | Success message displayed                            |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Sample results can be seen in the sample report      |       OK          |       OK            |       OK        |       OK        |
+|                                 |                                                      | Email sent to customer informing them that the results are available |       OK          |       OK            |       OK        |       OK        |
 
 
-Add items to cart
-
-Amend quantity of items in cart
-
-Register
-
-Purchase Sample Kit
-
-Staff Dispatch Kit
-
-Customer log in
-
-Customer change password
-
-Customer submit details
-
-Staff receive sample
-
-Staff upload results
-
-Staff view report
-
-Customer view report
-
-Staff pagination of tables
-
-Customer pagination of tables
 
 
+Bugs.
 
-
+- if click 'ammend' with no quantity get a server error 500
 
 
 Development
@@ -251,7 +251,7 @@ The following system variables must be set in the host environment.
 * STRIPE_SECRET, secret key assigned to you when you register an account with Stripe https://stripe.com/ie
 * EMAIL_HOST_USER, the email address you will use to send emails to application users.
 This can be your personal email address i.e. johndoe@gmail.com. If using gmail you must allow Less Secure App Access in your accounts security settings https://myaccount.google.com/security.
-I set up a dummy gmail account, eascatest@gmail.com, so that my personal email was not left vulnerabil by downgrading the security.
+I set up a dummy gmail account, eascatest@gmail.com, so that my personal email was not left vulnerable by downgrading the security.
 * EMAIL_HOST_PASSWORD, your specified email host login password
 * SECRET_KEY, generated by django when you start a new app. See setttings.py file
 * GOOGLE_MAP_API_KEY, assigned when setting up a google maps api account, https://cloud.google.com/maps-platform/, insure that both 'Maps' and 'Places' products are available to the key.
