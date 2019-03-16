@@ -271,16 +271,16 @@ As virtual environment wrapper was used for development. The following associate
 * pip-selfcheck.json
 * tcl/
 
-As the deployed project uses a Postgres database the locally generated db.sqlite file as also omitted from git repo from the initial git.
+As the deployed project uses a Postgres database the locally generated db.sqlite file was also omitted from git repo from the initial git.
 
-All system variables were declared in an env.py file. As many of these variables were passwords this too was from git repo from the initial git.
+All system variables were declared in an env.py file. As many of these variables were passwords this too was from git repo from the initial git. 
+
+If env.py file is not found DEBUG is set to False, this insures that while developing on my local machine the application runs in debug mode but once deployed debug mode is deactivated.
 
 Note: The 'mock-ups' folder was included in the git repo throughout,
 normally I would remove the mock-ups from the final deployment, but as the Heroku app was deployed by link to the GitHub repo I thought it better to keep them in the repo.
 
-__Code Differences__
 
-Settings.py line 34, DEBUG = False for deployment. https://github.com/dcasey720/django_soil_submit/blob/master/django_soil_submit/settings.py
 
 Credits
 ------------
