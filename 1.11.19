@@ -1,0 +1,2 @@
+Requirement already satisfied: django in c:\users\rkallo\virtua~1\venv_d~3\lib\site-packages (1.11)
+Requirement already satisfied: pytz in c:\users\rkallo\virtua~1\venv_d~3\lib\site-packages (from django) (2018.9)

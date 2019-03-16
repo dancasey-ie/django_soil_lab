@@ -238,8 +238,11 @@ A full list can be found at
 
 https://github.com/dcasey720/django_soil_submit/blob/master/requirements.txt
 
-Take note that a pip freeze will include django-geoposition-0.3.1, instead of https://github.com/philippbosch/django-geoposition/archive/django-1.11.zip.
+Take note that a pip freeze will show django-geoposition==0.3.1, this is not a valid release and will fail both travis and heroku builds. 
 Django-geoposition latest release available to install with pip is 0.3.0., however this version will not work with django-1.11 and so the work around branch must be installed.
+
+The django-1.11 work around branch is referenced in the requirements as 'geoposition.git@4ed91215a36e737c71fbdc023f134bd2cfe445b3#egg=django-geoposition'.
+Alternatively the repo can be referenced using the zip folder https://github.com/philippbosch/django-geoposition/archive/django-1.11.zip.
 
 __System Variables__
 
