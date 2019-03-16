@@ -240,6 +240,8 @@ Google Maps JavaScript API warning: InvalidKey https://developers.google.com/map
 Development
 ------------------------
 
+All custom css tags created in the development of this project include '_', this allows me to quickly see what items I have styled and what items already have style attributes.
+
 Deployment
 ------------------------
 
