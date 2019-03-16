@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.shortcuts import get_object_or_404
 from .models import SampleStatus, SampleDetails, SampleResults
 
+
 class TestViews(TestCase):
 
     def test_get_home_page(self):

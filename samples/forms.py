@@ -15,7 +15,7 @@ class SampleDetailsForm(forms.ModelForm):
                   'other_comments',)
 
         widgets = {
-            'sample_date': forms.DateInput(attrs={'class':'datepicker'}),
+            'sample_date': forms.DateInput(attrs={'class': 'datepicker'}),
         }
 
 

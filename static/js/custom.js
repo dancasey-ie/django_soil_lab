@@ -21,7 +21,7 @@ var setDivsState = function () {
             $('.collapse_xs').parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
             $('.collapse_sm').parent().find(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
         });
-    }
+};
 
 $(document).ready(setDivsState);
 

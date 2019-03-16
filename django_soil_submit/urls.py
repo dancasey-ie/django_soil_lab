@@ -25,6 +25,7 @@ from samples.views import yourportal, labportal
 from django.views import static
 from .settings import MEDIA_ROOT
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name='index'),
@@ -37,4 +38,4 @@ urlpatterns = [
     url(r'^labportal/', labportal, name='labportal'),
     url(r'^yourportal/', yourportal, name='yourportal'),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
-]
+    ]

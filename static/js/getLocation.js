@@ -15,7 +15,6 @@ function success(pos) {
     $("#id_sample_location_1").val(lng).change();
 }
 
-
 function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
     geo_error_msg.innerHTML = "Geolocation is not supported by this browser.";

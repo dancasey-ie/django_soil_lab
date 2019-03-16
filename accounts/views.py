@@ -7,11 +7,13 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+
 def logout(request):
     """A view that logs the user out and redirects back to the index page"""
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('index'))
+
 
 def register(request):
     """A view that manages the registration form"""
@@ -35,8 +37,13 @@ def register(request):
         user_form = UserLoginForm()
         registration_form = UserRegistrationForm()
 
-    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', ''), 'title' : 'Log In'}
+    args = {'user_form': user_form,
+            'registration_form': registration_form,
+            'next': request.GET.get('next', ''),
+            'title': 'Log In'}
+
     return render(request, 'login.html', args)
+
 
 def login(request):
     """A view that manages the login form"""
@@ -45,26 +52,26 @@ def login(request):
         if user_form.is_valid():
             user = auth.authenticate(request.POST['username_or_email'],
                                      password=request.POST['password'])
-
             if user:
                 auth.login(request, user)
                 messages.success(request, "You have successfully logged in")
 
-                if request.GET and request.GET['next'] !='':
+                if request.GET and request.GET['next'] != '':
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
                     return redirect(reverse('index'))
             else:
-                user_form.add_error(None, "Your username or password are incorrect")
+                user_form.add_error(None,
+                                    "Your username or password are incorrect")
                 registration_form = UserRegistrationForm()
     else:
         user_form = UserLoginForm()
         registration_form = UserRegistrationForm()
 
-    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', ''), 'title' : 'Log In'}
+    args = {'user_form': user_form,
+            'registration_form': registration_form,
+            'next': request.GET.get('next', ''),
+            'title': 'Log In'}
+
     return render(request, 'login.html', args)
-
-
-
-

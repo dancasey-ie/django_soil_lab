@@ -18,17 +18,20 @@ import os
 
 User = get_user_model()
 
+
 @login_required
 def yourportal(request):
     """Gives access to the users sample history and reports"""
     details = SampleDetails.objects.all()
     complet_filter = Q(status='Complete') & Q(ordered_by=request.user)
-    all_completed_samples = SampleStatus.objects.filter(complet_filter).order_by('-id')
+    all_completed_samples = SampleStatus.objects.filter(complet_filter
+                                                        ).order_by('-id')
     completed_paginator = Paginator(all_completed_samples, 10)
     page_completed = request.GET.get('page_completed', 1)
     completed_samples = completed_paginator.page(page_completed)
     processing_filter = ~Q(status='Complete') & Q(ordered_by=request.user)
-    all_processing_samples = SampleStatus.objects.filter(processing_filter).order_by('-id')
+    all_processing_samples = SampleStatus.objects.filter(processing_filter
+                                                         ).order_by('-id')
     processing_paginator = Paginator(all_processing_samples, 10)
     processing_page = int(request.GET.get('processing_page', 1))
     processing_samples = processing_paginator.page(processing_page)
@@ -40,12 +43,13 @@ def yourportal(request):
 
     return render(request, 'yourportal.html', arg)
 
+
 @login_required()
 def details(request):
     """Opens form to submit sample details"""
 
     if request.method == 'POST':
-        sample_ref =  request.POST['sample_ref'].upper()
+        sample_ref = request.POST['sample_ref'].upper()
 
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
@@ -78,14 +82,13 @@ def details(request):
     return redirect(yourportal)
 
 
-
 @login_required()
 def submit(request, sample_id):
     """Submits user inputed sample details"""
 
     if request.method == 'POST':
         details_form = SampleDetailsForm(request.POST)
-        sample =  SampleStatus.objects.get(id=sample_id)
+        sample = SampleStatus.objects.get(id=sample_id)
         if details_form.is_valid():
 
             sample.submitted_by = request.user
@@ -110,6 +113,7 @@ def submit(request, sample_id):
                'sample': sample,
                'title': 'Your Portal'}
     return render(request, "submitdetails.html", arg)
+
 
 @login_required()
 def viewreport(request, sample_id):
@@ -141,10 +145,10 @@ def viewreport(request, sample_id):
         arg = {'status': status,
                'details': details,
                'results': results,
-               'p_perc' : p_perc,
-               'k_perc' : k_perc,
-               'ph_perc' : ph_perc,
-               'lr_ph_perc' : lr_ph_perc,
+               'p_perc': p_perc,
+               'k_perc': k_perc,
+               'ph_perc': ph_perc,
+               'lr_ph_perc': lr_ph_perc,
                'title': 'Report'
                }
 
@@ -161,6 +165,7 @@ def viewreport(request, sample_id):
            'title': 'Report'}
 
     return render(request, "viewreport.html", arg)
+
 
 @staff_member_required
 def labportal(request):
@@ -194,7 +199,8 @@ def dispatch(request):
                 sample.dispatched_by = request.user
                 sample.dispatched_date = timezone.now()
                 sample.save()
-                msg = '{0} has been recorded as "Dispatched"'.format(sample_ref)
+                msg = '{0} has been recorded as "Dispatched"'.format(
+                    sample_ref)
                 messages.success(request, msg)
             else:
                 msg = '{0} has already been dispatched'.format(sample_ref)
@@ -214,7 +220,7 @@ def receive(request):
     received into the lab for analysis"""
 
     if request.method == 'POST':
-        sample_ref =  request.POST['sample_ref'].upper()
+        sample_ref = request.POST['sample_ref'].upper()
         try:
             sample = SampleStatus.objects.get(sample_ref=sample_ref)
             if sample.status == "Submitted":
@@ -240,6 +246,7 @@ def receive(request):
         pass
 
     return redirect(labportal)
+
 
 @staff_member_required
 def results(request):
@@ -268,11 +275,10 @@ def results(request):
             except User.doesNotExists:
                 messages.error(request, 'email failed to send, no user found')
             return redirect(labportal)
-
-
     else:
         results_form = SampleResultsForm()
     return redirect(labportal)
+
 
 def results_email(username):
     """Return email content to be sent to customer when their

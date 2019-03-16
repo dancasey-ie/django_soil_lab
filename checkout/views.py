@@ -15,9 +15,10 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 
+
 @login_required()
 def checkout(request):
-    if request.method=="POST":
+    if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
 
@@ -33,18 +34,18 @@ def checkout(request):
                 product = get_object_or_404(Product, pk=id)
                 total += quantity * product.price
                 order_line_item = OrderLineItem(
-                    order = order,
-                    product = product,
-                    quantity = quantity
+                    order=order,
+                    product=product,
+                    quantity=quantity
                     )
                 order_line_item.save()
                 for x in range(quantity):
                     sample = SampleStatus(
-                        status = 'Ordered',
-                        order = order,
-                        testing_required = product.test_type,
-                        ordered_by = request.user,
-                        ordered_date = timezone.now(),
+                        status='Ordered',
+                        order=order,
+                        testing_required=product.test_type,
+                        ordered_by=request.user,
+                        ordered_date=timezone.now(),
                         )
 
                     sample.save()
@@ -56,11 +57,11 @@ def checkout(request):
             try:
                 # using stripe API
                 customer = stripe.Charge.create(
-                    amount = int(total * 100),
-                    currency = "EUR",
-                    description = request.user.email,
-                    card = payment_form.cleaned_data['stripe_id'],
-                )
+                    amount=int(total * 100),
+                    currency="EUR",
+                    description=request.user.email,
+                    card=payment_form.cleaned_data['stripe_id'])
+
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
 
@@ -71,11 +72,11 @@ def checkout(request):
                 user = order.user
                 print(user.email)
                 send_mail('Order Confirmation',
-                           order_confirm_email(order),
-                           'eascatest@gmail.com',
-                           [user.email],
-                           fail_silently=False,
-                           )
+                          order_confirm_email(order),
+                          'eascatest@gmail.com',
+                          [user.email],
+                          fail_silently=False,
+                          )
 
                 return redirect(reverse('products'))
             else:
