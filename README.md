@@ -160,9 +160,6 @@ Known bugs
 
 - background image reduced in height when opened on mobile, works fine when using both chrome and firefox dev tools
 
-
-
-
 __Manual Testing__
 
 The following test were performed manually. 
@@ -215,6 +212,9 @@ Note. To avoid having to jump between a customer and a staff account, you can pl
 |                                 | Enter sample results -> Click Submit Results         | Success message displayed                            |       OK          |       OK            |       OK        |       OK        |
 |                                 |                                                      | Sample results can be seen in the sample report      |       OK          |       OK            |       OK        |       OK        |
 |                                 |                                                      | Email sent to customer informing them that the results are available |       OK          |       OK            |       OK        |       OK        |
+| LinkedIn Footer Link            | Click LinkedIn link in footer                        | Opens LinkedIn profile in new tab or in LinkedIn app |       OK          |       OK            |       OK        |       OK        |
+| Email Link                      | Click email link in header                           | Opens defailt email composer                         |       OK          |       OK            |       OK        |       OK        |
+| Phone number Link               | Click pone number link in header                     | Calls number on mobile device/ asks to select phone app on desktop |       OK          |       OK            |       OK        |       OK        |
 
 
 
