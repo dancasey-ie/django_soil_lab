@@ -43,7 +43,6 @@ using a sample reference number printed on the soil sample kit received in the p
 * As a registered user I expect the results to be presented to in a clear report.
 * As a registered user I should be provided by an emailed confirmation of my orders change of status.
 
-
 __Staff User Story__
 
 * As lab staff I should have all the features available to a registered user, so I can submit sample details for site visits.
@@ -129,7 +128,7 @@ Technologies Used
 * __Stripe__
 * __GeoPy__
 * __GeoPosition__
-* __Django-1.11.18
+* __Django-1.11.18__
 
 
 Testing
@@ -147,7 +146,7 @@ __Code Validation__
 * __Spelling and Grammar__ was validated using Google Docs.
 * __JavaScript__ was validated using https://jshint.com/
 
-__Unittest Automated Testing__
+__Automated Testing__
 
 
 
@@ -283,16 +282,14 @@ __Code Differences__
 
 Settings.py line 34, DEBUG = False for deployment. https://github.com/dcasey720/django_soil_submit/blob/master/django_soil_submit/settings.py
 
-
-
 Credits
 ------------
+
 __Content__
 
 The text for the About section and product descriptions was taken from https://southernscientificireland.com/
 
 __Media__
-
 
 
 __Acknowledgements__
@@ -304,7 +301,7 @@ The project was developed from conversations with Southern Scientific Environmen
 Running App
 ------------------------
 
-https://easca-environmental.herokuapp.com/
+https://dc-easca-environmental.herokuapp.com/
 
 
 
