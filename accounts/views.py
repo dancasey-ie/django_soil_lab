@@ -35,7 +35,7 @@ def register(request):
         user_form = UserLoginForm()
         registration_form = UserRegistrationForm()
 
-    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', '')}
+    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', ''), 'title' : 'Log In'}
     return render(request, 'login.html', args)
 
 def login(request):
@@ -62,7 +62,7 @@ def login(request):
         user_form = UserLoginForm()
         registration_form = UserRegistrationForm()
 
-    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', '')}
+    args = {'user_form': user_form, 'registration_form': registration_form, 'next': request.GET.get('next', ''), 'title' : 'Log In'}
     return render(request, 'login.html', args)
 
 

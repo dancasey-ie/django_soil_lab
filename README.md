@@ -224,6 +224,19 @@ Bugs.
 - if click 'ammend' with no quantity get a server error 500
 
 
+
+Console Log errrors
+Submit details form 
+x15 in firefox
+Request to access cookie or storage on “https://maps.google.com/maps/api/js?key=AIzaSyBegg5R7eMRpK9EHJGEp6xrQuD0ImzTfyA” was blocked because it came from a tracker and content blocking is enabled.
+x2 in edge
+SCRIPT7002: XMLHttpRequest: Network Error 0x80700013, http://download.microsoft.com/download/B/9/F/B9FF9327-7A72-4165-BF91-9B7EEB6C579B/DeviceList.json
+viewreport
+You have included the Google Maps JavaScript API multiple times on this page. This may cause unexpected errors.
+Google Maps JavaScript API warning: NoApiKeys https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys
+Google Maps JavaScript API warning: InvalidKey https://developers.google.com/maps/documentation/javascript/error-messages#invalid-key
+
+
 Development
 ------------------------
 

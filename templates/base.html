@@ -35,18 +35,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'about' %}"><i class="fas fa-info"></i> About</a></li>
-                <li><a href="{% url 'products' %}"><i class="fas fa-vial"></i> Services</a></li>
+                <li class="{% if title == 'About' %} active_menu {% endif %}"><a href="{% url 'about' %}"><i class="fas fa-info"></i> About</a></li>
+                <li class="{% if title == 'Services' %} active_menu {% endif %}"><a href="{% url 'products' %}"><i class="fas fa-vial"></i> Services</a></li>
                 {% if user.is_authenticated %}
                 {% if user.is_staff %}
-                <li><a href="{% url 'labportal' %}"><i class="fas fa-flask"></i> Lab Portal</a></li>
+                <li class="{% if title == 'Lab Portal' %} active_menu {% endif %}"><a href="{% url 'labportal' %}"><i class="fas fa-flask"></i> Lab Portal</a></li>
                 {% endif %}
-                <li><a href="{% url 'yourportal' %}"><i class="fa fa-user"></i> Your Portal</a></li>
+                <li class="{% if title == 'Your Portal' %} active_menu {% endif %}"><a href="{% url 'yourportal' %}"><i class="fa fa-user"></i> Your Portal</a></li>
                 <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out-alt"></i> Log Out</a></li>
                 {%  else %}
-                <li><a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></li>
+                <li class="{% if title == 'Log In' %} active_menu {% endif %}"><a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></li>
                 {% endif %}
-                <li>
+                <li class="{% if title == 'Cart' %} active_menu {% endif %}">
                     <a href="{% url 'view_cart' %}">
                         <i class="fa fa-shopping-cart"></i> Cart
                         {% if product_count > 0 %}
