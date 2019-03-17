@@ -121,6 +121,28 @@ Technologies Used
 Testing
 -----------------------
 
+__Code Institute Testers__
+
+As this site is designed by both lab staff and customers and the actions possible by each is reliant on the other, I commend the following. It is best to use two different browsers i.e. Chrome and Firefox so that the tester can be logged in as two users at once.
+
+* Open the site and sign in as a Staff Member using __username:__ nice_assessor __password:__ StaffPass1
+* In a seperate browser register a new account using your email address to receive the confirmation emails
+* __As customer__ add a number of different sample tests to your cart and continue to purchase the testing services
+* Once an order has been placed you will receive a confirmation email
+* __As staff__ go to 'Lab Portal' and using the 'Sample Archive' filter function filter for the username you set yourself for your customer persona. If it is the latest sample order it will be at the top of the list by default.
+* Copy and paste one of your ordered sample reference numbers into the 'Dispatch Sample' section. You will see in the 'Sample Archive' that the samples status has been updated
+* __As customer__ go to 'Your Portal'. You will again see the disaptched sample and the ordered samples in the 'Live Samples' section.
+* Copy and paste the dispatched sample reference into the 'Submit Sample Details' section. The 'Submit Sample Details' form will be displayed
+* Fill out the sample details form. For the sample location try using the different methods detailed on the form.
+* Once submitted you can view the details you have submitted by clicking on the 'Details' button in the 'Live Samples' section. Note the status has been updated to 'Submitted'
+* __As staff__ go to 'Lab Portal' copy and paste the submitted sample reference into the 'Receive Sample' section to record that the sample has been received into the lab. Note the status update in the 'Sample Archive' section
+* Select your received sample reference from the drop down selector in the 'Upload Results' section and enter result values. Though the results fields do not have limits use the following real worl possible results P=2, K=55, pH=7, LR_pH=10
+* __As customer__ you will receive an email informing you that your results are available. Follow the link in the email to 'Your Portal' and you will see the sample in the 'Completed Samples' section
+* Click 'View Report' and you will see that the results are displayed color coded relative to thresholds shown.
+* __As staff__ you can also view this report by finding the sample in the 'Sample Archive' of 'Lab Portal'. Alternativily you could filter for 'Status' = 'Complete' and view previously tested samples.
+
+
+
 __Code Validation__
 
 * __Python__ was validated using http://pep8online.com/.
@@ -173,7 +195,6 @@ __Manual Testing__
 
 The following test were performed manually.
 
-Note. To avoid having to jump between a customer and a staff account, you can place orders as a staff member. __username:__ nice_assessor __password:__ StaffPass1
 
 |    Feature                      |   Test Action                                        |   Expected Result                                    |  Chrome (Desktop) |  Firefox (Desktop)  | IE (Desktop)    | Chrome (Mobile) |
 | ------------------------------- | -----------------------------------------------------| ---------------------------------------------------- | ----------------- | ------------------- | --------------- | --------------- |
@@ -229,15 +250,28 @@ Note. To avoid having to jump between a customer and a staff account, you can pl
 __Console Log Errors__
 
 Though all features functioned correctly there were a number of errors visible in the console log that are worthy of note.
-* The following is generated when the Submit Details View is rendered in firefox: </br>
+* The following is generated when the Submit Details View is rendered in firefox: 
+
+
 Request to access cookie or storage on “https://maps.google.com/maps/api/js?key=AIzaSyBegg5R7eMRpK9EHJGEp6xrQuD0ImzTfyA” was blocked because it came from a tracker and content blocking is enabled.
-</br>
-and in Edge
+
+and in Edge:
+
+
 SCRIPT7002: XMLHttpRequest: Network Error 0x80700013, http://download.microsoft.com/download/B/9/F/B9FF9327-7A72-4165-BF91-9B7EEB6C579B/DeviceList.json
-* The following is generated when the Lab Report view is rendered in firefox, I imagine due to the API key being set as a template variable: </br>
+
+* The following is generated when the Lab Report view is rendered in firefox, I imagine due to the API key being set as a template variable:
+
+
 You have included the Google Maps JavaScript API multiple times on this page. This may cause unexpected errors.
+
+
 Google Maps JavaScript API warning: NoApiKeys https://developers.google.com/maps/documentation/javascript/error-messages#no-api-keys
+
+
 Google Maps JavaScript API warning: InvalidKey https://developers.google.com/maps/documentation/javascript/error-messages#invalid-key
+
+
 
 
 Development
@@ -261,6 +295,9 @@ For the development of the samples results tables in the sample report, the foll
 The thresholds used in the tables were for grassland land use and these should be programmed more appropriately for the other land uses. The tables of note from the teagasc publication can be found here https://github.com/dcasey720/django_soil_lab/tree/master/mock-ups/Example%20Test%20Result%20Tables.
 
 It sould be noted that Django has been use for other LIMS systems most notibly https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5192047/. Though the MASTR-MS LIMS was not referenced in the development of this projects it gave me and Southern Scientific confidence that Django is an industry capable framework that can be adapted for their needs.
+
+There are a number of operations that are purposefully awkward by design. The 'Dispatch Sample', 'Receive Sample' and 'Submit Sample Details' input box require that the whole sample reference number be entered. Autocomplete for these form entries were considered but thought that if possible reference numbers were shown there would be a greater possibility that
+the user would select one of the given possibilities rather than the one in there hand. In production the dispatch and receive entries will be carried out by a USB connected barcode scanner with this site running locally.
 
 __Notes on Code__
 
@@ -349,3 +386,6 @@ Running App
 ------------------------
 
 https://dc-easca-environmental.herokuapp.com/
+
+
+
