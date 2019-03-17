@@ -363,12 +363,21 @@ flex-wrap: wrap;
 margin-top: 30px;
 }
 
-/*----------------------------------------------------------------Cart Styling*/
 
+/*----------------------------------------------------------------Reset Password Styling*/
+
+.email_input{
+    max-width: 400px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.new_password_td {
+    height: 50px;
+}
 
 /*----------------------------------------------------------------Media Queries*/
 /*--------------Stop number phone number wrapping in iPhone SE--*/
-
 @media only screen and (max-width: 350px) {
     .contact_icon {
         display: none;
