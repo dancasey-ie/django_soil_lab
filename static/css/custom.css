@@ -364,10 +364,46 @@ caption p {
     margin-top: 30px;
 }
 
+/*----------------------------------------------------------------Cart Styling*/
 
+.cart_qty_input {
+    width: 50px !important;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.cart_total {
+    font-weight: bold;
+    color: #40ae49
+}
+
+.cart_table {
+    border-style: solid;
+    border-width: thin;
+    margin-bottom: 20px;
+}
+
+.cart_table tr:nth-child(even) {
+    background: #d6eaf5
+}
+
+.cart_table tr th {
+    border-bottom-style: solid;
+    border-width: thin;
+}
+.cart_table tr:nth-child(odd) {
+    background: #FFF
+}
+
+.total_tr {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top-style: solid;
+    border-width: thin;
+}
 /*----------------------------------------------------------------Reset Password Styling*/
-
-.email_input{
+.email_input {
     max-width: 400px;
     width: 80%;
     margin-bottom: 10px;
