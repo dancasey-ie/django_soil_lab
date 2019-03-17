@@ -154,6 +154,7 @@ footer {
 }
 
 /*--------------------------------------------------------------Home Styling*/
+
 .home_bg {
     background-size: 1800px 100%;
     background-repeat: no-repeat;
@@ -401,8 +402,11 @@ caption p {
     padding-top: 20px;
     border-top-style: solid;
     border-width: thin;
+    background: #d6eaf5
 }
+
 /*----------------------------------------------------------------Reset Password Styling*/
+
 .email_input {
     max-width: 400px;
     width: 80%;
