@@ -358,9 +358,9 @@ caption p {
 }
 
 .row.row-flex {
-display: flex;
-flex-wrap: wrap;
-margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 
@@ -399,6 +399,22 @@ margin-top: 30px;
     .nav > li > a {
         padding-left: 8px;
         padding-right: 8px;
+    }
+}
+
+/*------------------Increase logo size in home screen in larger res--*/
+
+@media only screen and (min-width: 992px) {
+    .home_navbar_brand {
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .home_navbar_brand {
+        font-size: 44px;
+        line-height: 44px;
     }
 }
 
