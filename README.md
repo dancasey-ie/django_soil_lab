@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dcasey720/django_soil_submit.svg?branch=master)](https://travis-ci.org/dcasey720/django_soil_submit)
+[![Build Status](https://travis-ci.org/dcasey720/django_soil_lab.svg?branch=master)](https://travis-ci.org/dcasey720/django_soil_lab)
 
 
 Full Stack Software Development: Easca Environmental
@@ -60,7 +60,7 @@ __Admin User Story__
 
 __Wireframes__
 
-Wireframe mock ups were developed using FluidUI and can be viewed here - https://github.com/dcasey720/django_soil_submit/tree/master/mock-ups
+Wireframe mock ups were developed using FluidUI and can be viewed here - https://github.com/dcasey720/django_soil_lab/tree/master/mock-ups
 
 Features
 ---------
@@ -117,7 +117,8 @@ Testing
 
 __Continuous Integration__
 
-Travis CI was used for continuous integration insuring that the host environment and requirements are met through out the development. Collect static 
+Travis CI was used for continuous integration insuring that the host environment and requirements are met through out the development. 
+As I have included staticfiles/ in .gitignore, 'python manage.py collectstatic' had to be included in the .travis.yml (https://github.com/dcasey720/django_soil_lab/blob/master/.travis.yml) file before the tests for the test to pass.
 
 __Code Validation__
 
@@ -248,7 +249,7 @@ __Requirements__
 The system hosting the app must have a number of python packages installed.
 A full list can be found at
 
-https://github.com/dcasey720/django_soil_submit/blob/master/requirements.txt
+https://github.com/dcasey720/django_soil_lab/blob/master/requirements.txt
 
 Take note that a pip freeze will show django-geoposition==0.3.1, this is not a valid release and will fail both travis and heroku builds. 
 Django-geoposition latest release available to install with pip is 0.3.0., however this version will not work with django-1.11 and so the work around branch must be installed.
