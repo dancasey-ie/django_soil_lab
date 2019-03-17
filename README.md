@@ -309,6 +309,7 @@ If left not commented out the form would be rendered twice. I consulted Code Ins
 However where django generated urls were used for background images the 'background-image' style attribute was included in the the html code. i.e. ln19 https://github.com/dcasey720/django_soil_lab/blob/master/templates/base.html
 * All Javascript code is run from external js files in the static folder https://github.com/dcasey720/django_soil_lab/tree/master/static/js.
 However where django tags were used global javascript variables were declared in the html template for use in the scripts. i.e. ln354 https://github.com/dcasey720/django_soil_lab/blob/master/samples/templates/viewreport.html
+* A base.html was utitilesed for all templates except index.html as its background and general layout was different
 
 Deployment
 ------------------------
