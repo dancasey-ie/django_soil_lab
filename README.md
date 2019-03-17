@@ -142,26 +142,18 @@ The dev tool within Firefox Development Edition was used to test that the pages 
 | About                                                 | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 | Nav - Collapse/ Expand in xs, hover and focus         | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 | Services                                              | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
-| Log in/ Register                                      | 4         | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
-| Cart                                                  | 1         | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Log in/ Register                                      | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Cart                                                  | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 | Checkout                                              | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
-| Your Portal - Collapse/ Expand in xs, hover and focus | 2         | OK      | OK        | OK          | OK           | OK             | OK       | OK    | 5          | OK                    | OK                     |
+| Your Portal - Collapse/ Expand in xs, hover and focus | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 | Enter Details                                         | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
-| Lab Portal                                            | 2         | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Lab Portal                                            | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 | Order Confirmation Email                              | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 | Results In Email                                      | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
-| Sample Report                                         | 3         | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
+| Sample Report                                         | OK        | OK      | OK        | OK          | OK           | OK             | OK       | OK    | OK         | OK                    | OK                     |
 
-Known bugs
 
-1. Footer 20px too high, no margin shown on left or right
-2. Footer 20px too high
-3. No margin, need to center map and scroll overflow tables
-4. No margins
-5. Tables run off page, need to contain and scroll
-6.
-
-- background image reduced in height when opened on mobile, works fine when using both chrome and firefox dev tools
+- Home screen background image reduced in height to about 3px when opened on mobile my Samsung S7, works fine when using both chrome and firefox dev tools and when opened on other peoples devices.
 
 __Manual Testing__
 

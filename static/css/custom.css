@@ -13,12 +13,13 @@ body {
 
 .main_container {
     margin-top: 0px;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 130px);
 }
 
-.home_container {
+
+.about_container {
     margin-top: 0px;
-    min-height: calc(100vh - 130px);
+    min-height: calc(100vh - 150px);
 }
 
 h1, h2, h3, h4 {
@@ -415,6 +416,13 @@ caption p {
     .home_navbar_brand {
         font-size: 44px;
         line-height: 44px;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .main_container {
+        padding-left: 30px;
+        padding-right: 30px;
     }
 }
 
