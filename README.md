@@ -107,6 +107,9 @@ Technologies Used
 * __Stripe__ (https://www.stripe.com) was used for secure credit card payments
 * __django-geoposition__ (https://pypi.org/project/django-geoposition/) was used to enable to select a geographical location using the a google maps API
 * __GeoPy__ (https://geopy.readthedocs.io/en/stable/) was used to get the address of sample locations set using django-geoposition
+* __Pillow__(https://pypi.org/project/Pillow/) Python Imaging Library used for interpreting images
+* __PostgresSQL__(https://www.postgresql.org/) open source object-relational database was used for storing data
+* __Whitenoise__ (https://pypi.org/project/whitenoise/)  allows the web app to serve its own static files
 
 
 Testing
@@ -241,6 +244,8 @@ Development
 ------------------------
 
 All custom css tags created in the development of this project include '_', this allows me to quickly see what items I have styled and what items already have style attributes.
+
+Initiall tried to use GeoDjango but after recearch seemed overkill
 
 Deployment
 ------------------------

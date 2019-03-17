@@ -224,7 +224,7 @@ footer {
     vertical-align: middle;
 }
 
-table, tr, td, th {
+.sample_table, tr, td, th {
     text-align: center;
 }
 
@@ -272,7 +272,7 @@ table, tr, td, th {
 
 /*--------------------------------------------------------------Details Styling*/
 
-#useDeviceLoc {
+.use_location_btn {
     margin-bottom: 5px;
 }
 
@@ -283,7 +283,7 @@ table, tr, td, th {
     width: 300px;
 }
 
-#mymap {
+.my_map {
     height: 100%;
 }
 
@@ -378,6 +378,7 @@ margin-top: 30px;
 
 /*----------------------------------------------------------------Media Queries*/
 /*--------------Stop number phone number wrapping in iPhone SE--*/
+
 @media only screen and (max-width: 350px) {
     .contact_icon {
         display: none;
