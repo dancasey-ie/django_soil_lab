@@ -253,7 +253,7 @@ Though all features functioned correctly there were a number of errors visible i
 * The following is generated when the Submit Details View is rendered in firefox: 
 
 
-Request to access cookie or storage on “https://maps.google.com/maps/api/js?key=AIzaSyBegg5R7eMRpK9EHJGEp6xrQuD0ImzTfyA” was blocked because it came from a tracker and content blocking is enabled.
+Request to access cookie or storage on https://maps.google.com/maps/api/js?key=AIzaSyBegg5R7eMRpK9EHJGEp6xrQuD0ImzTfyA was blocked because it came from a tracker and content blocking is enabled.
 
 and in Edge:
 
