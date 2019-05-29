@@ -16,6 +16,10 @@ body {
     min-height: calc(100vh - 130px);
 }
 
+.messages {
+    margin-top: 100px;
+}
+
 
 .about_container {
     margin-top: 0px;

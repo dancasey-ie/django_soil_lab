@@ -39,7 +39,7 @@ else:
     DEBUG = False
 
 
-ALLOWED_HOSTS = ['localhost',  'dc-easca-environmental.herokuapp.com']
+ALLOWED_HOSTS = ['localhost',  'dc-easca-environmental.herokuapp.com', 'easca-environmental.dancasey.ie']
 
 # For styling alert messages
 
