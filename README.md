@@ -15,7 +15,7 @@ The key features of the app are:
 * Staff can 'Upload Results'
 * Customer and Staff can 'View Report' of the sample details and results
 
-This project was developed as the final project in a diploma in Full Stack Software Development through The Code Institute, with consultation with Southern Scientific Services (https://southernscientificireland.com/).
+This project was developed as the final project in a diploma in Full Stack Software Development through The Code Institute.
 
 The running site can be accessed here https://dc-easca-environmental.herokuapp.com/
 
@@ -123,7 +123,7 @@ Testing
 
 __Code Institute Testers__
 
-As this site is designed by both lab staff and customers and the actions possible by each is reliant on the other, I commend the following. It is best to use two different browsers i.e. Chrome and Firefox so that the tester can be logged in as two users at once.
+As this site is designed by both lab staff and customers and the actions possible by each is reliant on the other, I recommend the following. It is best to use two different browsers i.e. Chrome and Firefox so that the tester can be logged in as two users at once.
 
 * Open the site and sign in as a Staff Member using __username:__ nice_assessor __password:__ StaffPass1
 * In a seperate browser register a new account using your email address to receive the confirmation emails
@@ -253,7 +253,7 @@ Though all features functioned correctly there were a number of errors visible i
 * The following is generated when the Submit Details View is rendered in firefox: 
 
 
-Request to access cookie or storage on https://maps.google.com/maps/api/js?key=AIzaSyBegg5R7eMRpK9EHJGEp6xrQuD0ImzTfyA was blocked because it came from a tracker and content blocking is enabled.
+Request to access cookie or storage on "Google Maps API Key URL" was blocked because it came from a tracker and content blocking is enabled.
 
 and in Edge:
 
@@ -277,7 +277,7 @@ Google Maps JavaScript API warning: InvalidKey https://developers.google.com/map
 Development
 ------------------------
 
-This site was developed in consultation with Southern Scientific. They were looking to digitalise some of their lab processes, reducing the time lab technicians and field surveyors spent transferring data from paper to online records.
+This site was developed in consultation with an environmental lab. They were looking to digitalise some of their lab processes, reducing the time lab technicians and field surveyors spent transferring data from paper to online records.
 I was given a tour of their lab and run through of their processes. It was apparent that a lot of time could be saved and so money saved,
 if sample details could be submitted by the customer directly to a cloud database and that being able to GPS tag the sampe would greatly improve the tracking of a customers land over time.
 
@@ -288,13 +288,13 @@ Django-geoposition allows the user to select and save a location to a model usin
 side location features available (either GPS or IP location) to set the location of the user. This was important so that samples could be accurately geotagged when taking field samples. As the django-geoposition map marker initial position are set in Settings.py and the widget used display is generated from this,
 it was proving difficult to get the current location to recenter and reposition the marker automatically when the location is found. Though not the most user intuitive the 'how to' style help provided with the model entry was a compromise that isn't too complicated. Geopy was used to get the address of the gps location separately to the django-geoposition.
 
-As this project will be adopted in some way by Southern Scientific, the color scheme, font styles, background images and layouts were mimicked for easy integration. Time was spent developing a logo using https://www.canva.com/ and paint, these can be found here https://github.com/dcasey720/django_soil_lab/tree/master/mock-ups/Canvas%20developed%20logos.
+Time was spent developing a logo using https://www.canva.com/ and paint, these can be found here https://github.com/dcasey720/django_soil_lab/tree/master/mock-ups/Canvas%20developed%20logos.
 It was proving difficult to set the logo background to transparent to blend in nicely with the navbar, so in the end a simple brand logo was developed with standard font and a font-awesome leaf icon.
 
-For the development of the samples results tables in the sample report, the following publication was consulted https://www.teagasc.ie/media/website/publications/2016/soil-fertility-green.pdf. For the purpose of this project I concentrated on showing the results for only most basic of tests offered by Southern Scientific, testing Potassium, Phosphorus, pH and Lime Requirement pH.
+For the development of the samples results tables in the sample report, the following publication was consulted https://www.teagasc.ie/media/website/publications/2016/soil-fertility-green.pdf. For the purpose of this project I concentrated on showing the results for only most basic of soil tests, testing Potassium, Phosphorus, pH and Lime Requirement pH.
 The thresholds used in the tables were for grassland land use and these should be programmed more appropriately for the other land uses. The tables of note from the teagasc publication can be found here https://github.com/dcasey720/django_soil_lab/tree/master/mock-ups/Example%20Test%20Result%20Tables.
 
-It sould be noted that Django has been use for other LIMS systems most notibly https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5192047/. Though the MASTR-MS LIMS was not referenced in the development of this projects it gave me and Southern Scientific confidence that Django is an industry capable framework that can be adapted for their needs.
+It sould be noted that Django has been use for other LIMS systems most notibly https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5192047/. Though the MASTR-MS LIMS was not referenced in the development of this projects it gave me confidence that Django is an industry capable framework that can be adapted for the LIMS purposes.
 
 There are a number of operations that are purposefully awkward by design. The 'Dispatch Sample', 'Receive Sample' and 'Submit Sample Details' input box require that the whole sample reference number be entered. Autocomplete for these form entries were considered but thought that if possible reference numbers were shown there would be a greater possibility that
 the user would select one of the given possibilities rather than the one in there hand. In production the dispatch and receive entries will be carried out by a USB connected barcode scanner with this site running locally.
@@ -368,25 +368,10 @@ If env.py file is not found DEBUG is set to False, this insures that while devel
 Note: The 'mock-ups' folder was included in the git repo throughout,
 normally I would remove the mock-ups from the final deployment, but as the Heroku app was deployed by link to the GitHub repo I thought it better to keep them in the repo.
 
-Credits
-------------
-
-__Content__
-
-The text for the About section and product descriptions were taken from https://southernscientificireland.com/
-
-__Media__
-
-The home and nav background images were taken from https://southernscientificireland.com/. All other images were taken from https://images.google.com/
-
-__Acknowledgements__
-
-The project was developed from conversations with Southern Scientific Environmental Services.
-
 Running App
 ------------------------
 
-https://dc-easca-environmental.herokuapp.com/
+http://easca-environmental.dancasey.ie/
 
 
 
