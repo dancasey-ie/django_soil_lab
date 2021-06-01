@@ -15,6 +15,6 @@ psycopg2==2.7.7
 pytz==2018.9
 requests==2.21.0
 stripe==2.21.0
-urllib3==1.24.1
+urllib3==1.26.5
 whitenoise==4.1.2
 -e git+git://github.com/philippbosch/django-geoposition.git@4ed91215a36e737c71fbdc023f134bd2cfe445b3#egg=django-geoposition
